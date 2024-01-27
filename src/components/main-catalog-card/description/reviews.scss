@@ -1,0 +1,110 @@
+.retvit {
+
+    // .retvit__item
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &__item {
+        padding: 20px;
+        border-radius: 4px;
+        background:  #36332E;
+    }
+
+    // .retvit__header
+
+    &__header {
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        display: flex;
+        &:not(:last-child){
+        margin-bottom:10px;
+        }
+        @media(max-width:400.98px){
+            align-items:flex-start;
+            flex-direction: column;
+        }
+    }
+
+    // .retvit__title
+
+    &__title {
+        color:  #BEAE97;
+        font-family: Open Sans;
+        font-size: 14px;
+        line-height: 1.4; /* 19.6px */
+    }
+
+    // .retvit__rating
+
+    &__rating {
+        display: flex;gap: 5px;
+        align-items:center;
+    }
+
+
+    // .retvit__data
+
+
+    &__data {
+        color: #BEAE97;
+        font-family: Open Sans;
+        font-size: 14px;
+        line-height: 1.4 ;/* 19.6px */
+            &:not(:last-child){
+            margin-bottom:16px;
+            }
+    }
+
+    // .retvit__text
+
+    &__text {
+        color:  #BEAE97;
+        font-family: Open Sans;
+        font-size: 14px;
+        line-height: 1.4; /* 19.6px */
+        &:not(:last-child){
+            margin-bottom:16px;
+        }
+    }
+
+    // .retvit__images
+
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &__images {
+        display: flex;
+        margin: 0px auto;
+        gap: 20px;
+        @media(min-width:991.98px){
+            justify-content: center;
+        }
+        overflow: auto;
+        width: 100%;
+        padding-bottom: 12px;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        } 
+    }
+
+    // .retvit__img
+
+    &__img {
+        min-width: 170px;
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+.no-review {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+    
+}

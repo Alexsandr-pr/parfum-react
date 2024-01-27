@@ -1,0 +1,117 @@
+
+.main-doc {
+    padding: 30px 0px 150px 0px;
+    // .main-doc__container
+    &__container {
+        display: flex;
+        
+        gap: 40px;
+        @media(max-width:767.98px){
+            flex-direction: column;
+        }
+    }
+    // .main-doc__body
+    &__body {
+        flex: 0 1 30%;
+        display: flex;
+        flex-direction: column;
+        
+        gap: 50px;
+        @media(max-width:991.98px){
+            flex: 0 1 40%;
+        }
+    }
+    // .main-doc__title
+    &__title {
+        color:  #BEAE97;
+        font-size: 18px;
+        line-height: 1.4; /* 25.2px */
+        
+    }
+    // .main-doc__item
+    &__item {
+        padding: 5px;
+       
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        transition: all 0.3s ease 0s;
+        @media(hover:hover) {
+            &:hover {
+                cursor: pointer;
+                color:#C09E6C;
+            }
+        }
+    }
+
+    // .main-doc__image
+
+    &__image {
+        flex: 0 1 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @media(max-width:991.98px){
+            flex: 0 1 60%;
+        }
+    }
+}
+
+.breadcrumb {
+
+    // .breadcrumb__graniza
+    padding: 23px 0px;
+    &__graniza {
+
+    }
+
+    // .breadcrumb__title
+
+    &__title {
+        &:not(:last-child){
+            margin-bottom:10px;
+        }
+    }
+
+    // .breadcrumb__list
+
+    &__list {
+        display: flex;
+        gap: 30px;
+    }
+
+
+    // .breadcrumb__item
+
+    &__item:not(:last-child) {
+        position: relative;
+        &::after {
+            content: "/";
+            position: absolute;
+            right: -15px;
+            top: 0;
+            color: #7A7364;
+            font-family: Montserrat;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+
+    // .breadcrumb__link
+
+    &__link {
+        color:  #BEAE97;
+        font-size: 14px;
+    }
+}
+
+.title-30 {
+    font-family: Montserrat;
+    font-size: 30px;
+    background:  linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

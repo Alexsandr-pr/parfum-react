@@ -1,0 +1,7 @@
+.user-content {
+    display: none;
+    flex-direction: column;
+    &._active {
+        display: flex;
+    }
+}

@@ -1,0 +1,110 @@
+.order-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    // .order-block__item
+
+    &__item {
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        background: #36332E;
+        gap: 16px;
+        @media(max-width:387.98px){
+            margin: 0px -20px;
+        }
+    }
+
+    // .order-block__header
+
+
+    &__header {
+        @media(min-width:487.98px){
+            height: 60px;
+        }
+        display: flex;
+        padding: 14px 10px;
+        align-items: center;
+        gap: 10px;
+        justify-content: space-between;
+        border-radius: 4px;
+        background:  #12110F;
+        @media(max-width:487.98px){
+            flex-direction: column;
+        }
+    }
+
+    // .order-block__title
+
+    &__title {
+        color: #BEAE97;
+        font-family: Open Sans;
+        font-size: 14px;
+        line-height: 1.4; /* 19.6px */
+        p {
+            font-weight: 400;
+        }
+        span {
+            font-weight: 700;
+        }
+    }
+
+    // .order-block__body
+
+    &__body {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color:  #BEAE97;
+        font-family: Open Sans;
+        font-size: 14px;
+        line-height: 1.4; /* 19.6px */
+    }
+    // .order-block__sum
+    &__sum {
+
+    }
+
+    // .order-block__remove-order
+
+    &__remove-order {
+        padding: 6px 10px;
+        border-radius: 4px;
+        transition: all 0.3s ease 0s;
+        background:  #36332E;
+        @media(hover:hover) {
+            &:hover {
+                cursor: pointer;
+                background: #6C4A4A;
+            }
+        }
+
+    }
+
+
+    // .order-block__content
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    // .order-block__content-item
+
+    &__content-item {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        color:  #BEAE97;
+        font-family: Open Sans;
+        font-size: 14px;
+        line-height: 1/4; /* 19.6px */
+    }
+
+    // .order-block__booking
+
+    &__booking {
+    }
+}

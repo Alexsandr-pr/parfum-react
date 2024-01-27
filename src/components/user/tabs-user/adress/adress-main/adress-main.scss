@@ -1,0 +1,27 @@
+.txt-14 {
+    color:  #BEAE97;
+    font-family: Open Sans;
+    font-size: 14px;
+    line-height: 1.4; /* 19.6px */
+    &:not(:last-child){
+        margin-bottom:20px;
+    }
+}
+.user-content__add {
+    margin-bottom: 25px;
+}
+.user-content__form {
+    margin-bottom: 40px;
+}
+.user-content__button {
+    max-width: 245px;
+}
+.adress-user__items {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    column-gap: 15px;
+}
+.adress-user {
+    display: inline-flex;
+}

@@ -1,0 +1,13 @@
+.male__list {
+    margin-left: 50px;
+    flex-direction: column;
+    display: flex;
+    &:not(:last-child){
+    margin-bottom:40px;
+    }
+    .male__item, li {
+        &:not(:last-child){
+        margin-bottom:20px;
+        }
+    }
+}

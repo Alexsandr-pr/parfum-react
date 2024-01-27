@@ -1,0 +1,9 @@
+.order-booking__content {
+    display: none;
+}
+
+.catalog-description__item.active {
+    .order-booking__content {
+        display: block;
+    }
+}

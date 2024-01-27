@@ -1,0 +1,32 @@
+.user {
+
+    // .user__container
+
+    padding: 23px 0px 150px 0px;
+    &__container {
+        display: flex;
+        gap: 20px;
+        @media(max-width:800.98px){
+            flex-direction: column;
+        }
+    }
+    // .user__panel
+    &__panel {
+        flex: 0 1 23.828125%; 
+        @media(max-width:1200.98px){
+            flex: 0 1 33.828125%; 
+        }
+        @media(max-width:991.98px){
+            flex: 0 1 39.828125%; 
+        }
+    }
+    &__items-content {
+        flex: 0 1 64.0625%; /* 820/1280 */
+        @media(max-width:991.98px){
+            flex: 0 1 60.0625%; 
+        }
+    }
+    // .user__content
+    &__content {
+    }
+}

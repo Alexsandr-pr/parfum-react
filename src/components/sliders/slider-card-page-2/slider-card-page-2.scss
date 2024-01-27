@@ -1,0 +1,15 @@
+.cart-pagination__button {
+    width: 36px;
+    height: 36px;
+    background: #211E1C;
+    border-radius: 4px;
+    transition: all 0.3s ease 0s;
+    border: 1px solid  #C09E6C;
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+            background: #B7A08B;
+            color: #36332E;
+        }
+    }
+}

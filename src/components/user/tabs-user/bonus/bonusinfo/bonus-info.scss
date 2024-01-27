@@ -1,0 +1,25 @@
+.user-content__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.user-content__block-info {
+    display: flex;
+    justify-content: flex-start;
+}
+.block-info {
+    
+    
+    &__body {
+        padding: 12px 15px;
+        align-items:center;
+        justify-content: center;
+        gap: 10px;
+        display: flex;
+        border-radius: 4px;
+        gap: 10px;
+        background: #36332E;
+    }
+}

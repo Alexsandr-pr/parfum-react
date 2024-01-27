@@ -1,0 +1,132 @@
+.main {
+
+    // .main__tovar-slider
+
+    &__tovar-slider {
+        padding: 50px 0px;
+    }
+}
+.tovar-slider {
+
+    // .tovar-slider__container
+
+    &__container {
+        
+    }
+
+    // .tovar-slider__title
+
+    &__title {
+    }
+
+    // .tovar-slider__swiper
+
+    &__swiper {
+        
+    }
+
+    // .tovar-slider__swiper-wrapper
+
+    &__swiper-wrapper {
+       
+    }
+
+    // .tovar-slider__slide
+
+    &__slide {
+     
+    }
+}
+
+.tovar-slider__swiper .tovar-slide {
+
+    // .tovar-slide__image
+    min-width: 0;
+    &__image {
+        position: absolute;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        img {
+            border-radius: 4px;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    // .tovar-slide__title
+
+    &__title {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #FFEBCC;
+        text-align: center;
+        font-size: 24px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 1), -1px -1px 1px rgba(0, 0, 0, 1);
+    }
+
+    &__name {
+        width: 100%;
+        text-align: center;
+        &:not(:last-child){
+            margin-bottom:10px;
+        }
+        color: #E1D3BD;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 1), -1px -1px 1px rgba(0, 0, 0, 1);
+        font-size: 20px;
+        font-weight: 700;
+    }
+    // .tovar-slide__item
+
+    &__item {
+        padding: 0px 15px;
+        bottom: 10px;
+        width: 100%;
+        position: absolute;
+        display: flex;
+        align-items:center;
+        flex-direction: column;
+    }
+    &__button {
+        
+    }
+}
+.tovar-slider__swiper .swiper-slide {
+    position: relative;
+    height: 400px;
+}
+.title-24 {
+    font-family: Montserrat;
+    font-size: 24px;
+    background:  linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @media(max-width:767.98px){
+        font-size: 22px;
+    }
+    &:not(:last-child){
+    margin-bottom:30px;
+    @media(max-width:991.98px){
+        margin-bottom: 20px;
+    }
+    }
+}
+.tovar-slide__button {
+    .button-add-to-cart {
+            width: 245px;
+        @media(max-width:487.98px){
+            width: 100%;
+        }
+    }
+}

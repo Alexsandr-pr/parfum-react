@@ -1,0 +1,49 @@
+
+
+.user-panel {
+    &__list {
+    }
+    // .user-panel__item
+    &__item {
+        width: 100%;
+    }
+    // .user-panel__link
+    &__link {
+        width: 100%;
+        border-radius: 4px;
+        transition: all 0.3s ease 0s;
+        gap: 10px;
+        display: flex;
+        font-size: 16px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px  19px;
+        color: #BEAE97;
+        line-height: 1.4; /* 22.4px */
+        span {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.5;
+            transition: all 0.3s ease 0s;
+        }
+        @media(hover:hover) {
+            &:hover {
+                cursor: pointer;
+                background: #36332E;
+                span {
+                    opacity: 1;
+                }
+            }
+        }
+        
+        &._active {
+            background: #36332E;
+            span {
+                opacity: 1;
+            }
+        }
+    }
+}

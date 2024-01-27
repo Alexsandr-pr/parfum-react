@@ -1,0 +1,59 @@
+
+
+.breadcrumb {
+
+    // .breadcrumb__graniza
+    padding: 23px 0px;
+    &__graniza {
+
+    }
+
+    // .breadcrumb__title
+
+    &__title {
+        &:not(:last-child){
+            margin-bottom:10px;
+        }
+    }
+
+    // .breadcrumb__list
+
+    &__list {
+        display: flex;
+        gap: 30px;
+    }
+
+
+    // .breadcrumb__item
+
+    &__item:not(:last-child) {
+        position: relative;
+        &::after {
+            content: "/";
+            position: absolute;
+            right: -15px;
+            top: 0;
+            color: #7A7364;
+            font-family: Montserrat;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+
+    // .breadcrumb__link
+
+    &__link {
+        color:  #BEAE97;
+        font-size: 14px;
+    }
+}
+.title-30 {
+    font-family: Montserrat;
+    font-size: 30px;
+    background: linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

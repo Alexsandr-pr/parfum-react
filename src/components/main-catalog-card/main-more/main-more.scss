@@ -1,0 +1,45 @@
+.catalog-description__body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.catalog-description__text {
+    color:  #BEAE97;
+    font-family: Open Sans;
+}
+.catalog-description__trigger {
+    margin-bottom: 10px;
+}
+.catalog-description__button {
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.catalog-description__btn-add {
+    text-align: center;
+    color: #7A7364;
+    margin: 20px 0px;
+    transition: all 0.3s ease 0s;
+    font-size: 14px;
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+            color:#C09E6C;
+        }
+    }
+}
+.catalog-description__content {
+    display: none;
+}
+.catalog-description__item.active {
+    .catalog-description__content {
+        transition: all 0.3s ease 0s;
+        display: block;
+    }
+    .filter__btn-popular span {
+            transform: rotate(0deg);
+        
+    }
+}
