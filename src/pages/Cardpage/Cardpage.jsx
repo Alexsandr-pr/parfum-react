@@ -32,9 +32,7 @@ const CardPage = ({cardNumber, onChangeCardNumber, onAddToCart})=> {
     const [cardData, setCards] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3001/posts?_limit=12")
-            .then(data => data.json())
-            .then(data => setCards(data))
+        service.getLimitCard().then(res => setCards(res))
     },[]);
 
 

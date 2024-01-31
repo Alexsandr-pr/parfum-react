@@ -13,9 +13,12 @@ import CardPage from "./Cardpage/Cardpage";
 import CartTovar from "./CartTovar/CartTovar"
 import { Context } from "./myContext/MyContext";
 import MalePage from "./Malepage/Malepage";
+import Unisexpage from "./Unisexpage/Unisexpage";
+import Femalepage from "./Femalepage/Femalepage";
+import Registration from "./Authorization/Registration/Registration";
+import Login from "./Authorization/login/Login";
 
 function App () {
-
     const {cardNumber, onChangeCardNumber} = useContext(Context);
     const {dataCart, setDataCart} = useContext(Context);
 
@@ -84,6 +87,10 @@ function App () {
                     <Route  path="card" element={<CardPage  onAddToCart={onAddToCart} onChangeCardNumber={onChangeCardNumber} cardNumber={cardNumber}/>}/>
                     <Route path="cart" element={<CartTovar onChangeCurrentOnClick={onChangeCurrentOnClick} onDeleteItemInCart={onDeleteItemInCart} dataCart={dataCart}/>}/>
                     <Route path="male" element={<MalePage onAddToCart={onAddToCart}/>}/>
+                    <Route path="female" element={<Femalepage/>}/>
+                    <Route path="unisex" element={<Unisexpage/>}/>
+                    <Route path="registration" element={<Registration/>}/>
+                    <Route path="login" element={<Login/>}/>
                 </Route>
             </Routes>
         </>

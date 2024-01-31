@@ -2,7 +2,6 @@
 
 
 class Services {
-
     gerResourse = async (url) => {
         const res = await fetch(url);
 
@@ -11,19 +10,22 @@ class Services {
         }
         return await res.json();
     }
-
     getAllCards = async () => {
-        return await this.gerResourse("http://localhost:3001/posts");
+        return await this.gerResourse("http://localhost:5000/api/auth/tovar");
+    }
+    getLimitCard = async () => {
+        return await this.gerResourse("http://localhost:5000/api/auth/card?limit=15");
     }
     getAllBrands = async () => {
         return await this.gerResourse("http://localhost:3001/brands");
     }
-    getOneCard = async (id = 1011001) => {
-        return await this.gerResourse(`http://localhost:3001/posts/${id}`);
-    }
     
+    getOneCard = async (id = 1011001) => {
+        return await this.gerResourse(`http://localhost:5000/api/auth/card/${id}`);
+    }
+
     getSaleCards = async () => {
-        const res =  await this.gerResourse("http://localhost:3001/posts");
+        const res =  await this.gerResourse("http://localhost:5000/api/auth/tovar");
         return res.filter(item => item.sale)
     }
 }

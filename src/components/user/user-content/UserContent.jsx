@@ -6,6 +6,7 @@ import OrderMain from "../tabs-user/order/order-main/OrderMain";
 import Panel from "../tabs-user/panel/Panel";
 import ParentTabs from "../tabs-user/parent-tabs/ParentTabs";
 import ProfileMain from "../tabs-user/profile/profile-main/ProfileMain";
+import Exit from "../tabs-user/exit/Exit"
 
 import "./user-content.scss";
 
@@ -58,7 +59,12 @@ const UserContent = ({stateTabs, onChangeTabs}) => {
                             <ProfileMain/>
                         </ParentTabs>: null
             }
-
+            {
+                stateTabs === "exit" ? 
+                        <ParentTabs>
+                            <Exit/>
+                        </ParentTabs>: null
+            }
         </div>
     )
 }

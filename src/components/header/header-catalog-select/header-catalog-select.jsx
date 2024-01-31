@@ -9,11 +9,13 @@ import HeaderMale from "../header-male/header-male";
 const HeaderCatalogSelect = () => {
     const [active, setActive] = useState(false)
 
-    function toggleActive(){
+    const toggleActive = () => {
         setActive((active) => !active);
     }
+    const changeActive = () => {
+        setActive(false)
+    }
     return (
-        
         <>
             <div className={ active ? "header-button active" : "header-button"}>
                 <button onClick={toggleActive}  id="button-icon-menu" className="header-bottom__button ">
@@ -23,7 +25,7 @@ const HeaderCatalogSelect = () => {
                     <span className="icon-menu-text">Каталог</span>
                 </button>
                 <div className="header-button__block">
-                    <HeaderMale/>
+                    <HeaderMale changeActive={changeActive}/>
                 </div>
             </div>
         </>

@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 
-
 import CatalogPagination from "./catalog-pagination/catalog-pagination";
 import CatalogItems from "./catalog-items/catalog-items";
 import CatalogFilter from "./catalog-filter/catalog-filter";
 import Services from "../../services/service"
 
 import "./main-page-catalog.scss"
-
-
 
 const Catalog = ({onChangeCardNumber, onAddToCart}) => {
     
@@ -34,19 +31,15 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
         }
     }
 
-
-
     const [countriesPerPage] = useState(12);
 
     const [posts, setPosts] = useState([]);
+
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:3001/posts")
-            .then(res => res.json())
-            .then(res => setPosts(res))
-            .then(setLoading(false))
+        service.getAllCards().then(res => setPosts(res))
     }, [])
-
+    
 
     const [filter, setActiveButtonFilter] = useState("");
     const onChangeFilter = (name) => {

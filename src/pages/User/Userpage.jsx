@@ -1,7 +1,11 @@
 
 import UserMain from "../../components/user/user-main/UserMain";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs"
+import Registration from "../Authorization/Registration/Registration";
+import { useDispatch, useSelector } from "react-redux"
+import Login from "../Authorization/login/Login";
+import { auth } from "../../action/user";
 
 const data = [
     {id:"panel", name: "Панель управления",img: "./img/user/panel.svg", active: true},
@@ -17,10 +21,15 @@ const data = [
 
 const Userpage = () => {
     const [stateTabs, setStateTabs] = useState("panel");
-
+    const isAuth = useSelector(state => state.user.isAuth)
+    const dispatch = useDispatch()
     const onChangeTabs = (tab) => {
         setStateTabs(tab)
     }
+    useEffect(() => {
+        dispatch(auth())
+    }, [])
+
     let pageItem = "";
     data.forEach(item => {
         if(item.id === stateTabs) {
@@ -30,8 +39,11 @@ const Userpage = () => {
 
     return (
         <>  
-            <Breadcrumbs page={pageItem}/>
-            <UserMain data={data} stateTabs={stateTabs} onChangeTabs={onChangeTabs}/>
+                {!isAuth ?  <Login/> : null}
+                {isAuth && <Breadcrumbs page={pageItem}/> }
+                {isAuth && <UserMain data={data} stateTabs={stateTabs} onChangeTabs={onChangeTabs} />}
+                
+            
         </>
     )
 }
