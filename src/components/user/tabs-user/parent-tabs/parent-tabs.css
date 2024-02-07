@@ -1,0 +1,7 @@
+.user-content {
+  display: none;
+  flex-direction: column;
+}
+.user-content._active {
+  display: flex;
+}/*# sourceMappingURL=parent-tabs.css.map */

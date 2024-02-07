@@ -1,0 +1,11 @@
+.male__list {
+  margin-left: 50px;
+  flex-direction: column;
+  display: flex;
+}
+.male__list:not(:last-child) {
+  margin-bottom: 40px;
+}
+.male__list .male__item:not(:last-child), .male__list li:not(:last-child) {
+  margin-bottom: 20px;
+}/*# sourceMappingURL=ListToPageGender.css.map */

@@ -1,0 +1,8 @@
+.gif-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gif-loading img {
+  mix-blend-mode: multiply;
+}/*# sourceMappingURL=loading.css.map */

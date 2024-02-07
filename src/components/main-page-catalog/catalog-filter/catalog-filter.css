@@ -1,0 +1,20 @@
+@media (max-width: 567.98px) {
+  .filters-mobile-none {
+    display: none;
+  }
+}
+
+@media (max-width: 567.98px) {
+  .top-trigger-filter {
+    row-gap: 20px;
+  }
+}
+
+.filter-content__trigger span {
+  padding-right: 12.5px;
+}
+@media (max-width: 991.98px) {
+  .filter-content__trigger span {
+    padding-right: 0px;
+  }
+}/*# sourceMappingURL=catalog-filter.css.map */

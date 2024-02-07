@@ -1,0 +1,126 @@
+.person-info:not(:last-child) {
+  margin-bottom: 50px;
+}
+.person-info__body {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+}
+.person-info__body:not(:last-child) {
+  margin-bottom: 40px;
+}
+@media (max-width: 767.98px) {
+  .person-info__body {
+    gap: 40px;
+  }
+}
+@media (max-width: 487.98px) {
+  .person-info__body {
+    gap: 20px;
+    flex-direction: column;
+  }
+}
+.person-info__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.person-info__content-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.person-info__img img {
+  max-width: 100%;
+}
+
+.person-info__progress {
+  width: 80%;
+  position: relative;
+  margin-left: 8px;
+}
+@media (max-width: 427.98px) {
+  .person-info__progress {
+    width: 95%;
+  }
+}
+.person-info__span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  scale: 1;
+  display: block;
+  z-index: 7;
+  transition: all 0.3s ease 0s;
+  background-color: #FFEBCC;
+}
+.person-info__span::after {
+  content: "";
+  scale: 1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: block;
+  left: calc(50% - 4px);
+  top: calc(50% - 4px);
+  z-index: 8;
+  transition: all 0.3s ease 0s;
+  position: absolute;
+  background-color: #CDB497;
+}
+@media (hover: hover) {
+  .person-info__span:hover {
+    cursor: pointer;
+    scale: 1.7;
+  }
+  .person-info__span:hover::after {
+    scale: 1.2;
+    background-color: #C09E6C;
+  }
+}
+.person-info__new {
+  top: -6px;
+  position: absolute;
+  left: -6px;
+}
+.person-info__often {
+  top: -6px;
+  position: absolute;
+  left: 50%;
+}
+.person-info__old {
+  top: -6px;
+  position: absolute;
+  right: -6px;
+}
+
+.progress__person {
+  height: 4px;
+  width: 100%;
+  border-radius: 4px;
+  position: relative;
+  background: #0E0D0C;
+}
+.progress__person::after {
+  left: 0;
+  top: 0;
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 4px;
+  border-radius: 4px;
+  background: #FFEBCC;
+  z-index: 3;
+}
+.progress__person::before {
+  top: -3px;
+  left: calc(60% - 4px);
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  z-index: 5;
+  border-radius: 50%;
+  background-color: #4F4640;
+  content: "";
+  border: 1px solid #BEAE97;
+}/*# sourceMappingURL=progress-info.css.map */

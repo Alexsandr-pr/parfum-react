@@ -1,0 +1,9 @@
+.parent-from-replace {
+  margin: 60px 0px;
+  text-align: center;
+}
+@media (max-width: 487.98px) {
+  .parent-from-replace {
+    margin: 40px 0px;
+  }
+}/*# sourceMappingURL=ParentFromReplace.css.map */

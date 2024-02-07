@@ -1,0 +1,214 @@
+.login-block {
+  padding: 50px 0px;
+}
+.login-block__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+@media (max-width: 891.98px) {
+  .login-block__container {
+    flex-direction: column;
+  }
+}
+.login-block__item {
+  flex: 0 1 40%;
+}
+@media (max-width: 991.98px) {
+  .login-block__item {
+    flex: 0 1 100%;
+  }
+}
+.login-block__title {
+  text-align: left;
+}
+.login-block__form {
+  width: 100%;
+}
+.login-block__label {
+  display: block;
+  width: 100%;
+}
+.login-block__label:not(:last-child) {
+  margin-bottom: 20px;
+}
+.login-block__text {
+  color: #BEAE97;
+  font-variant-numeric: lining-nums proportional-nums;
+  line-height: 1.3; /* 20.8px */
+}
+.login-block__text:not(:last-child) {
+  margin-bottom: 20px;
+}
+.login-block__pol-list:not(:last-child) {
+  margin-bottom: 30px;
+}
+.login-block__button {
+  width: 245px;
+}
+.login-block__button:not(:last-child) {
+  margin-bottom: 30px;
+}
+@media (max-width: 427.98px) {
+  .login-block__button {
+    width: 100%;
+  }
+}
+.login-block__link {
+  display: block;
+  color: #BEAE97;
+  font-variant-numeric: lining-nums proportional-nums;
+  line-height: 1.3; /* 20.8px */
+}
+.login-block__check:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.input-block {
+  width: 100%;
+}
+.input-block__text {
+  color: #BEAE97;
+}
+.input-block__text span {
+  color: red;
+}
+.input-block__text:not(:last-child) {
+  margin-bottom: 4px;
+}
+.input-block__input {
+  background: transparent;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #565147;
+  height: 54px;
+  transition: all 0.3s ease 0s;
+  padding: 14px;
+  color: #BEAE97 !important;
+  font-size: 18px;
+}
+.input-block__input:focus {
+  border-radius: 4px;
+  outline: 1px solid #C09E6C;
+}
+.input-block__input::-moz-placeholder {
+  color: #BEAE97 !important;
+  font-size: 18px;
+}
+.input-block__input::placeholder {
+  color: #BEAE97 !important;
+  font-size: 18px;
+}
+@media (max-width: 767.98px) {
+  .input-block__input::-moz-placeholder {
+    font-size: 16px;
+  }
+  .input-block__input::placeholder {
+    font-size: 16px;
+  }
+}
+@media (max-width: 487.98px) {
+  .input-block__input::-moz-placeholder {
+    font-size: 14px;
+  }
+  .input-block__input::placeholder {
+    font-size: 14px;
+  }
+}
+
+.re-catcha {
+  max-width: 60%;
+  border-radius: 4px;
+  background-color: #36332E;
+  padding: 40px;
+}
+.re-catcha:not(:last-child) {
+  margin-bottom: 30px;
+}
+@media (max-width: 991.98px) {
+  .re-catcha {
+    max-width: 70%;
+  }
+}
+@media (max-width: 767.98px) {
+  .re-catcha {
+    max-width: 80%;
+  }
+}
+@media (max-width: 487.98px) {
+  .re-catcha {
+    max-width: 100%;
+  }
+}
+
+.check-button {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.check-button__label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: all 0.3s ease 0s;
+}
+@media (hover: hover) {
+  .check-button__label:hover {
+    cursor: pointer;
+  }
+}
+.check-button__input {
+  top: -9999%;
+  left: -9999%;
+  position: absolute;
+  clip: rect(0 0 0 0);
+}
+.check-button__span {
+  width: 24px;
+  height: 24px;
+  display: block;
+  border-radius: 50%;
+  border: 1px solid #BEAE97;
+  position: relative;
+}
+.check-button__span::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  scale: 1.01;
+  width: 100%;
+  content: "";
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+  z-index: 1;
+  transition: all 0.3s ease 0s;
+  opacity: 0;
+}
+.check-button__span::before {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  content: "";
+  z-index: 2;
+  background-color: black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease 0s;
+  opacity: 0;
+}
+.check-button__p {
+  color: #BEAE97;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: Open Sans;
+  line-height: 1.4; /* 22.4px */
+}
+
+.check-button__input:checked + .check-button__span::after {
+  opacity: 1;
+}
+.check-button__input:checked + .check-button__span::before {
+  opacity: 1;
+}/*# sourceMappingURL=auth.css.map */

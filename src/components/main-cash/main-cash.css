@@ -1,0 +1,117 @@
+.main-cash__title {
+  margin-bottom: 30px;
+}
+.cash-body {
+  position: relative;
+}
+.cash-body__content {
+  position: relative;
+  padding: 50px 0px 59px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 35px;
+  z-index: 2;
+  margin-left: calc(0px + 108 * (100vw - 992px) / 508);
+}
+@media (min-width: 1500.98px) {
+  .cash-body__content {
+    margin-left: 108px;
+  }
+}
+@media (max-width: 991.98px) {
+  .cash-body__content {
+    margin-left: 0;
+    gap: 20px;
+  }
+}
+.cash-body__title {
+  color: #E1D3BD;
+  font-size: 30px;
+}
+@media (max-width: 767.98px) {
+  .cash-body__title {
+    font-size: 20px;
+  }
+}
+.cash-body__sub-title {
+  color: #E1D3BD;
+}
+.cash-body__buttons {
+  align-self: flex-start;
+}
+.cash-body__image {
+  overflow: hidden;
+  z-index: 1;
+}
+.cash-body__image img {
+  animation: rotate 10s alternate-reverse infinite ease-in-out;
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(40px, 30px) scale(1.2);
+  }
+  to {
+    transform: translate(-50px, 40px) scale(1.3);
+  }
+}
+.main__slider-card {
+  padding: 50px 0px;
+}
+
+.slider-card__title {
+  text-align: center;
+}
+
+.slider-card__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.slider-card__swiper-wrapper {
+  margin-bottom: 30px;
+}
+
+.title-24 {
+  font-family: Montserrat;
+  font-size: 24px;
+  background: linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@media (max-width: 767.98px) {
+  .title-24 {
+    font-size: 22px;
+  }
+}
+.title-24:not(:last-child) {
+  margin-bottom: 30px;
+}
+@media (max-width: 991.98px) {
+  .title-24:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+._ibg {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+._ibg img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  position: absolute;
+}/*# sourceMappingURL=main-cash.css.map */
