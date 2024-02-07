@@ -1,14 +1,14 @@
 
 import "./ParentModal.scss";
-import close from "./img/close.svg";
+import closeImage from "./img/close.svg";
 
-const ParentModal = ({active, onActive, children}) => {
+const ParentModal = ({active, onActive, children, close}) => {
 
     return (
         <div className={active ? "popap _active" : "popap"} >
-            <div onClick={(e) => onActive(e)}  className="popap__wrapper popap__close">
+            <div onClick={(e) => !close && onActive(e) }  className="popap__wrapper close">
                 <div className="popap__body popap-retvit">
-                    <button onClick={(e) => onActive(e)}  className="popap__close"><img className="popap__close" src={close} alt="close" /></button>
+                    <button onClick={(e) => onActive(e)} style={{display: close ? "none" : "block"}} className="popap__close close"><img className="close" src={closeImage} alt="close" /></button>
                     {children}
                 </div>
             </div>

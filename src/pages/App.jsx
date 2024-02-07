@@ -1,6 +1,6 @@
 
 import {Routes, Route} from "react-router-dom"
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 
 import Home from "./Homepage";
@@ -15,38 +15,35 @@ import { Context } from "./myContext/MyContext";
 import MalePage from "./Malepage/Malepage";
 import Unisexpage from "./Unisexpage/Unisexpage";
 import Femalepage from "./Femalepage/Femalepage";
-import Registration from "./Authorization/Registration/Registration";
-import Login from "./Authorization/login/Login";
+import PlaceInOrderPage from "./PlaceInOrderPage/PlaceInOrderPage"
 
 function App () {
+    
     const {cardNumber, onChangeCardNumber} = useContext(Context);
     const {dataCart, setDataCart} = useContext(Context);
-
     const onAddToCart = (newCard, id, value) => {
+
         const indexValue = dataCart.findIndex(item => {
             return (item.valueMl === value) && (item.id === id)
         });
 
         if(indexValue !== - 1) {
             setDataCart((prev) => {
-                
                 const start = prev.slice(0, indexValue)
                 let element = prev[indexValue]
                 const end = prev.slice(indexValue + 1)
-                element = { ...element, quantity: element.quantity + 1 };
+                element = { ...element, quantity: element.quantity + newCard.quantity };
                 return [...start, element, ...end]
                 /*
-                const updatedCart = prev.map((item, i) => {
-                    if (i === indexValue) {
-                        return { ...item, quantity: item.quantity + 1 };
-                    } else {
-                        return item;
-                    }
-                });
-                return updatedCart;
-                
+                    const updatedCart = prev.map((item, i) => {
+                        if (i === indexValue) {
+                            return { ...item, quantity: item.quantity + 1 };
+                        } else {
+                            return item;
+                        }
+                    });
+                    return updatedCart;                
                 */
-                
             });
             
         } else {
@@ -59,7 +56,6 @@ function App () {
             const indexValue = dataCart.findIndex(item => {
                 return (item.valueMl === value) && (item.id === id)
             });
-
             const before = prev.slice(0, indexValue);
             const after = prev.slice(indexValue + 1);
             const newArr = [...before, ...after];
@@ -75,6 +71,22 @@ function App () {
         })
     }
 
+    const onToggleOrder= (id, check, value) => {
+        const index = dataCart.findIndex(item => {
+            return (item.valueMl === value) && (item.id === id)
+        });
+        setDataCart(prev => {
+            const updatedCart = prev.map((item, i) => {
+                if (i === index) {
+                    return {...item, order: check};
+                } else {
+                    return item;
+                }
+            });
+            return updatedCart;   
+        })
+    }
+
     return (
         <>   
             <Routes>
@@ -84,13 +96,19 @@ function App () {
                     <Route path="about" element={<About/>}/>
                     <Route path="bonus" element={<BonusPage/>}/>
                     <Route path="document" element={<Document/>}/>
-                    <Route  path="card" element={<CardPage  onAddToCart={onAddToCart} onChangeCardNumber={onChangeCardNumber} cardNumber={cardNumber}/>}/>
-                    <Route path="cart" element={<CartTovar onChangeCurrentOnClick={onChangeCurrentOnClick} onDeleteItemInCart={onDeleteItemInCart} dataCart={dataCart}/>}/>
+                    <Route  path="card" element={<CardPage   
+                                                        onAddToCart={onAddToCart} 
+                                                        onChangeCardNumber={onChangeCardNumber} 
+                                                        cardNumber={cardNumber}/>}/>
+                    <Route path="cart" element={<CartTovar
+                                                        onToggleOrder={onToggleOrder}
+                                                        onChangeCurrentOnClick={onChangeCurrentOnClick}
+                                                        onDeleteItemInCart={onDeleteItemInCart} 
+                                                        dataCart={dataCart}/>}/>
                     <Route path="male" element={<MalePage onAddToCart={onAddToCart}/>}/>
                     <Route path="female" element={<Femalepage/>}/>
                     <Route path="unisex" element={<Unisexpage/>}/>
-                    <Route path="registration" element={<Registration/>}/>
-                    <Route path="login" element={<Login/>}/>
+                    <Route path="order" element={<PlaceInOrderPage/>}/>
                 </Route>
             </Routes>
         </>

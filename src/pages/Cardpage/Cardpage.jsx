@@ -14,27 +14,20 @@ import ReviewModal from "../../components/modals/review-modal/ReviewModal";
 
 const CardPage = ({cardNumber, onChangeCardNumber, onAddToCart})=> {
 
-    const [active, setActive] = useState(false);
     const [post, setPost] = useState([])
     const service = new Services();
+    const [active, setActive] = useState(false);
     const onActive = (e) => {
-        const target = e.target
-        
-        if(active) {
-            if(target.classList.contains("popap__close")) {
-                setActive(prev => !prev)
-            }
-        } else {
-            setActive(prev => !prev)
+        if(e.target.classList.contains("close")) {
+            setActive(false)
         }
-        
     } 
+
     const [cardData, setCards] = useState([]);
 
     useEffect(() => {
         service.getLimitCard().then(res => setCards(res))
     },[]);
-
 
     useEffect(() => {
         service.getOneCard(cardNumber).then(res => setPost(res))
@@ -43,7 +36,7 @@ const CardPage = ({cardNumber, onChangeCardNumber, onAddToCart})=> {
     return (
         <>
                 <Breadcrumbs page={"Подробнее"}/>
-                <MainCatalog onAddToCart={onAddToCart} onActive={onActive} cardNumber={cardNumber} post={post}/>
+                <MainCatalog onAddToCart={onAddToCart} setActive={setActive} cardNumber={cardNumber} post={post}/>
                 <section className="main__slider-card slider-card">
                     <div className="slider-card__graniza">
                         <div className="slider-card__body">
@@ -55,7 +48,7 @@ const CardPage = ({cardNumber, onChangeCardNumber, onAddToCart})=> {
                         </div>
                     </div>
                 </section>
-                <ParentModal onActive={onActive} active={active}>
+                <ParentModal close={false} onActive={onActive} active={active}>
                     <ReviewModal />
                 </ParentModal>
                 

@@ -6,7 +6,6 @@ import numberWithSpaces from "../buttons/numberWithSpace/numberWithSpace"
 import "./card.scss"
 import {  useState } from "react";
 
-
 const Card = ({data, onChangeCardNumber, onAddToCart}) => {
     const {id,imageSrc,imageAlt, title, price, rating} = data
 
@@ -16,10 +15,11 @@ const Card = ({data, onChangeCardNumber, onAddToCart}) => {
     }
 
     let salePrice = Math.floor((price * valueMl) / 100)
-    let quantity = 1
+    let quantity = 1;
+    let order = true;
     const onClickButton = (e) => {
         e.preventDefault()
-        onAddToCart({id,imageSrc, title, salePrice, valueMl, quantity}, id, valueMl)
+        onAddToCart({id,imageSrc, title, salePrice, valueMl, quantity, order}, id, valueMl)
     }
 
     return (

@@ -5,7 +5,7 @@ import SliderCardPage2 from "../../components/sliders/slider-card-page-2/slider-
 import ListToPageGender from "../../components/ListToPagegender/ListToPageGender";
 import { useState, useEffect, useContext } from "react";
 import {Context}  from "../../pages/myContext/MyContext"
-
+import Services from "../../services/service"
 import "./malepage.scss"
 
 const data1 = [
@@ -50,12 +50,11 @@ const data3 = [
 const MalePage = ({onAddToCart}) => {
     const {onChangeCardNumber} = useContext(Context)
     const [cardData, setCards] = useState([]);
-
+    const service = new Services()
     useEffect(() => {
-        fetch("http://localhost:3001/posts?gender=male&_limit=12")
-            .then(data => data.json())
-            .then(data => setCards(data))
-    },[]);
+        service.getMaleCards().then(res => setCards(res)) 
+    }, [])
+
     return (
             <>
                 <div className="_graniza">

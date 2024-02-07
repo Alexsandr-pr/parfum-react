@@ -1,48 +1,36 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Label from "../../../../forms/label/Label"
 import Title from "../../../title/Title"
 
-
 import "./adress-main.scss"
-
-
-
-const dataForm = [
-    {name: "country", text: "Страна / регион", type: "text"},
-    {name: "adress", text: "Адрес", type: "text"},
-    {name: "locality", text: "Населённый пункт", type: "text"},
-    {name: "region", text: " Область / район", type: "text"},
-    {name: "index", text: "Почтовый индекс", type: "zip"},
-    {name: "tel", text: "Телефон", type: "tel"},
-    {name: "email", text: "Email", type: "email"},
-]
-
-class NewUser{
-    constructor(object) {
-        this.name = object.name;
-        this.surname = object.surname
-    }
-}
 
 const AdressMain = () => {
     const [adress, setAdress] = useState(false);
     const [form, setForm] = useState(false);
     const [object, setObject] = useState({});
-    const [timerId, setTimerId] = useState(false)
+    const [timerId, setTimerId] = useState(false);
+
     const onChangeFormEditing = () => {
         setForm(true)
     }
 
+    const [name, setName] = useState("");
+    const [surname, setSurname] = useState("");
+    const [country, setCountry] = useState("");
+    const [adresss, setAdressS] = useState("");
+    const [locality, setLocality] = useState("");
+    const [region, setRegion] = useState("");
+    const [zip, setZip] = useState("");
+    const [tel, setTel] = useState("");
+    const [email, setEmail] = useState("");
+
+    
     const onCloseForm = () => {
         setForm(false)
     }
     const formData = (e) => {
-        const forms = e.target
         e.preventDefault()
-        const formData = new FormData(forms);
-        formData.forEach(function(value, key) {
-            object[key] = value
-        });
+        setObject({name, surname, country, adresss, locality, region, zip, tel, email})
         onCloseForm();
         setAdress(true)
         setTimerId(true)
@@ -52,9 +40,7 @@ const AdressMain = () => {
     const timer = () => {
         const timers = setInterval(() => {
             setTimerId(false)
-            if(!timerId) {
-                clearInterval(timers)
-            }
+            !timerId && clearInterval(timers)
         }, 3000)
     }
 
@@ -79,16 +65,16 @@ const AdressMain = () => {
                 form ? 
                         <form onSubmit={(e) => formData(e)}  className="user-content__form ">
                             <div className="user-content__form-items">
-                                <Label  name={"name"} text={"Имя"} type={"text"}/>
-                                <Label  name={"surname"} text={"Фамилия"} type={"text"}/>
+                                <Label setValue={setName} value={name} name={"name"} text={"Имя"} type={"text"}/>
+                                <Label setValue={setSurname} value={surname} name={"surname"} text={"Фамилия"} type={"text"}/>
                             </div>
-                            {
-                                dataForm.map(({name, text,type}, i) => {
-                                    return (
-                                        <Label key={i}  name={name} text={text} type={type}/>
-                                    )
-                                })
-                            }
+                            <Label setValue={setCountry}  required value={country} type={"text"} name={"country"} text={"Страна / регион"}/>
+                            <Label setValue={setAdressS}  required value={adresss} type={"text"} name={"adress"} text={"Адрес"}/>
+                            <Label setValue={setLocality} required value={locality} type={"text"} name={"locality"} text={"Населённый пункт"}/>
+                            <Label setValue={setRegion}  required value={region} type={"text"} name={"region"} text={"Область / район"}/>
+                            <Label setValue={setZip}  required value={zip} type={"text"} name={"zip"} text={"Почтовый индекс"}/>
+                            <Label setValue={setTel}  required value={tel} type={"tel"} name={"tel-phone"} text={"Телефон"}/>
+                            <Label setValue={setEmail}  required value={email} type={"email"} name={"email"} text={"Email"}/>
                             <div className="user-content__button">
                                 <div className="button-add-to-cart-obol">
                                     <button  type="submit" className="user-content__btn button-add-to-cart"><span>Сохранить</span></button>

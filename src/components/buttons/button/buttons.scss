@@ -44,6 +44,18 @@
     }
     &:disabled {
         opacity: 0.4;
+        @media(hover:hover) {
+            &:hover {
+                cursor: pointer;
+                span {
+                    color: inherit;
+                    -webkit-text-fill-color: inherit;
+                }
+                &::before {
+                    opacity: 0;
+                }
+            }
+        }
     }
     &::before {
         content:"";

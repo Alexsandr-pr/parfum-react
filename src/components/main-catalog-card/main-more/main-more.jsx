@@ -7,7 +7,7 @@ import "./main-more.scss"
 
 
 
-const MainMore = ({description, reviews, cardNumber, onActive}) => {
+const MainMore = ({description, reviews, cardNumber, setActive}) => {
     
 
     return (
@@ -22,7 +22,7 @@ const MainMore = ({description, reviews, cardNumber, onActive}) => {
                     <div  className="catalog-description__content">
                         <div className="catalog-description__button">
                             <div className="button-add-to-cart-obol">
-                                <button onClick={(e) => onActive(e)} id="review-add" className="button-add-to-cart"> <span>Оставить отзыв</span></button>
+                                <button onClick={() => setActive(true)} id="review-add" className="button-add-to-cart"> <span>Оставить отзыв</span></button>
                             </div>
                         </div>
                         <Reviews cardNumber={cardNumber} />

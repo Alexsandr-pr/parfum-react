@@ -2,7 +2,7 @@
 import Card from "../../card/card";
 import "./catalog-items.scss";
 
-const CatalogItems = ({currentCountry, loading, onChangeCardNumber, onAddToCart}) => {
+const CatalogItems = ({currentCountry, onChangeCardNumber, onAddToCart, loading}) => {
     
 
     
@@ -17,11 +17,12 @@ const CatalogItems = ({currentCountry, loading, onChangeCardNumber, onAddToCart}
                             onAddToCart={onAddToCart}
                             key={id}
                             onChangeCardNumber={onChangeCardNumber}
-                            data={item}   
+                            data={item}
                             loading={loading}/>
                         )
                     })
                 }
+                
                 
             </div>
 		</div>

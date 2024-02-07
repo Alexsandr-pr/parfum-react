@@ -10,10 +10,10 @@ const HeaderMale = ({changeActive}) => {
                     <Link onClick={() => changeActive()} to="/male" className="header-button__item">Мужские</Link>
                 </li>
                 <li className="header-button__link">
-                    <Link onClick={() => changeActive()} to="/registration" className="header-button__item ">Женские</Link>
+                    <Link onClick={() => changeActive()} to="/female" className="header-button__item ">Женские</Link>
                 </li>
                 <li className="header-button__link">
-                    <Link onClick={() => changeActive()} to="/login" className="header-button__item">Унисекс</Link>
+                    <Link onClick={() => changeActive()} to="/unisex" className="header-button__item">Унисекс</Link>
                 </li> 
             </ul>
         </>

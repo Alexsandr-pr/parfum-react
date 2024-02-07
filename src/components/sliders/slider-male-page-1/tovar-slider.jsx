@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Services from '../../../services/service';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+import Loading from '../../Loading/Loading';
 
 import 'swiper/css';
 import "./tovar-slider.scss";
@@ -11,12 +11,17 @@ import "./tovar-slider.scss";
 
 const TovarSlider = ({onChangeCardNumber}) => {
 
-    const [posts, setPosts] = useState([])
-
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const service = new Services();
     useEffect(() => {
-        service.getSaleCards().then(res => setPosts(res))
+        setLoading(true)
+        service.getSaleCards()
+            .then(res => setPosts(res))
+            .then(() => {
+                setLoading(false)
+            })
     }, [])
     
 
@@ -55,47 +60,51 @@ const TovarSlider = ({onChangeCardNumber}) => {
     })
     return(
         <>
-        <Swiper
-            modules={[ Autoplay  ]}
-            breakpoints= {{
-                120: {
-                    slidesPerView: 1,
-                },
-                488: {
-                    slidesPerView: 1.4,
-                },
-                768: {
-                    slidesPerView: 2,
-                },
-                992: {
-                    slidesPerView: 3,
-                }
-            }}
-            loop={true}
-            autoplay={{
-                    delay: 2000,
-                    stopOnLastSlide:false,
-                    disableOnInteraction: false
-                    
-            }}
-            speed={1200}
-            spaceBetween={20}
-            simulateTouch={true}
-            touchRatio={1}
-            touchAngle={45}
-            grabCursor={true}
-            keyboard={{
-                enabled: true,
-                onlyInViewport: true,
-                pageUpDown: true,
-            }}
-            observer={true}
-            observeParents={true}
-            observeSlideChildren={true}
-        >
-            {elements}
-            
-        </Swiper>
+            {
+                !loading && <Swiper
+                                modules={[ Autoplay  ]}
+                                breakpoints= {{
+                                    120: {
+                                        slidesPerView: 1,
+                                    },
+                                    488: {
+                                        slidesPerView: 1.4,
+                                    },
+                                    768: {
+                                        slidesPerView: 2,
+                                    },
+                                    992: {
+                                        slidesPerView: 3,
+                                    }
+                                }}
+                                loop={true}
+                                autoplay={{
+                                        delay: 2000,
+                                        stopOnLastSlide:false,
+                                        disableOnInteraction: false
+                                        
+                                }}
+                                speed={1200}
+                                spaceBetween={20}
+                                simulateTouch={true}
+                                touchRatio={1}
+                                touchAngle={45}
+                                grabCursor={true}
+                                keyboard={{
+                                    enabled: true,
+                                    onlyInViewport: true,
+                                    pageUpDown: true,
+                                }}
+                                observer={true}
+                                observeParents={true}
+                                observeSlideChildren={true}
+                                >
+                                {elements}
+                            </Swiper>
+            }   
+            {
+                loading && <Loading/>
+            }
         </>
     )
 }

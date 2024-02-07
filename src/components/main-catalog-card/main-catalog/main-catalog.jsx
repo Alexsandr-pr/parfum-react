@@ -6,12 +6,13 @@ import MainCurrent from "../../main-current/main-current"
 import MainMore from "../main-more/main-more";
 
 import "./main-catalog.scss";
+import Button from "../../buttons/button/Buttons";
 
-const MainCatalog = ({post, cardNumber, onActive, onAddToCart}) => {
+const MainCatalog = ({post, cardNumber, onAddToCart, setActive}) => {
+
     const {id,imageSrc,imageAlt, title, price,description} = post
     const [valueMl, setValueMl] = useState(100);
-    const [current, setCurrent] = useState(2);
-
+    const [current, setCurrent] = useState(1);
     const onChangeValue = (value) => {
         setValueMl(value)
     }
@@ -68,14 +69,14 @@ const MainCatalog = ({post, cardNumber, onActive, onAddToCart}) => {
                                             <span>{numberWithSpace(salePrice) + " ₴"}</span>
                                         </div>
                                     </div>
-                                    <div className="main-catalog__button button-add-to-cart-obol">
-                                        <button onClick={(e) => onClickButton(e)}  className="cart-item__btn button-add-to-cart"><span>в корзину</span></button>
+                                    <div className="main-catalog__button">
+                                        <Button onClickButton={onClickButton}/>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <MainMore onActive={onActive} cardNumber={cardNumber} description={description}/>
+                    <MainMore setActive={setActive} cardNumber={cardNumber} description={description}/>
                 </div>
             </section>
         </>

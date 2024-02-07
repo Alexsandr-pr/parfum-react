@@ -1,10 +1,18 @@
+import { useContext, useState } from "react";
+import Button from "../../buttons/button/Buttons"
+import Label from "../../forms/label/Label";
+import { Context } from "../../../pages/myContext/MyContext";
 
+const CartWindow = ({disabled}) => {
+    
+    const [activeLabel, setActiveLabel] = useState(false)
+    const {sale, setSale} = useContext(Context)
+    const onAddForm = () => {
+        setActiveLabel(prev => !prev)
+    }
 
-
-const CartWindow = () => {
     return (
         <>  
-            
                 <div className="cart-preview__body">
                     <div className="cart-preview__header">
                         <span>
@@ -16,9 +24,15 @@ const CartWindow = () => {
                         </span>
                         <p>У вас сейчас есть 100 баллов. Используйте их, чтобы получить скидку 100 ₽ на эту покупку</p>
                     </div>
-                    <div className="item-order__button button-add-to-cart-obol">
-                        <button type="submit" className="item-order__btn button-add-to-cart"><span>Потратить баллы</span></button>
+                    <div className="cart-preview__button">
+                        <Button disabled={disabled}  onClickButton={onAddForm} title={"Потратить баллы"}/>
                     </div>
+                    
+                    {   
+                        activeLabel &&  <div className="cart-preview__label">
+                                            <Label setValue={setSale} value={sale} type={"tel"} name={"sale"} text={"Use your points"}/>
+                                        </div>
+                    }
                 </div>
             
         </>

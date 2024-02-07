@@ -4,7 +4,7 @@ import passwordclose from "./img/password-close.svg";
 import "./label-password.scss"
 import { useState } from "react";
 
-const LabelPassword = ({name, text}) => {
+const LabelPassword = ({name, text, setValue}) => {
     const [active, setType] = useState(true);
 
     const onChangeActive = () => {
@@ -12,10 +12,10 @@ const LabelPassword = ({name, text}) => {
     }
 
     return (
-        <Label name={name} text={text} type={active ? "password" : "text"}>
-            <button onClick={() => onChangeActive()}  className="password">
-                <img  className="password__before" src={active ? password : passwordclose} alt="password"/>
-            </button>
+        <Label setValue={setValue} name={name} text={text} type={active ? "password" : "text"}>
+            <a  className="password">
+                <img onClick={() => onChangeActive()}  className="password__before" src={active ? password : passwordclose} alt="password"/>
+            </a>
         </Label>
     )
 }

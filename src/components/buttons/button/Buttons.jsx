@@ -6,7 +6,7 @@ import image from "./img/grey-9026_128.gif";
 
 import "./buttons.scss";
 
-const Button = ({title, type, onClickButton}) => {
+const Button = ({title, type, onClickButton, disabled}) => {
     const [loading, setLoading] = useState(false)
     const onDisabled = () => {
         setLoading(true)
@@ -26,7 +26,8 @@ const Button = ({title, type, onClickButton}) => {
     return (
         <div className="button-add-body">
             <button 
-                disabled={loading}
+
+                disabled={loading || disabled}
                 onClick={(e) => {
                     onClickButton(e)
                     onDisabled()
@@ -35,14 +36,13 @@ const Button = ({title, type, onClickButton}) => {
                 className="button-add-to-cart add"><span className="add">
                     {loading ? <Loading/> : text}
                     </span></button>
-                
         </div>
     )
 }
 
 const Loading = () => {
     return (
-        <img className="image-loading" src={image} alt="dfvd" />
+        <img className="image-loading" src={image} alt="loading" />
     )
 }
 

@@ -4,13 +4,12 @@ import CatalogPagination from "./catalog-pagination/catalog-pagination";
 import CatalogItems from "./catalog-items/catalog-items";
 import CatalogFilter from "./catalog-filter/catalog-filter";
 import Services from "../../services/service"
-
+import Loading from "../../components/Loading/Loading"
 import "./main-page-catalog.scss"
 
 const Catalog = ({onChangeCardNumber, onAddToCart}) => {
-    
     const service = new Services()
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const [currentPage, setCurrentPage] = useState(1);
     const onChangePageNumber = () => {
@@ -37,7 +36,11 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
 
     useEffect(() => {
         setLoading(true);
-        service.getAllCards().then(res => setPosts(res))
+        service.getAllCards()
+            .then(res => setPosts(res))
+            .then(() => {
+                setLoading(false);
+            })
     }, [])
     
 
@@ -162,12 +165,14 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
                             onChangeFilter={onChangeFilter}
                             polList={posts}
                         />
-                        <CatalogItems 
-                            onAddToCart={onAddToCart}
-                            onChangeCardNumber={onChangeCardNumber}
-                            currentCountry={currentCountry}  
-                            loading={loading}
-                        />	
+                        {
+                            !loading && <CatalogItems 
+                                                onAddToCart={onAddToCart}
+                                                onChangeCardNumber={onChangeCardNumber}
+                                                currentCountry={currentCountry}  
+                                            />	
+                        }
+                        { loading && <Loading/>}
                         <CatalogPagination 
                             nextPage={nextPage}
                             prevPage={prevPage}

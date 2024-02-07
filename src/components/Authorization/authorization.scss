@@ -1,0 +1,225 @@
+.login-block__body {
+    width: 600px;
+    @media(max-width:767.98px){
+        width: 100%;
+    }
+}
+.login-block__tab-trigger {
+    margin-bottom: 40px;
+    display: flex;
+    padding-bottom: 20px;
+    border-bottom: #BF936B 1px solid;
+    justify-content: center;
+    gap: 40px;
+}
+.login-block {
+
+    // .login-block__container
+    padding: 50px 0px;
+    &__container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        
+    }
+
+    // .login-block__item
+
+    &__item {
+        flex: 0 1 40%;
+        @media(max-width:991.98px){
+            flex: 0 1 100%;
+        }
+    }
+
+    // .login-block__title
+
+    &__title {
+        text-align: left;
+    }
+
+    // .login-block__form
+
+    &__form {
+        width: 100%;
+    }
+
+
+    // .login-block__label
+
+    &__label {
+        display: block;
+        width: 100%;
+        &:not(:last-child){
+            margin-bottom:20px;
+        }
+    }
+
+    // .login-block__text
+
+    &__text {
+        color: #BEAE97;
+        font-variant-numeric: lining-nums proportional-nums;
+        line-height: 1.3;; /* 20.8px */
+        &:not(:last-child){
+            margin-bottom:20px;
+        }
+    }
+
+    // .login-block__input
+
+    &__input {
+       
+
+    }
+
+    // .login-block__pol-list
+
+    &__pol-list {
+        &:not(:last-child){
+            margin-bottom:30px;
+        }
+    }
+
+    // .login-block__button
+
+    &__button {
+        width: 245px;
+        &:not(:last-child){
+            margin-bottom:30px;
+        }
+        @media(max-width:427.98px){
+            width: 100%;
+        }
+    }
+
+    // .login-block__btn
+
+    &__btn {
+    }
+
+    // .login-block__link
+
+    &__link {
+        display: block;
+        color: #BEAE97;
+        font-variant-numeric: lining-nums proportional-nums;
+        line-height: 1.3; /* 20.8px */
+    }
+
+    // .login-block__check
+
+    &__check {
+        &:not(:last-child){
+        margin-bottom:20px;
+        }
+    }
+}
+
+
+.re-catcha {
+    &:not(:last-child){
+    margin-bottom:30px;
+    }
+    max-width: 60%;
+    border-radius:4px;
+    background-color: #36332E;
+    padding: 40px;
+    @media(max-width:991.98px){
+        max-width: 70%;
+    }
+    @media(max-width:767.98px){
+        max-width: 80%;
+    }
+    @media(max-width:487.98px){
+        max-width: 100%;
+    }
+}
+
+
+.check-button {
+
+    // .check-button__label
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    &__label {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        transition: all 0.3s ease 0s;
+        @media(hover:hover) {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    // .check-button__input
+
+    &__input {
+        top: -9999%;
+        left: -9999%;
+        position: absolute;
+        clip: rect(0 0 0 0);
+    }
+
+    // .check-button__span
+
+    &__span {
+        width: 24px;
+        height: 24px;
+        display: block;
+        border-radius:50%;
+        border: 1px solid #BEAE97;
+        position: relative;
+        &::after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            scale: 1.01;
+            width: 100%;
+            content:"";
+            height: 100%;
+            border-radius:50%;
+            background: linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+            z-index: 1;
+            transition: all 0.3s ease 0s;
+            opacity: 0;
+        }
+        &::before {
+            width: 8px;
+            height: 8px;
+            border-radius:50%;
+            content: "";
+            z-index: 2;
+            background-color: black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease 0s;
+            opacity: 0;
+        }
+    }
+
+    // .check-button__p
+
+    &__p {
+        color: #BEAE97;
+        font-variant-numeric: lining-nums proportional-nums;
+        font-family: Open Sans;
+        line-height: 1.4; /* 22.4px */
+    }
+}
+
+.check-button__input:checked + .check-button__span {
+    &::after {
+        opacity: 1;
+    }
+    &::before {
+        opacity: 1;
+    }
+}
