@@ -3,13 +3,20 @@ import CheckMlList from "../buttons/check-ml-list/check-ml-list";
 import Button from "../buttons/button/Buttons";
 import numberWithSpaces from "../buttons/numberWithSpace/numberWithSpace"
 
-import "./card.scss"
 import {  useState } from "react";
 
-const Card = ({data, onChangeCardNumber, onAddToCart}) => {
+import "./card.scss"
+
+const Card = ({
+    data, 
+    onChangeCardNumber, 
+    onAddToCart
+}) => {
+    
     const {id,imageSrc,imageAlt, title, price, rating} = data
 
     const [valueMl, setValueMl] = useState(100);
+
     const onChangeValue = (value) => {
         setValueMl(value)
     }
@@ -17,6 +24,7 @@ const Card = ({data, onChangeCardNumber, onAddToCart}) => {
     let salePrice = Math.floor((price * valueMl) / 100)
     let quantity = 1;
     let order = true;
+    
     const onClickButton = (e) => {
         e.preventDefault()
         onAddToCart({id,imageSrc, title, salePrice, valueMl, quantity, order}, id, valueMl)
@@ -43,7 +51,7 @@ const Card = ({data, onChangeCardNumber, onAddToCart}) => {
                         <p>Объем мл.</p>
                     </div>
                     <div className="cart-item__labels">
-                        <CheckMlList onChangeValue={onChangeValue} name={id} />
+                        <CheckMlList onChangeValue={onChangeValue} name={id} valueMl={valueMl}/>
                     </div>
                     <div className="cart-item__sum cart-sum">
                         <div className="cart-sum__cost">

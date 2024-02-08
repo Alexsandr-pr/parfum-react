@@ -1,13 +1,13 @@
 import { Autoplay  } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Services from '../../../services/service';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
+import Services from '../../../services/service';
 import Loading from '../../Loading/Loading';
 
 import 'swiper/css';
 import "./tovar-slider.scss";
-
 
 const TovarSlider = ({onChangeCardNumber}) => {
 
@@ -25,19 +25,19 @@ const TovarSlider = ({onChangeCardNumber}) => {
     }, [])
     
 
-    const elements = posts.map(item => {
-        const {title,gender, id, imageSrc, imageAlt} = item;
-        let name = ""
-        if(gender === "unisex") {
-            name = "Унисекс"
-        } else if (gender === "female") {
-            name = "Для неё"
-        } else {
-            name = "Для него"
+    const elements = posts.map(({title,gender, id, imageSrc, imageAlt}) => {
+        let name = "";
+        switch (gender) {
+            case 'unisex': name = "Унисекс";
+                break;
+            case 'female': name = "Для неё";
+                break;
+            case 'male':  name = "Для него";
+                break;
+            default :  name = "";
         }
-
+        
         return (
-
             <SwiperSlide key={id} className='tovar-slider__slide tovar-slide'>
                 <div className="tovar-slide__image">
                     <img src={imageSrc} alt={imageAlt}/>

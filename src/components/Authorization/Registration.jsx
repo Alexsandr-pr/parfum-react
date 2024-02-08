@@ -1,6 +1,8 @@
 
 import { useState, useEffect } from "react";
+
 import { registration } from "../../action/user";
+
 import Label from "../forms/label/Label";
 import LabelPassword from "../forms/label-password/LabelPassword";
 import Title from "../user/title/Title"

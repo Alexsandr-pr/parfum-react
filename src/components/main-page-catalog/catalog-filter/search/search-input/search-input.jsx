@@ -1,5 +1,6 @@
 
 import search from "./img/search.svg"
+
 import "./search-input.scss";
 
 const SeacrhInput = ({onChangeInputValue}) => {
@@ -7,7 +8,12 @@ const SeacrhInput = ({onChangeInputValue}) => {
         <>
             <div className="search-list__item">
                 <label  className="filter-search__label">
-                    <input name={search} onChange={(e) => onChangeInputValue(e)} className="filter-search__input" type="search" placeholder="Найти ноты.."/>
+                    <input 
+                        name={search} onChange={(e) => onChangeInputValue(e)} 
+                        className="filter-search__input" 
+                        type="search" 
+                        placeholder="Найти ноты.."
+                    />
                     <button className="filter-search__btn" type="submit">
                         <img src={search} alt="Search"/>
                     </button>

@@ -1,11 +1,16 @@
 
 import Button from "../../buttons/button/Buttons";
 import Label from "../../forms/label/Label";
-import Title from '../../user/title/Title';
-
 
 import "./modal-re.scss"
-const ModalRe = ({onActive, number1, number2, disabled, setSumm}) => {
+
+const ModalRe = ({
+    onActive, 
+    number1, 
+    number2, 
+    disabled, 
+    setSumm
+}) => {
 
     return (
         <div className='re-modal__body'>

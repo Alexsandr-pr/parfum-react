@@ -1,6 +1,6 @@
 import OrderItem from "../order-item/OrderItem";
-import "./order-block.scss"
 
+import "./order-block.scss"
 
 const OrderMain = () => {
     return (

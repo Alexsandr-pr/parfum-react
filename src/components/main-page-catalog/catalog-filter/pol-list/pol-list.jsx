@@ -6,11 +6,11 @@ const data = [
     {id:"male", title:"Мужские (32)"},
     {id:"unisex", title:"Унисекс (13)"}
 ]
+
 const PolList = ({onChangeRadioButton}) => {
 
 
-    const elements = data.map(item => {
-        const {id, title, checked} = item;
+    const elements = data.map(({id, title, checked}) => {
         return (
             <li key={id} className="pol-list__item">
                 <label  className="pol-list__label">
@@ -20,7 +20,8 @@ const PolList = ({onChangeRadioButton}) => {
                         type="radio" 
                         checked={checked}  
                         name="pol" 
-                        className="pol-list__input"/>
+                        className="pol-list__input"
+                    />
                     <span className="pol-list__span"></span>
                     <span className="pol-list__p">{title} {}</span>
                 </label>

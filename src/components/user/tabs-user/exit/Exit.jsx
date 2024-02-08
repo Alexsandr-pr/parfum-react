@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../../../reducers/userReducer'
 
-
 const Exit = () => {
     const dispatch = useDispatch()
 

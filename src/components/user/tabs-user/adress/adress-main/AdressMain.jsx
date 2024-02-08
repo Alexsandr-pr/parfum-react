@@ -1,10 +1,12 @@
 import { useState } from "react"
+
 import Label from "../../../../forms/label/Label"
 import Title from "../../../title/Title"
 
 import "./adress-main.scss"
 
 const AdressMain = () => {
+
     const [adress, setAdress] = useState(false);
     const [form, setForm] = useState(false);
     const [object, setObject] = useState({});
@@ -75,6 +77,7 @@ const AdressMain = () => {
                             <Label setValue={setZip}  required value={zip} type={"text"} name={"zip"} text={"Почтовый индекс"}/>
                             <Label setValue={setTel}  required value={tel} type={"tel"} name={"tel-phone"} text={"Телефон"}/>
                             <Label setValue={setEmail}  required value={email} type={"email"} name={"email"} text={"Email"}/>
+                            
                             <div className="user-content__button">
                                 <div className="button-add-to-cart-obol">
                                     <button  type="submit" className="user-content__btn button-add-to-cart"><span>Сохранить</span></button>

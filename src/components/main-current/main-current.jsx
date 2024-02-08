@@ -11,7 +11,7 @@ const MainCurrent = ({ current, onChangeCurrent, children}) => {
                     <div onClick={() => onChangeCurrent(-1)} id="btn-minus" className="current__btn ">
                         <i className="fa-solid fa-minus"></i>
                     </div>
-                    <span   className="current__input" value={current} >{current}</span>
+                    <span className="current__input" value={current} >{current}</span>
                     <div onClick={() => onChangeCurrent(+1)} id="btn-plus" className="current__btn ">
                         <i className="fa-solid fa-plus"></i>
                     </div>

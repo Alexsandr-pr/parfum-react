@@ -1,5 +1,8 @@
-import "./downloadtabs.scss";
+
 import Title from "../../title/Title"
+
+import "./downloadtabs.scss";
+
 const DownloadTabs = () => {
     return (
         <>

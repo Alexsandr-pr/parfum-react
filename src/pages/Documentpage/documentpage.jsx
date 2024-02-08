@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-
-import "./documentpage.scss";
+import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
 
 import image1 from "./img/image1.svg";
 import image2 from "./img/image2.svg";
-import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
+
+import "./documentpage.scss";
 
 const Document = () => {
     return (

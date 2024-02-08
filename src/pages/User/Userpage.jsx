@@ -12,43 +12,36 @@ const data = [
         id:"panel",
         name: "Панель управления",
         img: "./img/user/panel.svg", 
-        active: true
     },
     {
         id:"bonus", 
         name: "Бонусы",
         img: "./img/user/bonus.svg", 
-        active: false
     },
     {
         id:"order",
         name: "Заказы", 
         img: "./img/user/card.svg",
-        active: false
     },
     {
         id:"download",
         name: "Загрузки", 
         img: "./img/user/download.svg",
-        active: false
     },
     {
         id:"adress",
         name: "Адрес", 
         img: "./img/user/location.svg",
-        active: false
     },
     {
         id:"details",
         name: "Детали профиля", 
         img: "./img/user/user.svg",
-        active: false
     },
     {
         id:"exit",
         name: "Выйти", 
         img: "./img/user/exit.svg",
-        active: false
     }
 ]
 

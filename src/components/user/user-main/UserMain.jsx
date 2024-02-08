@@ -2,9 +2,7 @@
 import UserContent from "../user-content/UserContent";
 import UserPanel from "../user-panel/UserPanel";
 
-
 import "./user-main.scss"
-
 
 const UserMain = ({stateTabs, onChangeTabs, data}) => {
 

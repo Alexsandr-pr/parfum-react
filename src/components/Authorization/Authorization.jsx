@@ -1,12 +1,17 @@
 
-import "./authorization.scss";
+import { useState } from "react";
+
 import Registration from "./Registration"
 import Login from "./Login"
 import Title from "../user/title/Title";
-import { useState } from "react";
+
+import "./authorization.scss";
+
 const Authorization = () => {
+  
   const [registration, setRegistration] = useState(true);
   const [login, setLogin] = useState(false);
+
   return (
     <div>
         <div className="main__login-block login-block">

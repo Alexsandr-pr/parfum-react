@@ -1,21 +1,16 @@
 
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+
 import Card from "../../card/card";
 
 import 'swiper/css';
 import "./slider-card-page-2.scss";
-const SliderCardPage2 = ({onChangeCardNumber, onAddToCart, data}) => {
 
-
-    const elements = data.map(item => {
-        const {id} = item
-        return (
-            <SwiperSlide key={id} >
-                    <Card onChangeCardNumber={onChangeCardNumber} onAddToCart={onAddToCart} data={item}/>
-            </SwiperSlide>
-        )
-    })
-
+const SliderCardPage2 = ({
+    onChangeCardNumber, 
+    onAddToCart, 
+    data
+}) => {
 
     return (
         <Swiper
@@ -49,16 +44,27 @@ const SliderCardPage2 = ({onChangeCardNumber, onAddToCart, data}) => {
                     }
                 }} 
             >
-            {elements}
+            {
+                data.map(item => {
+                    const {id} = item
+                    return (
+                        <SwiperSlide key={id} >
+                            <Card 
+                                onChangeCardNumber={onChangeCardNumber} 
+                                onAddToCart={onAddToCart} 
+                                data={item}
+                            />
+                        </SwiperSlide>
+                    )
+                })
+            }
             <Buttons/>
         </Swiper>
     )
 }
 
-
 const Buttons  = () => {
     const swiper = useSwiper();
-    
     return (
         <div className="slider-card__buttons">
             <button onClick={() => swiper.slidePrev()} className="cart-pagination__button"><i className="fa-solid fa-chevron-left"></i></button>

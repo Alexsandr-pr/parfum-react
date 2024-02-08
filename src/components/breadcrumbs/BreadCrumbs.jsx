@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import "./breadcrumbs.scss"
 
 const Breadcrumbs = ({page}) => {
@@ -16,7 +17,6 @@ const Breadcrumbs = ({page}) => {
                             <li className="breadcrumb__item">
                                 <p className="breadcrumb__link">{page}</p>
                             </li>
-                            
                         </ul>
                     </div>
                 </div>

@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import CatalogPagination from "./catalog-pagination/catalog-pagination";
 import CatalogItems from "./catalog-items/catalog-items";
 import CatalogFilter from "./catalog-filter/catalog-filter";
-import Services from "../../services/service"
-import Loading from "../../components/Loading/Loading"
-import "./main-page-catalog.scss"
+import Services from "../../services/service";
+import Loading from "../../components/Loading/Loading";
+
+import "./main-page-catalog.scss";
 
 const Catalog = ({onChangeCardNumber, onAddToCart}) => {
+
     const service = new Services()
     const [loading, setLoading] = useState(true);
 
@@ -16,18 +18,10 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
         setCurrentPage((1))
     }
     const nextPage = () => {
-        if(currentPage === pageNumbers.length) {
-            setCurrentPage(prev =>  prev = 1)
-        } else {
-            setCurrentPage(prev =>  prev + 1)
-        }
+        currentPage === pageNumbers.length ?  setCurrentPage(1) : setCurrentPage(prev =>  prev + 1);
     }
     const prevPage = () => {
-        if(currentPage === 1) {
-            setCurrentPage(prev =>  prev = pageNumbers.length)
-        } else {
-            setCurrentPage(prev =>  prev - 1)
-        }
+        currentPage === 1 ? setCurrentPage(prev =>  prev = pageNumbers.length) : setCurrentPage(prev =>  prev - 1)
     }
 
     const [countriesPerPage] = useState(12);
@@ -53,13 +47,12 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
     const onChangeRadioButton = (e) => {
         setSexFilter(e.target.value)
     }
-    const onResetFilter = () => {
-        setSexFilter("");
-    }
+    const onResetFilter = () => setSexFilter("");
 
     
 
     const [dataBrand, setData] = useState([]);
+
     useEffect(() => {
         service.getAllBrands().then(res => setData(res))
     }, [])
@@ -79,8 +72,7 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
 
     const [newData, setNewData] =  useState([])
     useEffect(() => {
-        const res = dataBrand.filter(item => item.check)
-        setNewData(res)
+        setNewData(dataBrand.filter(item => item.check))
     },[dataBrand])
 
 
@@ -89,8 +81,7 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
     const filterPost = (items, param) => { 
         switch(param) {
             case "last":
-                let newItems = items.sort((a, b) => a.price - b.price).reverse();
-                return newItems
+                return items.sort((a, b) => a.price - b.price).reverse();
             case "popular": 
                 return items.sort((a, b) => a.rating - b.rating );
             case "ascending": 

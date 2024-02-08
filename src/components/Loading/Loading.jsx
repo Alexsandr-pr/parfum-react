@@ -1,4 +1,6 @@
+
 import gif from "./img/loading.gif";
+
 import "./loading.scss";
 
 const Loading = () => {

@@ -6,22 +6,14 @@ import PersonInfo from "../person-info/PersonInfo";
 
 const BonusMain = () => {
     return (
-        <>  
-            
-                <div className="user-content__bonus user-bonus">
-                    <Title title={'Бонусы'}/>
-                    <PersonInfo/>
-
-                    <BonusInfo/>
-
-                    <Title title={'История бонусов'}/>
-                    <OrderBlock/>
-                    
-                </div>
-                
-            
-                
-        </>
+        <div className="user-content__bonus user-bonus">
+            <Title title={'Бонусы'}/>
+            <PersonInfo/>
+            <BonusInfo/>
+            <Title title={'История бонусов'}/>
+            <OrderBlock/>
+        </div> 
+        
     )
 }
 

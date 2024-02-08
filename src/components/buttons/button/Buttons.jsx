@@ -6,7 +6,12 @@ import image from "./img/grey-9026_128.gif";
 
 import "./buttons.scss";
 
-const Button = ({title, type, onClickButton, disabled}) => {
+const Button = ({
+    title, 
+    type, 
+    onClickButton, 
+    disabled
+}) => {
     const [loading, setLoading] = useState(false)
     const onDisabled = () => {
         setLoading(true)
@@ -16,9 +21,7 @@ const Button = ({title, type, onClickButton, disabled}) => {
     const timer = () => {
         const timers = setInterval(() => {
             setLoading(false)
-            if(!loading) {
-                clearInterval(timers)
-            }
+            !loading && clearInterval(timers)
         }, 300)
     }
 

@@ -1,12 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
+import { Context } from "../../../pages/myContext/MyContext";
 
 import numberWithSpaces from "../../buttons/numberWithSpace/numberWithSpace";
 
 import "./CartModal.scss"
-import { Context } from "../../../pages/myContext/MyContext";
 
-
-const CartModal = ({childrenLink, childrenPay, text}) => {
+const CartModal = ({
+    childrenLink, 
+    childrenPay, 
+    text
+}) => {
     
     const {dataCart, sale, allPrice} = useContext(Context);
     

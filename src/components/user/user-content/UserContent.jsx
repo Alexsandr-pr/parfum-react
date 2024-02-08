@@ -10,61 +10,17 @@ import Exit from "../tabs-user/exit/Exit"
 
 import "./user-content.scss";
 
-//<div  className="user__content user-content user-content-bonus"></div>
-
 const UserContent = ({stateTabs, onChangeTabs}) => {
     
     return (
         <div className="user__items-content">
-
-            {
-                stateTabs === "panel" ? 
-                        <ParentTabs >
-                            <Panel onChangeTabs={onChangeTabs}/>
-                        </ParentTabs> : null 
-            }
-            
-            {
-                stateTabs === "bonus" ? 
-                        <ParentTabs >
-                            <BonusMain/>
-                        </ParentTabs> : null
-            }
-            
-            {
-                stateTabs === "order" ? 
-                        <ParentTabs >
-                            <OrderMain/>
-                        </ParentTabs>: null
-            }
-
-            {
-                stateTabs === "download" ? 
-                        <ParentTabs >
-                            <DownloadTabs/>
-                        </ParentTabs>: null
-            }
-
-            {
-                stateTabs === "adress" ? 
-                        <ParentTabs >
-                            <AdressMain/>
-                        </ParentTabs>: null
-            }
-            
-
-            {
-                stateTabs === "details" ? 
-                        <ParentTabs>
-                            <ProfileMain/>
-                        </ParentTabs>: null
-            }
-            {
-                stateTabs === "exit" ? 
-                        <ParentTabs>
-                            <Exit/>
-                        </ParentTabs>: null
-            }
+            { stateTabs === "panel" && <ParentTabs children={<Panel onChangeTabs={onChangeTabs}/>}/>}
+            { stateTabs === "bonus" && <ParentTabs children={<BonusMain/>}/>}
+            { stateTabs === "order" && <ParentTabs children={<OrderMain/>}/>} 
+            { stateTabs === "download" && <ParentTabs children={<DownloadTabs/>}/>}
+            { stateTabs === "adress" && <ParentTabs children={ <AdressMain/>} />}
+            { stateTabs === "details" && <ParentTabs children={ <ProfileMain/>} /> }
+            { stateTabs === "exit" && <ParentTabs children={<Exit/>}/>}
         </div>
     )
 }

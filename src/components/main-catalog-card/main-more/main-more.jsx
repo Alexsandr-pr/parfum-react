@@ -1,15 +1,11 @@
 
-
 import Reviews from "../description/reviews";
 import Parent from "../../buttons/parent/Parent";
 
 import "./main-more.scss"
 
-
-
 const MainMore = ({description, reviews, cardNumber, setActive}) => {
     
-
     return (
         <div className="main-catalog__description catalog-description">
             <div  className="catalog-description__body">
@@ -22,7 +18,12 @@ const MainMore = ({description, reviews, cardNumber, setActive}) => {
                     <div  className="catalog-description__content">
                         <div className="catalog-description__button">
                             <div className="button-add-to-cart-obol">
-                                <button onClick={() => setActive(true)} id="review-add" className="button-add-to-cart"> <span>Оставить отзыв</span></button>
+                                <button 
+                                    onClick={() => setActive(true)} 
+                                    id="review-add" 
+                                    className="button-add-to-cart">
+                                    <span>Оставить отзыв</span>
+                                </button>
                             </div>
                         </div>
                         <Reviews cardNumber={cardNumber} />

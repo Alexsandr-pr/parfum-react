@@ -1,7 +1,6 @@
 
 import "./bonus-info.scss"
 
-
 const BonusInfo = () => {
     return (
         <div  className="user-content__info">

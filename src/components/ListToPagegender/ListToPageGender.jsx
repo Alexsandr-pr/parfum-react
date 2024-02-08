@@ -1,9 +1,11 @@
 
 import "./ListToPageGender.scss";
+
 const ListToPageGender = ({data, children}) => {
+
     return (
         <ul className="male__list">
-            <li >
+            <li>
                 {children}
             </li>
             {

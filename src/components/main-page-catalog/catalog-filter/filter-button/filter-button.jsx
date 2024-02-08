@@ -1,7 +1,7 @@
 
 import { useState } from "react"
-import "./filter-button.scss"
 
+import "./filter-button.scss"
 
 const data = [
     { name: "popular", label: "По популярности"},
@@ -13,26 +13,18 @@ const FilterButton = ({onChangeFilter, filter}) => {
 
     const [active, setActive] = useState(false)
 
-    const onChangeActive = () => {
-        setActive((active) => !active)
-    }
-
+    const onChangeActive = () => setActive(active => !active);
+    
     let text = "По популярности";
-    data.forEach(item => {
-        if(item.name === filter) {
-            text = item.label;
-            return text
-        }
-    })
+    data.forEach(({name, label}) => name === filter ? text = label : null) 
 
     const elements = data.map(({name,label}) => {
-        const active = filter  === name;
-        const clazz = active  ?  "filter__item _active" : "filter__item";
+        const clazz = filter === name ?  "filter__item _active" : "filter__item";
         return(
             <li key={name} className={clazz}>
                 <button 
-                className="filter__link"
-                onClick={() => onChangeFilter(name)}
+                    className="filter__link"
+                    onClick={() => onChangeFilter(name)}
                 >
                     {label}</button>
             </li>

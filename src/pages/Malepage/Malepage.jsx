@@ -1,11 +1,12 @@
+import { useState, useEffect, useContext } from "react";
+import {Context}  from "../../pages/myContext/MyContext";
 
-import Title from "../../components/user/title/Title"
+import Title from "../../components/user/title/Title";
 import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
 import SliderCardPage2 from "../../components/sliders/slider-card-page-2/slider-card-page-2";
 import ListToPageGender from "../../components/ListToPagegender/ListToPageGender";
-import { useState, useEffect, useContext } from "react";
-import {Context}  from "../../pages/myContext/MyContext"
-import Services from "../../services/service"
+import Services from "../../services/service";
+
 import "./malepage.scss"
 
 const data1 = [
@@ -47,6 +48,7 @@ const data3 = [
         text: "А экономия собственного времени станет ещё одним плюсом при совершении покупки. Что же может быть лучше оформления заказа в любом месте и точке Украины без необходимости ходить по торговым центрам в поисках? Так что самое время стать настоящем современным героем своей жизни."
     }
 ]
+
 const MalePage = ({onAddToCart}) => {
     const {onChangeCardNumber} = useContext(Context)
     const [cardData, setCards] = useState([]);

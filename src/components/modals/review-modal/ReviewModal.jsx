@@ -1,4 +1,6 @@
+
 import image from "./img/image.svg"
+
 import "./ReviewModal.scss"
 
 const ReviewModal = () => {

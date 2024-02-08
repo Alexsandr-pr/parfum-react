@@ -1,7 +1,21 @@
 
-import image from "./img/image2.svg";
-import "./aboutpage.scss";
 import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
+
+import image from "./img/image2.svg";
+
+import "./aboutpage.scss";
+
+const data = [
+    {
+        text: "Верхние – это первое впечатление, которое оставляет о себе аромат. Их длительность не более часа"
+    },
+    {
+        text: "Средние ноты – появляются после верхних и длятся несколько часов. Они не такие яркие, как верхние ноты, тем не менее, составляют всю суть аромата"
+    },
+    {
+        text: "Базовые ноты – создают финальное впечатление об аромате и остаются на коже продолжительное время. Они оставляют легкий шлейф, который может длиться даже до нескольких дней" 
+    }
+]
 
 const About = () => {
     return (    
@@ -21,24 +35,18 @@ const About = () => {
                                 </div>
                                 <div className="main-about__block">
                                     <ul className="main-about__list">
-                                        <li className="main-about__item">
-                                            <span></span>
-                                            <div className="main-about__text">
-                                                <p>Верхние – это первое впечатление, которое оставляет о себе аромат. Их длительность не более часа</p>
-                                            </div>
-                                        </li>
-                                        <li className="main-about__item">
-                                            <span></span>
-                                            <div className="main-about__text">
-                                                <p>Средние ноты – появляются после верхних и длятся несколько часов. Они не такие яркие, как верхние ноты, тем не менее, составляют всю суть аромата</p>
-                                            </div>
-                                        </li>
-                                        <li className="main-about__item">
-                                            <span></span>
-                                            <div className="main-about__text">
-                                                <p>Базовые ноты – создают финальное впечатление об аромате и остаются на коже продолжительное время. Они оставляют легкий шлейф, который может длиться даже до нескольких дней</p>
-                                            </div>
-                                        </li>
+                                        {
+                                            data.map(({text}, i) => {
+                                                return (
+                                                    <li key={i} className="main-about__item">
+                                                        <span></span>
+                                                        <div className="main-about__text">
+                                                            <p>{text}</p>
+                                                        </div>
+                                                    </li>
+                                                )
+                                            })
+                                        }
                                     </ul>
                                     <div className="main-about__image">
                                         <img src={image} />

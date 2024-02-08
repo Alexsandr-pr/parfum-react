@@ -2,10 +2,10 @@
 import { Pagination, Autoplay  } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import "./slider-main-page-1.scss";
+
 const data = [
     {
         title: "Оптовая продажа люксовой парфюмерии с маржой до 100% и доставкой по  СНГ", 
@@ -33,33 +33,8 @@ const data = [
     }
 ]
 
-
 const SliderMainPage1 = () => {
-    const elements = data.map(item => {
-        const {title, id, sub, imgSrcDesktop, imgSrcMobile, alt} = item;
-        
-        return (
-            <SwiperSlide key={id} className="main-slider__slide slider-slide">
-                <div className="slider-slide__container">
-                    <div className="slider-slide__body">
-                        <div className="slider-slide__title">
-                            <h1>{title}</h1>
-                        </div>
-                        <div className="slider-slide__label">
-                            <p>{sub}</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="slider-slide__image">
-                    <picture>
-                        <source media="(min-width: 767.98px )" srcSet={imgSrcDesktop} type="image/jpeg"/>
-                        <source media="(max-width: 767.98px )" srcSet={imgSrcMobile} type="image/jpeg"/>
-                        <img src={imgSrcDesktop} alt={alt}/>
-                    </picture>
-                </div>
-            </SwiperSlide>
-        )
-    })
+    
     return (
         <>
             <Swiper
@@ -87,7 +62,32 @@ const SliderMainPage1 = () => {
                 }}
                 speed={1200}
             >
-                {elements}
+                {
+                    data.map(item => {
+                        const {title, id, sub, imgSrcDesktop, imgSrcMobile, alt} = item;
+                        return (
+                            <SwiperSlide key={id} className="main-slider__slide slider-slide">
+                                <div className="slider-slide__container">
+                                    <div className="slider-slide__body">
+                                        <div className="slider-slide__title">
+                                            <h1>{title}</h1>
+                                        </div>
+                                        <div className="slider-slide__label">
+                                            <p>{sub}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="slider-slide__image">
+                                    <picture>
+                                        <source media="(min-width: 767.98px )" srcSet={imgSrcDesktop} type="image/jpeg"/>
+                                        <source media="(max-width: 767.98px )" srcSet={imgSrcMobile} type="image/jpeg"/>
+                                        <img src={imgSrcDesktop} alt={alt}/>
+                                    </picture>
+                                </div>
+                            </SwiperSlide>
+                        )
+                    })
+                }
             </Swiper>
         </>
     )

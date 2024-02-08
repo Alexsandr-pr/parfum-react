@@ -1,17 +1,19 @@
 import { useContext, useEffect, useState } from "react";
+import { Context } from "../../../pages/myContext/MyContext";
+import { NavLink, Link } from "react-router-dom";
+//
 import HeaderLogo from "../header-logo/header-logo";
 import HeaderCatalogSelect from "../header-catalog-select/header-catalog-select"
 import HeaderSearchDesktop from "../header-search/header-search-desktop/header-search-desktop";
 import HeaderSearchMobile from "../header-search/header-search-mobile/HeaderSearchMobile"
-
-import "./header-main.scss";
-import carddesctop from "./img/cartdesctop.svg"
-import userdesctop from "./img/userdesctop.svg"
-
-import { NavLink, Link } from "react-router-dom";
 import HeaderTop from "../header-top/header-top";
 import HeaderMale from "../header-male/header-male";
-import { Context } from "../../../pages/myContext/MyContext";
+//
+import carddesctop from "./img/cartdesctop.svg"
+import userdesctop from "./img/userdesctop.svg"
+//
+import "./header-main.scss";
+
 
 const Header = () => {
     const [activeMobile, setActiveMobile] = useState( false );
@@ -27,17 +29,15 @@ const Header = () => {
         widt = window.innerWidth;
         setWidth(widt)
         window.addEventListener("scroll", () => {
-            scroll = window.scrollY
-            setOffset(scroll)
+            setOffset(window.scrollY)
         })
         window.addEventListener("resize", () => {
-            widt = window.innerWidth;
-            setWidth(widt)
+            setWidth(widt = window.innerWidth)
         })
     }, [])
 
     function changeActiveMobile () {
-        setActiveMobile( (activeMobile) => !activeMobile)
+        setActiveMobile(activeMobile => !activeMobile)
     }
 
     return (

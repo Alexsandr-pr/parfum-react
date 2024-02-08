@@ -1,12 +1,15 @@
 import { useContext, useState } from "react";
+import { Context } from "../../../pages/myContext/MyContext";
+
 import Button from "../../buttons/button/Buttons"
 import Label from "../../forms/label/Label";
-import { Context } from "../../../pages/myContext/MyContext";
+
 
 const CartWindow = ({disabled}) => {
     
     const [activeLabel, setActiveLabel] = useState(false)
     const {sale, setSale} = useContext(Context)
+    
     const onAddForm = () => {
         setActiveLabel(prev => !prev)
     }

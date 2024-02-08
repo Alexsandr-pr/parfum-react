@@ -1,10 +1,11 @@
+import { useState } from "react"
 
 import HeaderSearchDesktop from "../header-search-desktop/header-search-desktop"
+
 import search from "../header-search-desktop/img/search.svg"
 import close from "../header-search-desktop/img/close.svg"
 
 import "../header-search-desktop/header-search-desktop.scss"
-import { useState } from "react"
 
 const HeaderSearchMobile = () => {
     const [active, setActive] = useState(false)

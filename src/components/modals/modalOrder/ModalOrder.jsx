@@ -1,5 +1,7 @@
-import Title from "../../user/title/Title"
 import { Link } from "react-router-dom"
+
+import Title from "../../user/title/Title"
+
 const ModalOrder = ({setActive, title}) => {
     return (
         <div className="order-modal__body">

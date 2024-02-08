@@ -1,7 +1,9 @@
 
 import { useEffect, useState } from "react"
-import { login } from "../../action/user";
 import { useDispatch } from "react-redux";
+
+import { login } from "../../action/user";
+
 import Label from "../forms/label/Label";
 import LabelPassword from "../forms/label-password/LabelPassword";
 import Title from "../user/title/Title";
@@ -9,6 +11,7 @@ import ParentModal from "../modals/parent-modal/ParentModal"
 import ModalRe from "../modals/modal-re/ModalRe";
 
 const Login = () => {
+
     const [checked, setChecked] = useState(false)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

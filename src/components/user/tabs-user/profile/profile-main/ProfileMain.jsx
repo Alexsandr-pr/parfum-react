@@ -22,7 +22,6 @@ const ProfileMain = () => {
                     <div className="user-content__text">
                         <p>Смена пароля</p>
                     </div>
-                   
                     <div className="user-content__button">
                         <div className="button-add-to-cart-obol">
                             <button type="submit" className="user-content__btn button-add-to-cart"><span>Сохранить изменения</span></button>

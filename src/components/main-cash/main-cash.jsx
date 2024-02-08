@@ -1,6 +1,9 @@
-import imagefon from "./img/imagefon.png"
 import {Link} from "react-router-dom"
+
 import Title from "../user/title/Title"
+
+import imagefon from "./img/imagefon.png"
+
 import "./main-cash.scss"
 
 const MainCash = () => {
@@ -8,7 +11,7 @@ const MainCash = () => {
         <>
             <div className="main__cash main-cash">
                 <div className="main-cash__container">
-                    <div className="main-cash__title ">
+                    <div className="main-cash__title">
                         <Title title={"Бонусы от покупок"}/>
                     </div>
                 </div>

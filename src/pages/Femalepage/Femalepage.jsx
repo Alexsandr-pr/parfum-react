@@ -1,10 +1,12 @@
+import { useState, useEffect, useContext } from "react";
+import {Context}  from "../../pages/myContext/MyContext"
+
 
 import Title from "../../components/user/title/Title"
 import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
 import SliderCardPage2 from "../../components/sliders/slider-card-page-2/slider-card-page-2";
 import ListToPageGender from "../../components/ListToPagegender/ListToPageGender";
-import { useState, useEffect, useContext } from "react";
-import {Context}  from "../../pages/myContext/MyContext"
+
 
 const data1 = [
     {

@@ -1,26 +1,27 @@
 
 import { useEffect, useState } from "react";
 
-import MainCatalog from "../../components/main-catalog-card/main-catalog/main-catalog";
+import MainCatalog from "../../components/main-catalog-card/main-catalog/MainCatalog";
 import SliderCardPage2 from "../../components/sliders/slider-card-page-2/slider-card-page-2";
 import Services from "../../services/service"
 import Title from "../../components/user/title/Title"
 import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
-
-import "./Cardpage.scss";
 import ParentModal from "../../components/modals/parent-modal/ParentModal";
 import ReviewModal from "../../components/modals/review-modal/ReviewModal";
 
+import "./Cardpage.scss";
 
-const CardPage = ({cardNumber, onChangeCardNumber, onAddToCart})=> {
-
-    const [post, setPost] = useState([])
+const CardPage = ({
+    cardNumber,
+    onChangeCardNumber, 
+    onAddToCart
+}) => {
+    
     const service = new Services();
+    const [post, setPost] = useState([])
     const [active, setActive] = useState(false);
     const onActive = (e) => {
-        if(e.target.classList.contains("close")) {
-            setActive(false)
-        }
+        e.target.classList.contains("close") && setActive(false);
     } 
 
     const [cardData, setCards] = useState([]);
@@ -44,7 +45,8 @@ const CardPage = ({cardNumber, onChangeCardNumber, onAddToCart})=> {
                             <SliderCardPage2 
                                 data={cardData}
                                 onAddToCart={onAddToCart} 
-                                onChangeCardNumber={onChangeCardNumber}/>
+                                onChangeCardNumber={onChangeCardNumber}
+                            />
                         </div>
                     </div>
                 </section>

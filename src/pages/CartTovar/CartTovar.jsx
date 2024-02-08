@@ -1,7 +1,12 @@
 import CartMain from "../../components/cart/CartMain/CartMain";
 
 
-const CartTovar = ({dataCart, onDeleteItemInCart, onChangeCurrentOnClick, onToggleOrder}) => {
+const CartTovar = ({
+    dataCart, 
+    onDeleteItemInCart, 
+    onChangeCurrentOnClick, 
+    onToggleOrder
+}) => {
     
     return (
         <>
@@ -9,7 +14,8 @@ const CartTovar = ({dataCart, onDeleteItemInCart, onChangeCurrentOnClick, onTogg
                 onToggleOrder={onToggleOrder}
                 onChangeCurrentOnClick={onChangeCurrentOnClick} 
                 onDeleteItemInCart={onDeleteItemInCart} 
-                dataCart={dataCart}/>
+                dataCart={dataCart}
+            />
         </>
     )
 }

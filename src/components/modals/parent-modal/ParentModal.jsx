@@ -1,8 +1,14 @@
 
-import "./ParentModal.scss";
 import closeImage from "./img/close.svg";
 
-const ParentModal = ({active, onActive, children, close}) => {
+import "./ParentModal.scss";
+
+const ParentModal = ({
+    active, 
+    onActive, 
+    children, 
+    close
+}) => {
 
     return (
         <div className={active ? "popap _active" : "popap"} >

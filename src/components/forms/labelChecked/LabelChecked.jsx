@@ -9,11 +9,21 @@ const LabelChecked = ({onToggleOrder, id, value}) => {
     }, [check])
 
     return (
-            <label htmlFor={id + value} className="pol-list__label">
-                <input id={id + value} onChange={() => setCheck(prev => !prev)}  type="checkbox" name="check" checked={check} className="pol-list__input"/>
+            <label 
+                htmlFor={id + value} 
+                className="pol-list__label"
+            >
+                <input 
+                    id={id + value} 
+                    onChange={() => setCheck(prev => !prev)}  
+                    type="checkbox" 
+                    name="check" 
+                    checked={check} 
+                    className="pol-list__input"
+                />
                 <span className="pol-list__span"></span>
             </label>
     )
 }
 
-export default LabelChecked
+export default LabelChecked;

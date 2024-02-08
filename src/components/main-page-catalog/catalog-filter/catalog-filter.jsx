@@ -1,14 +1,24 @@
+import { useState } from "react";
+
 import PolList from "./pol-list/pol-list";
 import SearchList from "./search/search-list/search-list";
 import SeacrhInput from "./search/search-input/search-input"
 import FilterButton from "./filter-button/filter-button";
 
-import { useState } from "react";
-
-import "./catalog-filter.scss";
 import close from "./img/close.svg"
 
-const CatalogFilter = ({onChangeFilter, filter, onChangeRadioButton, onResetFilter, polList, data, onChangeFilterBrand}) => {
+import "./catalog-filter.scss";
+
+
+const CatalogFilter = ({
+    onChangeFilter, 
+    filter, 
+    onChangeRadioButton, 
+    onResetFilter, 
+    polList, 
+    data, 
+    onChangeFilterBrand
+}) => {
     const [ activeFilter, setActiveFilter] = useState(false);
     const [ inputValue, setSearchInput] = useState("");
 
@@ -26,14 +36,16 @@ const CatalogFilter = ({onChangeFilter, filter, onChangeRadioButton, onResetFilt
     }
 
     const onChangeActive = () => {
-        setActiveFilter((activeFilter) => !activeFilter)
+        setActiveFilter(activeFilter => !activeFilter)
     }
 
     return (
         <div className="main-cart__top-trigger  top-trigger-filter">
             <div className={activeFilter ? "top-trigger-filter__item _active filter" : "top-trigger-filter__item  filter"}>
                 <div  className="filter__button ">
-                    <button onClick={onChangeActive} className="filter__btn filter__btn-popular "><p className="">Фильтры</p> <span className=" "><i className="fa-solid fa-chevron-up"></i></span></button>
+                    <button 
+                        onClick={onChangeActive} 
+                        className="filter__btn filter__btn-popular"><p>Фильтры</p><span><i className="fa-solid fa-chevron-up"></i></span></button>
                 </div>
                 <div className="filter__content filter-content-1">
                     <form  className="filter-content__form">
@@ -44,8 +56,9 @@ const CatalogFilter = ({onChangeFilter, filter, onChangeRadioButton, onResetFilt
                                     <div className="search-list__body">
                                         <ul className="search-list__list list-search">
                                             <SearchList      
-                                                    onChangeFilterBrand={onChangeFilterBrand}
-                                                    data={onChangeFilterSelect(data, inputValue)}/>
+                                                onChangeFilterBrand={onChangeFilterBrand}
+                                                data={onChangeFilterSelect(data, inputValue)}
+                                            />
                                         </ul>
                                     </div>
                                 </div>
@@ -69,7 +82,7 @@ const CatalogFilter = ({onChangeFilter, filter, onChangeRadioButton, onResetFilt
                     </form>
                 </div>
             </div>
-            <div className="">
+            <div >
                 <FilterButton filter={filter}  onChangeFilter={onChangeFilter}/>
             </div>
         </div>
@@ -79,6 +92,7 @@ const CatalogFilter = ({onChangeFilter, filter, onChangeRadioButton, onResetFilt
 const Parent = ({children, title}) => {
     const [active, setAActive] = useState(false);
     const onChangeActive = (e) => {
+
         e.preventDefault()
         setAActive(prev => !prev)
     }

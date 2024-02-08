@@ -1,24 +1,26 @@
 import { useState } from "react";
-import "./header-catalog-select.scss";
 import HeaderMale from "../header-male/header-male";
 
 
-
-
+import "./header-catalog-select.scss";
 
 const HeaderCatalogSelect = () => {
-    const [active, setActive] = useState(false)
+    const [active, setActive] = useState(false);
 
     const toggleActive = () => {
-        setActive((active) => !active);
+        setActive(active => !active);
     }
     const changeActive = () => {
-        setActive(false)
+        setActive(false);
     }
     return (
         <>
             <div className={ active ? "header-button active" : "header-button"}>
-                <button onClick={toggleActive}  id="button-icon-menu" className="header-bottom__button ">
+                <button 
+                    onClick={toggleActive}  
+                    id="button-icon-menu" 
+                    className="header-bottom__button"
+                >
                     <span className="icon-menu">
                         <span></span>
                     </span>

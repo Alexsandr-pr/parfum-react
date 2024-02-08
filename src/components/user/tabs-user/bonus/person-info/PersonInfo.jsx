@@ -1,5 +1,7 @@
-import "./progress-info.scss";
+
 import user from "./img/user-photo.svg"
+
+import "./progress-info.scss";
 
 const PersonInfo = () => {
     return (

@@ -6,18 +6,12 @@ const UserPanel = ({onChangeTabs, stateTabs, data}) => {
             <div className="user__panel user-panel">
                 <ul className="user-panel__list">
                     {
-                        data.map(({id, name, img, active}) => {
-                            if(stateTabs === id ) {
-                                active = true
-                            } else {
-                                active = false
-                            }
+                        data.map(({id, name, img}) => {
                             return (
                                 <li key={id} className="user-panel__item">
                                     <button  
-                                        
                                         onClick={() => onChangeTabs(id)}
-                                        className={active ? "user-panel__link _active" : "user-panel__link"}> 
+                                        className={stateTabs === id ? "user-panel__link _active" : "user-panel__link"}> 
                                         {name}
                                         <span>
                                             <img src={img} alt="icon"/>

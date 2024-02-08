@@ -1,20 +1,35 @@
 
 import { Link } from "react-router-dom";
 
+const dataPage = [
+    {
+        to: "/male",
+        page: "Мужские"
+    },
+    {
+        to: "/female",
+        page: "Женские"
+    },
+    {
+        to: "/unisex",
+        page: "Унисекс"
+    }
+]
+
 
 const HeaderMale = ({changeActive}) => {
     return (
         <>
             <ul  className="header-button__list">
-                <li className="header-button__link">
-                    <Link onClick={() => changeActive()} to="/male" className="header-button__item">Мужские</Link>
-                </li>
-                <li className="header-button__link">
-                    <Link onClick={() => changeActive()} to="/female" className="header-button__item ">Женские</Link>
-                </li>
-                <li className="header-button__link">
-                    <Link onClick={() => changeActive()} to="/unisex" className="header-button__item">Унисекс</Link>
-                </li> 
+                {
+                    dataPage.map(({to, page}, i ) => {
+                        return (
+                            <li key={i} className="header-button__link">
+                                <Link onClick={() => changeActive()} to={to} className="header-button__item">{page}</Link>
+                            </li>
+                        )
+                    })
+                }
             </ul>
         </>
     )

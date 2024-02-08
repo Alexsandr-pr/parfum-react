@@ -1,7 +1,7 @@
 
 import {Routes, Route} from "react-router-dom"
 import { useContext } from "react";
-
+import { Context } from "./myContext/MyContext";
 
 import Home from "./Homepage";
 import About from "./Aboutpage/Aboutpage";
@@ -11,7 +11,6 @@ import BonusPage from "./Bonuspage/bonuspage";
 import Document from "./Documentpage/documentpage";
 import CardPage from "./Cardpage/Cardpage";
 import CartTovar from "./CartTovar/CartTovar"
-import { Context } from "./myContext/MyContext";
 import MalePage from "./Malepage/Malepage";
 import Unisexpage from "./Unisexpage/Unisexpage";
 import Femalepage from "./Femalepage/Femalepage";
@@ -23,9 +22,7 @@ function App () {
     const {dataCart, setDataCart} = useContext(Context);
     const onAddToCart = (newCard, id, value) => {
 
-        const indexValue = dataCart.findIndex(item => {
-            return (item.valueMl === value) && (item.id === id)
-        });
+        const indexValue = dataCart.findIndex(item => item.valueMl === value && (item.id === id));
 
         if(indexValue !== - 1) {
             setDataCart((prev) => {
@@ -53,9 +50,7 @@ function App () {
 
     const onDeleteItemInCart = (id, value ) => {
         setDataCart(prev => {
-            const indexValue = dataCart.findIndex(item => {
-                return (item.valueMl === value) && (item.id === id)
-            });
+            const indexValue = dataCart.findIndex(item => item.valueMl === value && (item.id === id));
             const before = prev.slice(0, indexValue);
             const after = prev.slice(indexValue + 1);
             const newArr = [...before, ...after];
@@ -72,9 +67,7 @@ function App () {
     }
 
     const onToggleOrder= (id, check, value) => {
-        const index = dataCart.findIndex(item => {
-            return (item.valueMl === value) && (item.id === id)
-        });
+        const index = dataCart.findIndex(item => item.valueMl === value && (item.id === id));
         setDataCart(prev => {
             const updatedCart = prev.map((item, i) => {
                 if (i === index) {
