@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+
+import { addUserAdress } from "../../../../../action/user"
 
 import Label from "../../../../forms/label/Label"
 import Title from "../../../title/Title"
@@ -20,7 +22,6 @@ const AdressMain = () => {
     const [surname, setSurname] = useState("");
     const [country, setCountry] = useState("");
     const [adresss, setAdressS] = useState("");
-    const [locality, setLocality] = useState("");
     const [region, setRegion] = useState("");
     const [zip, setZip] = useState("");
     const [tel, setTel] = useState("");
@@ -30,15 +31,23 @@ const AdressMain = () => {
     const onCloseForm = () => {
         setForm(false)
     }
-    const formData = (e) => {
-        e.preventDefault()
-        setObject({name, surname, country, adresss, locality, region, zip, tel, email})
+    const formData = async (e) => {
+        e.preventDefault();
+        await setObject({name, surname, country, adress, region, zip, tel, email});
         onCloseForm();
-        setAdress(true)
-        setTimerId(true)
-        timer()
+        setAdress(true);
+        setTimerId(true);
+        timer();
+            
     }
-    
+
+    useEffect(() => {
+        console.log(object)
+        if(Object.keys(object).length > 0) {
+            addUserAdress(object, email);   
+        }
+    }, [object])
+
     const timer = () => {
         const timers = setInterval(() => {
             setTimerId(false)
@@ -72,7 +81,6 @@ const AdressMain = () => {
                             </div>
                             <Label setValue={setCountry}  required value={country} type={"text"} name={"country"} text={"Страна / регион"}/>
                             <Label setValue={setAdressS}  required value={adresss} type={"text"} name={"adress"} text={"Адрес"}/>
-                            <Label setValue={setLocality} required value={locality} type={"text"} name={"locality"} text={"Населённый пункт"}/>
                             <Label setValue={setRegion}  required value={region} type={"text"} name={"region"} text={"Область / район"}/>
                             <Label setValue={setZip}  required value={zip} type={"text"} name={"zip"} text={"Почтовый индекс"}/>
                             <Label setValue={setTel}  required value={tel} type={"tel"} name={"tel-phone"} text={"Телефон"}/>

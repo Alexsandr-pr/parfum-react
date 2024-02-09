@@ -1,12 +1,12 @@
 import axios from 'axios'
 import { setUser } from '../reducers/userReducer'
 
-export const registration = async (email, password, pol) => {
+export const registration = async (email, password, gender) => {
     try {
         const response = await axios.post(`http://localhost:5000/api/auth/registration`, {
             email,
             password,
-            pol
+            gender
         })
         alert(response.data.message)
     } catch (e) {
@@ -16,7 +16,7 @@ export const registration = async (email, password, pol) => {
 }
 
 
-export const login =  (email, password) => {
+export const login =  (email, password, remember) => {
     return async dispatch => {
         try {
             const response = await axios.post(`http://localhost:5000/api/auth/login`, {
@@ -24,7 +24,8 @@ export const login =  (email, password) => {
                 password
             })
             dispatch(setUser(response.data.user))
-            localStorage.setItem('token', response.data.token)
+            
+            remember && localStorage.setItem('token', response.data.token)
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -44,4 +45,21 @@ export const auth =  () => {
             localStorage.removeItem('token')
         }
     }
+}
+
+
+/******************** */
+
+export const addUserAdress = async (adress, email) => {
+    try {
+        const response = await axios.post(`http://localhost:5000/api/auth/adress`, {
+            adress,
+            email
+        });
+        console.log(response.data);
+        return response.data; 
+        } catch(e) {
+        console.error(e); 
+        throw e; 
+        }
 }

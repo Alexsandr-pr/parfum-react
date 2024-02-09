@@ -8,9 +8,11 @@ import LabelPassword from "../forms/label-password/LabelPassword";
 import Title from "../user/title/Title"
 import ParentModal from "../modals/parent-modal/ParentModal";
 import ModalRe from "../modals/modal-re/ModalRe";
+import CheckedPol from "../forms/checked-pol/CheckedPol";
 
 const Registration = () => {
     const [checked, setChecked] = useState(false)
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [active, setActive] = useState(false);
@@ -18,7 +20,7 @@ const Registration = () => {
     const [number2, setNubmer2] = useState(0);
     const [summ, setSumm] = useState(0);
     const [disabled, setDisabled] = useState(true)
-
+    const [gender, setGender] = useState("male")
     function getRandomNumber() {
         return Math.floor(Math.random() * 51); 
     } 
@@ -45,11 +47,6 @@ const Registration = () => {
     useEffect(() => {
         onChangeSumm()
     }, [summ])
-
-
-
-
-
 
     return (
         <>
@@ -80,7 +77,7 @@ const Registration = () => {
                     <div className="login-block__text">
                         <p>Пол</p>
                     </div>
-                    
+                    <CheckedPol setGender={setGender} gender={gender}/>
                     <ul className="re-catcha pol-list">
                         <li className="pol-list__item">
                             <label onClick={() => onActiveModal()} className="pol-list__label">
@@ -96,7 +93,7 @@ const Registration = () => {
                         disabled={disabled}
                         onClick={(e) => {
                             e.preventDefault();
-                            registration(email, password);
+                            registration(email, password, gender);
                             setPassword("");
                             setEmail("");
                             setChecked(false);

@@ -2,19 +2,36 @@
 
 import React from 'react'
 
-const CheckedPol = () => {
+const pol = [
+    {
+        name: "pol",
+        value: "female",
+        text: "Ж"
+    },
+    {
+        name: "pol",
+        value: "male",
+        text: "М"
+    }
+]
+
+const CheckedPol = ({setGender, gender}) => {
+
     return (
         <div className="login-block__check check-button">
-            <label className="pol-list__label">
-                <input type="radio"  name="pol" value="female" className="pol-list__input"/>
-                <span className="pol-list__span"></span>
-                <p className="pol-list__p">Ж</p>
-            </label>
-            <label className="pol-list__label">
-                <input type="radio" name="pol" value="male" className="pol-list__input"/>
-                <span className="pol-list__span"></span>
-                <p className="pol-list__p">М</p>
-            </label>
+            {
+                pol.map(({name, text, value}) => {
+                    return (
+                        <label htmlFor={value} key={value} className="pol-list__label">
+                            <input id={value} onChange={() => setGender(value)} checked={gender === value}  type="radio"  name={name} value={value} className="pol-list__input"/>
+                            <span className="pol-list__span"></span>
+                            <p className="pol-list__p">{text}</p>
+                        </label>
+                    )
+                })
+            }
+           
+            
         </div>
     )
 }

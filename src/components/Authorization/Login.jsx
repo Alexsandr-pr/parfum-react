@@ -15,6 +15,7 @@ const Login = () => {
     const [checked, setChecked] = useState(false)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
     const dispatch = useDispatch()
     
     const [active, setActive] = useState(false);
@@ -50,8 +51,10 @@ const Login = () => {
     useEffect(() => {
         onChangeSumm()
     }, [summ])
+    const [remember, setRemember] = useState(false)
 
     return (
+
         <>
             <div className="login-block__item">
                 <Title title={"Вход"}/>
@@ -86,7 +89,7 @@ const Login = () => {
                     <ul className="login-block__pol-list pol-list">
                         <li className="pol-list__item">
                             <label className="pol-list__label">
-                                <input type="checkbox" name="pol"  className="pol-list__input"/>
+                                <input type="checkbox" checked={remember} onChange={() => setRemember(prev => !prev)} className="pol-list__input"/>
                                 <span className="pol-list__span"></span>
                                 <p className="pol-list__p">Запомнить меня</p>
                             </label>
@@ -97,7 +100,7 @@ const Login = () => {
                             disabled={disabled}
                             onClick={(e) => {
                                 e.preventDefault()
-                                dispatch(login(email, password))
+                                dispatch(login(email, password, remember))
                             }}
                             type="submit" 
                             className="login-block__btn button-add-to-cart"><span>Войти</span></button>
