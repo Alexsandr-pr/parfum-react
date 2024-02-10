@@ -24,6 +24,7 @@ const CartMain = ({
                     <div className="items-in-cart__label cart-preview">
                         <CartWindow disabled={Object.values(dataOrder).length <= 0} />
                         <div className="cart-preview__items">
+                            
                             {
                                 dataCart.length > 0 ?
                                     dataCart.map(item => {  

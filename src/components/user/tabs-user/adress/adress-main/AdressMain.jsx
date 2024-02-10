@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-
+import {useSelector} from "react-redux"
 import { addUserAdress } from "../../../../../action/user"
 
 import Label from "../../../../forms/label/Label"
@@ -8,6 +8,21 @@ import Title from "../../../title/Title"
 import "./adress-main.scss"
 
 const AdressMain = () => {
+
+    const adressCurrentUserBD = useSelector(state => state.user.currentUser.adress) || [];
+    function convertToArr(obj) {
+        let arr = [];
+        for (let key in obj) {
+            arr.push(obj[key]);
+        }
+        return arr;
+    }
+    
+    const [adressUserDB, setAdressUserDB] = useState([])
+
+    useEffect(() => {
+        setAdressUserDB(convertToArr(adressCurrentUserBD))
+    }, [])
 
     const [adress, setAdress] = useState(false);
     const [form, setForm] = useState(false);
@@ -33,16 +48,14 @@ const AdressMain = () => {
     }
     const formData = async (e) => {
         e.preventDefault();
-        await setObject({name, surname, country, adress, region, zip, tel, email});
+        await setObject({name, surname, country, adresss, region, zip, tel, email});
         onCloseForm();
         setAdress(true);
         setTimerId(true);
-        timer();
-            
+        timer();    
     }
 
     useEffect(() => {
-        console.log(object)
         if(Object.keys(object).length > 0) {
             addUserAdress(object, email);   
         }
@@ -55,6 +68,8 @@ const AdressMain = () => {
         }, 3000)
     }
 
+    
+
     return (
         <>
             <div className="user-content__add">
@@ -66,12 +81,13 @@ const AdressMain = () => {
                     <h3>Платёжный адрес:</h3>
                 </div>
                 {
-                    adress ? null : 
+                    adressUserDB.length > 0  ? null : 
                         <div className="user-content__button">
                             <button onClick={() => onChangeFormEditing()} className="user-content__link">Добавить</button>
                         </div>
                 }
             </div> 
+
             {
                 form ? 
                         <form onSubmit={(e) => formData(e)}  className="user-content__form ">
@@ -95,12 +111,21 @@ const AdressMain = () => {
             }
 
             {   
-                    ( Object.keys(object).length > 0) ? 
+                    (adressUserDB.length > 0) ? 
                     <div className="user-content__adress">
                         {
                             timerId ?  <SucsessMessage/> : null
                         }
-                        <Adress data={object}/>
+                        <div className="user-content__text">
+                            {
+                                adressUserDB.map((item, i) => {
+                                    const param = item + ","
+                                    return (
+                                        <p>{param}</p>
+                                    )
+                                })
+                            }
+                        </div>
                         <div className="user-content__button">
                             <button onClick={() => onChangeFormEditing()}  className="user-content__link">Изменить</button>
                         </div>
@@ -110,22 +135,6 @@ const AdressMain = () => {
         </>
     )
 }
-
-const Adress = ({data}) => {
-    return (
-        <div className="adress-user__items">
-            {
-                Object.values(data).map((item, i) => {
-                    const param = item + ","
-                    return (
-                        <p className="adress-user" key={i}>{param}</p> 
-                    )
-                })
-            }
-        </div>
-    )
-}
-
 const SucsessMessage = () => {
     return (
         <div className="user-content__block-info block-info">

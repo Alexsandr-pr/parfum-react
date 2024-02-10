@@ -1,8 +1,8 @@
 
 import {Routes, Route} from "react-router-dom"
-import { useContext } from "react";
+import { useContext , useEffect} from "react";
 import { Context } from "./myContext/MyContext";
-
+import { useDispatch } from "react-redux";
 import Home from "./Homepage";
 import About from "./Aboutpage/Aboutpage";
 import Layout from "./Layout/layout";
@@ -15,9 +15,16 @@ import MalePage from "./Malepage/Malepage";
 import Unisexpage from "./Unisexpage/Unisexpage";
 import Femalepage from "./Femalepage/Femalepage";
 import PlaceInOrderPage from "./PlaceInOrderPage/PlaceInOrderPage"
+import { auth } from "../action/user";
 
 function App () {
-    
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(auth())
+    }, [])
+
+
     const {cardNumber, onChangeCardNumber} = useContext(Context);
     const {dataCart, setDataCart} = useContext(Context);
     const onAddToCart = (newCard, id, value) => {

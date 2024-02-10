@@ -1,9 +1,13 @@
 
+import { useSelector } from "react-redux";
+
 import user from "./img/user-photo.svg"
 
 import "./progress-info.scss";
 
 const PersonInfo = () => {
+    const currentUser = useSelector(state => state.user.currentUser);
+    const {userSale} = currentUser;
     return (
         <>
                 <div className="user-content__person person-info">
@@ -11,7 +15,7 @@ const PersonInfo = () => {
                         <div className="person-info__content">
                             <div className="person-info__content-item">
                                 <p>Ваш статус:</p>
-                                <p> Новый покупатель</p>
+                                <p>Новый покупатель</p>
                             </div>
                             <div className="person-info__content-item">
                                 <p>Ваш кэшбек: </p>
@@ -19,7 +23,7 @@ const PersonInfo = () => {
                             </div>
                             <div className="person-info__content-item">
                                 <p>Баллов сейчас: </p>
-                                <p>100 баллов</p>
+                                <p>{userSale} баллов</p>
                             </div>
                         </div>
                         <div className="person-info__images">

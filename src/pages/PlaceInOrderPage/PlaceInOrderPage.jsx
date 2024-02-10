@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react"
-import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs"
-import Label from "../../components/forms/label/Label"
-import ParentModal from "../../components/modals/parent-modal/ParentModal"
-import ModalOrder from "../../components/modals/modalOrder/ModalOrder"
-import "./place-in-order-page.scss"
-import CartModal from "../../components/cart/CartModal/CartModal"
-import { useContext } from "react"
-import { Context } from "../myContext/MyContext"
+import { useEffect, useState } from "react";
+import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
+import Label from "../../components/forms/label/Label";
+import ParentModal from "../../components/modals/parent-modal/ParentModal";
+import ModalOrder from "../../components/modals/modalOrder/ModalOrder";
+import "./place-in-order-page.scss";
+import CartModal from "../../components/cart/CartModal/CartModal";
+import { useContext } from "react";
+import { Context } from "../myContext/MyContext";
+import { changeSaleUserDB } from "../../action/user";
+import { useSelector } from "react-redux";
 
 const PlaceInOrderPage = () => {
     const {dataCart, setDataCart} = useContext(Context)
+    const {sale} = useContext(Context)
+    const emailCurrentUser = useSelector(state => state.user.currentUser.email)
+    const isAuth = useSelector(state => state.user.isAuth);
 
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
@@ -43,21 +48,26 @@ const PlaceInOrderPage = () => {
             setInscription("");
             setDataCart([]);
             setActive(true);
+            if(isAuth) {
+                changeSaleUserDB(sale, emailCurrentUser);
+            }
+            
         }
     }
 
-
     const [active, setActive] = useState(false);
+
     const onActive = (e) => {
         if(e.target.classList.contains("close")) {
             setActive(false)
         }
     }
 
-
     useEffect(() => {
         Object.values(dataOrder).length > 0 ? setDisabled(false) : setDisabled(true)
     }, [data])
+
+
     return (
 
         <>

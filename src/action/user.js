@@ -23,8 +23,7 @@ export const login =  (email, password, remember) => {
                 email,
                 password
             })
-            dispatch(setUser(response.data.user))
-            
+            dispatch(setUser(response.data.user)) 
             remember && localStorage.setItem('token', response.data.token)
         } catch (e) {
             alert(e.response.data.message)
@@ -56,10 +55,23 @@ export const addUserAdress = async (adress, email) => {
             adress,
             email
         });
-        console.log(response.data);
+        
         return response.data; 
-        } catch(e) {
+    } catch(e) {
         console.error(e); 
         throw e; 
-        }
+    }
+}
+
+
+export const changeSaleUserDB = async (sale, email) => {
+    try {
+        const response = await axios.post(`http://localhost:5000/api/auth/sale`, {
+            sale, email
+        });
+        return response.data; 
+    } catch(e) {
+        console.error(e); 
+        throw e; 
+    }
 }

@@ -1,14 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../../../pages/myContext/MyContext";
-
+import {useSelector} from "react-redux";
 import Button from "../../buttons/button/Buttons"
 import Label from "../../forms/label/Label";
 
 
 const CartWindow = ({disabled}) => {
+
+    const saleCurrentUserBD = useSelector(state => state.user.currentUser.userSale) || 0;
     
     const [activeLabel, setActiveLabel] = useState(false)
-    const {sale, setSale} = useContext(Context)
+    const {sale, setSale, onChangeSaleUser} = useContext(Context)
     
     const onAddForm = () => {
         setActiveLabel(prev => !prev)
@@ -25,7 +27,7 @@ const CartWindow = ({disabled}) => {
                                 <path fillRule="evenodd" clipRule="evenodd" d="M17.8334 4C18.3856 4 18.8334 4.44772 18.8334 5V6.22227H19.5334C20.0856 6.22227 20.5334 6.66998 20.5334 7.22227C20.5334 7.77455 20.0856 8.22227 19.5334 8.22227H16.9834C16.4221 8.22227 16 8.66424 16 9.16563V9.16674C16 9.66918 16.4227 10.1112 16.9834 10.1112H18.689C19.4711 10.1112 20.2259 10.418 20.7866 10.9644M16.8334 6.22596V5C16.8334 4.44772 17.2811 4 17.8334 4M16.8334 6.22596C15.2747 6.30285 14 7.57113 14 9.16563V9.16674C14 10.812 15.3568 12.1112 16.9834 12.1112H18.689C18.9496 12.1112 19.2035 12.2143 19.3907 12.3968C19.5688 12.5703 19.6666 12.8048 19.6666 13.0545V13.0556C19.6666 13.306 19.5684 13.5413 19.3908 13.7143L19.39 13.7151C19.2056 13.8952 18.9519 13.9998 18.6833 14C18.6832 14 18.6834 14 18.6833 14H16.1333C15.581 14 15.1333 14.4477 15.1333 15C15.1333 15.5523 15.581 16 16.1333 16H16.8334V17.2223C16.8334 17.7746 17.2811 18.2223 17.8334 18.2223C18.3856 18.2223 18.8334 17.7746 18.8334 17.2223V15.9962C19.5643 15.9598 20.2611 15.6599 20.7873 15.146C21.3572 14.5903 21.6666 13.836 21.6666 13.0556V13.0545C21.6666 12.2731 21.3564 11.5198 20.7866 10.9644" fill="#645C4F"/>
                             </svg>
                         </span>
-                        <p>У вас сейчас есть 100 баллов. Используйте их, чтобы получить скидку 100 ₽ на эту покупку</p>
+                        <p>У вас сейчас есть {saleCurrentUserBD} баллов. Используйте их, чтобы получить скидку {saleCurrentUserBD + " ₴"} на эту покупку</p>
                     </div>
                     <div className="cart-preview__button">
                         <Button disabled={disabled}  onClickButton={onAddForm} title={"Потратить баллы"}/>
@@ -33,7 +35,7 @@ const CartWindow = ({disabled}) => {
                     
                     {   
                         activeLabel &&  <div className="cart-preview__label">
-                                            <Label setValue={setSale} value={sale} type={"tel"} name={"sale"} text={"Use your points"}/>
+                                            <Label setValue={onChangeSaleUser} value={sale} type={"tel"} name={"sale"} text={"Use your points"}/>
                                         </div>
                     }
                 </div>
