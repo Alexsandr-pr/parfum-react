@@ -1,12 +1,13 @@
 import axios from 'axios'
 import { setUser } from '../reducers/userReducer'
 
-export const registration = async (email, password, gender) => {
+export const registration = async (email, password, gender, bonus) => {
     try {
         const response = await axios.post(`http://localhost:5000/api/auth/registration`, {
             email,
             password,
-            gender
+            gender,
+            bonus
         })
         alert(response.data.message)
     } catch (e) {
@@ -40,7 +41,6 @@ export const auth =  () => {
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
         } catch (e) {
-            alert(e.response.data.message)
             localStorage.removeItem('token')
         }
     }
@@ -63,11 +63,13 @@ export const addUserAdress = async (adress, email) => {
     }
 }
 
+export const addOrderMongoUser = async (dataOrder, sale, email) => {
 
-export const changeSaleUserDB = async (sale, email) => {
     try {
-        const response = await axios.post(`http://localhost:5000/api/auth/sale`, {
-            sale, email
+        const response = await axios.post(`http://localhost:5000/api/auth/order`, {
+            dataOrder, 
+            sale,
+            email
         });
         return response.data; 
     } catch(e) {

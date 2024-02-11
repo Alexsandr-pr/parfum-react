@@ -80,7 +80,7 @@ const Login = () => {
                     <ul className="re-catcha pol-list">
                         <li className="pol-list__item">
                             <label onClick={() => onActiveModal()} className="pol-list__label">
-                                <input type="checkbox" required checked={checked} name="pol" className="pol-list__input"/>
+                                <input type="checkbox" required defaultChecked={checked} name="pol" className="pol-list__input"/>
                                 <span className="pol-list__span"></span>
                                 <p className="pol-list__p">Я не робот</p>
                             </label>

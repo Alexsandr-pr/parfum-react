@@ -1,10 +1,32 @@
+import { useSelector} from "react-redux"
+
 import OrderItem from "../order-item/OrderItem";
 
-import "./order-block.scss"
+import "./order-main.scss"
 
 const OrderMain = () => {
+
+    const orderData = useSelector(state => state.user.currentUser.order) || [];
+
+
     return (
         <>
+            {
+                Object.keys(orderData).length <= 0 ? <Eleme/>:  null
+            }
+
+            {
+                Object.keys(orderData).length > 0 &&    <div className="user-content__order-block order-block">
+                                                            <OrderItem data={orderData}/>
+                                                        </div> 
+            }
+        </>
+    )
+}
+
+const Eleme = () => {
+    return (
+        <> 
             <div className="user-content__title title-24">
                 <h2>Заказы</h2>
             </div>
@@ -19,10 +41,6 @@ const OrderMain = () => {
                     </div>
                     <p className="block-info__text">Вы пока не совершали заказов :(</p>  
                 </div>
-            </div>
-
-            <div className="user-content__order-block order-block">
-                <OrderItem/>
             </div>
         </>
     )

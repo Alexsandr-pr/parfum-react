@@ -128,7 +128,6 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
         onChangePageNumber();
     },[ sex, filter, newData])
 
-
     const lastCountryIndex = currentPage * countriesPerPage;
     const firstCountryIndex = lastCountryIndex - countriesPerPage;
     const currentCountry = filterPosts.length === 0 ? posts.slice(firstCountryIndex, lastCountryIndex) : filterPosts.slice(firstCountryIndex, lastCountryIndex);

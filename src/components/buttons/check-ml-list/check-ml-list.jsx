@@ -17,12 +17,13 @@ const CheckMlList = ({name, onChangeValue, valueMl}) => {
                     dataSize.map(({value}) => {
                         return (
                             <label 
+                                key={value}
                                 onChange={() => onChangeValue(value)}
                                 tabIndex="0" className=" flacon-size__label">					
                                 <input 
                                     type="radio"  
                                     className="flacon-size__input" 
-                                    checked={value === valueMl} 
+                                    defaultChecked={value === valueMl} 
                                     name={name} 
                                     value={value}
                                 />

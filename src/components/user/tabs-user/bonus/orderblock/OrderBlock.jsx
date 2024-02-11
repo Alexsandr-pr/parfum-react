@@ -1,23 +1,31 @@
+import { useSelector } from "react-redux"
 import "./order-block.scss"
 
 
-const data = [
-    {data: "1.07.2023 21:05", balls: "100", reason: "Регистрация"},
-    {data: "1.07.2023 21:05", balls: "180", reason: "Покупки"},
-    {data: "1.07.2023 21:05", balls: "200", reason: "Отзыв"}
-]
 
 const OrderBlock = () => {
+    const dataBallsChange = useSelector(state => state.user.currentUser.bonus) || [];
+    const months = [
+        "января", "февраля", "марта", "апреля", "мая", "июня",
+        "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+
     return (
         <>
             <div className="user-content__order-block order-block">
                 {
-                    data.map(({data, balls, reason}, i) =>  {
+                    dataBallsChange.map(({date, balls, reason}, i) =>  {
+
+                        
+                        const data = new Date(date)
+                        const day = data.getDate();
+                        const monthIndex = data.getMonth();
+                        const year = data.getFullYear();
+
                         return (
                             <div key={i} className="order-block__item">
                                 <div className="order-block__header">
                                     <div className="order-block__title">
-                                        <span>{data}</span>
+                                        <span>{`${day} ${months[monthIndex]} ${year}`}</span>
                                     </div>
                                 </div> 
                                 <div className="order-block__content">
@@ -27,7 +35,7 @@ const OrderBlock = () => {
                                     </div>
                                     <div className="order-block__content-item">
                                         <p>Дата: </p>
-                                        <p>{data}</p>
+                                        <p>{`${day} ${months[monthIndex]} ${year}`}</p>
                                     </div>
                                     <div className="order-block__content-item">
                                         <p>Причина: </p>

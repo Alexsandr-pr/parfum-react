@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
 import Label from "../../components/forms/label/Label";
 import ParentModal from "../../components/modals/parent-modal/ParentModal";
 import ModalOrder from "../../components/modals/modalOrder/ModalOrder";
-import "./place-in-order-page.scss";
 import CartModal from "../../components/cart/CartModal/CartModal";
 import { useContext } from "react";
 import { Context } from "../myContext/MyContext";
-import { changeSaleUserDB } from "../../action/user";
+import { addOrderMongoUser } from "../../action/user";
 import { useSelector } from "react-redux";
+import BonusUser from "../../action/bonus";
+import Order from "./orderModel";
+
+import "./place-in-order-page.scss";
 
 const PlaceInOrderPage = () => {
+
+
     const {dataCart, setDataCart} = useContext(Context)
     const {sale} = useContext(Context)
     const emailCurrentUser = useSelector(state => state.user.currentUser.email)
@@ -27,15 +32,37 @@ const PlaceInOrderPage = () => {
     const [email, setEmail] = useState("");
     const [inscription, setInscription] = useState("");
 
-    const [data, setData] = useState([]);
     const [disabled, setDisabled] = useState(false)
     const dataOrder = dataCart.filter(item => item.order);
     const {allPrice} = useContext(Context);
 
-    const formData = (e) => {
+    const formData = async (e) => {
         e.preventDefault()
         if(Object.values(dataOrder).length > 0) {
-            setData({name, surname, country, adress, locality, region, zip, tel, email, inscription, dataOrder, allPrice})
+
+            const completed = true;
+
+            const obj = await new Order(
+                name,
+                surname,
+                country, 
+                adress, 
+                locality, 
+                region, 
+                zip, 
+                tel, 
+                email, 
+                inscription, 
+                dataOrder, 
+                allPrice, 
+                completed,
+            )
+
+            const bonus = new BonusUser()
+            if(isAuth) {
+                addOrderMongoUser(obj, sale, emailCurrentUser);
+            }
+
             setName("");
             setSurname("");
             setCountry("");
@@ -48,13 +75,10 @@ const PlaceInOrderPage = () => {
             setInscription("");
             setDataCart([]);
             setActive(true);
-            if(isAuth) {
-                changeSaleUserDB(sale, emailCurrentUser);
-            }
             
         }
     }
-
+    
     const [active, setActive] = useState(false);
 
     const onActive = (e) => {
@@ -62,11 +86,6 @@ const PlaceInOrderPage = () => {
             setActive(false)
         }
     }
-
-    useEffect(() => {
-        Object.values(dataOrder).length > 0 ? setDisabled(false) : setDisabled(true)
-    }, [data])
-
 
     return (
 

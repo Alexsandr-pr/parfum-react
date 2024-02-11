@@ -121,7 +121,7 @@ const AdressMain = () => {
                                 adressUserDB.map((item, i) => {
                                     const param = item + ","
                                     return (
-                                        <p>{param}</p>
+                                        <p key={i}>{param}</p>
                                     )
                                 })
                             }

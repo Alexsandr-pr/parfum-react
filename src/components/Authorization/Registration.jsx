@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-
+import BonusUser from "../../action/bonus";
 import { registration } from "../../action/user";
 
 import Label from "../forms/label/Label";
@@ -48,6 +48,20 @@ const Registration = () => {
         onChangeSumm()
     }, [summ])
 
+
+    const registrationUser = (e) => {
+        e.preventDefault();
+        const balls = 100;
+        const reason = "Регистрация"
+        const obj = new BonusUser(balls, reason)
+        registration(email, password, gender, obj );
+        setPassword("");
+        setEmail("");
+        setChecked(false);
+        setDisabled(true);
+    }
+
+
     return (
         <>
             <div className="login-block__item">
@@ -81,7 +95,7 @@ const Registration = () => {
                     <ul className="re-catcha pol-list">
                         <li className="pol-list__item">
                             <label onClick={() => onActiveModal()} className="pol-list__label">
-                                <input type="checkbox" required checked={checked} name="pol" className="pol-list__input"/>
+                                <input type="checkbox" required defaultChecked={checked} name="pol" className="pol-list__input"/>
                                 <span className="pol-list__span"></span>
                                 <p className="pol-list__p">Я не робот</p>
                             </label>
@@ -91,14 +105,7 @@ const Registration = () => {
                     <div className="login-block__button button-add-to-cart-obol">
                         <button
                         disabled={disabled}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            registration(email, password, gender);
-                            setPassword("");
-                            setEmail("");
-                            setChecked(false);
-                            setDisabled(true);
-                        }}
+                        onClick={(e) =>registrationUser(e)}
                         
                         className="login-block__btn button-add-to-cart"><span>Регистрация</span></button>
                     </div>

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Context } from "../../../pages/myContext/MyContext";
-
+import {useSelector}  from "react-redux"
 import numberWithSpaces from "../../buttons/numberWithSpace/numberWithSpace";
 
 import "./CartModal.scss"
@@ -12,7 +12,7 @@ const CartModal = ({
 }) => {
     
     const {dataCart, sale, allPrice} = useContext(Context);
-    
+    const userCachback = useSelector(state => state.user.currentUser.cachback)
 
     return (
         <div className="cart__block-right _container">
@@ -36,7 +36,7 @@ const CartModal = ({
                             </li>
                             <li className="item-order__item">
                                 <p>Кэшбэк</p>
-                                <p>{Math.floor(allPrice / 100)} баллов</p>
+                                <p>{Math.floor((allPrice * userCachback) /100)} баллов</p>
                             </li> 
                             {
                                 childrenPay
