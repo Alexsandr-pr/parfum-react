@@ -135,20 +135,20 @@
     border-radius:4px;
     position: relative;
     background: #0E0D0C;
-    &::after {
+    .after {
         left: 0;
         top: 0;
         content:"";
         position: absolute;
-        width: 60%;
+        width: 0%;
         height: 4px;
         border-radius: 4px;
         background: #FFEBCC;
         z-index: 3;
     }
-    &::before {
+    .before {
         top: -3px;
-        left: calc(60% - 4px);
+        left: calc(0% - 4px);
         position: absolute;
         width: 9px;
         height: 9px;

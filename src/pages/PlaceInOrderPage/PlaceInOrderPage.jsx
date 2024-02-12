@@ -18,7 +18,7 @@ const PlaceInOrderPage = () => {
 
     const {dataCart, setDataCart} = useContext(Context)
     const {sale} = useContext(Context)
-    const emailCurrentUser = useSelector(state => state.user.currentUser.email)
+    const currentUser = useSelector(state => state.user.currentUser)
     const isAuth = useSelector(state => state.user.isAuth);
 
     const [name, setName] = useState("");
@@ -57,10 +57,11 @@ const PlaceInOrderPage = () => {
                 allPrice, 
                 completed,
             )
-
-            const bonus = new BonusUser()
+            let balls = Math.floor((allPrice * currentUser.cachback) / 100);
+            let reason = "Покупки"
+            const bonus = new BonusUser(balls, reason)
             if(isAuth) {
-                addOrderMongoUser(obj, sale, emailCurrentUser);
+                addOrderMongoUser(obj, sale, currentUser.email,bonus );
             }
 
             setName("");

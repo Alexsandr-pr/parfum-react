@@ -63,13 +63,14 @@ export const addUserAdress = async (adress, email) => {
     }
 }
 
-export const addOrderMongoUser = async (dataOrder, sale, email) => {
+export const addOrderMongoUser = async (dataOrder, sale, email, bonus) => {
 
     try {
         const response = await axios.post(`http://localhost:5000/api/auth/order`, {
             dataOrder, 
             sale,
-            email
+            email,
+            bonus
         });
         return response.data; 
     } catch(e) {

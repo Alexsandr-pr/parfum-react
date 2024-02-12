@@ -33,12 +33,16 @@ function App () {
 
         if(indexValue !== - 1) {
             setDataCart((prev) => {
+                
                 const start = prev.slice(0, indexValue)
                 let element = prev[indexValue]
                 const end = prev.slice(indexValue + 1)
                 element = { ...element, quantity: element.quantity + newCard.quantity };
                 return [...start, element, ...end]
+                
                 /*
+                    
+
                     const updatedCart = prev.map((item, i) => {
                         if (i === indexValue) {
                             return { ...item, quantity: item.quantity + 1 };
@@ -46,6 +50,7 @@ function App () {
                             return item;
                         }
                     });
+                    
                     return updatedCart;                
                 */
             });

@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 import Parent from "../../../../buttons/parent/Parent";
 import numberWithSpaces from "../../../../buttons/numberWithSpace/numberWithSpace";
@@ -8,10 +9,17 @@ const OrderItem = ({data}) => {
         "января", "февраля", "марта", "апреля", "мая", "июня",
         "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 
+    const [numberOnShow, setNumberOnShow] = useState(3);
+    const dataReverse = data.reverse();
+
     return (
+
         <>
             {
-                data.map((item, i) => {
+                dataReverse.map((item, i) => {
+                    if(i >= numberOnShow)  {
+                        return
+                    }
                     const {completed, dataOrder, allPrice, timeOrder, tel} = item;
                     const data = new Date(timeOrder)
                     const day = data.getDate();
@@ -51,13 +59,18 @@ const OrderItem = ({data}) => {
                                                 )
                                             })
                                         }
-                                        
                                     </div>
                                 </Parent>   
                             </div>
                         </div>
                     )
                 })
+            }
+            {
+                numberOnShow < Object.keys(data).length ?
+                    <div className="catalog-description__btn-add">
+                        <button onClick={() => setNumberOnShow(prev => prev + 3) }>Показать еще</button>
+                    </div> : null
             }
         </>
     )

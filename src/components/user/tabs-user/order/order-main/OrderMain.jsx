@@ -8,11 +8,10 @@ const OrderMain = () => {
 
     const orderData = useSelector(state => state.user.currentUser.order) || [];
 
-
     return (
         <>
             {
-                Object.keys(orderData).length <= 0 ? <Eleme/>:  null
+                Object.keys(orderData).length <= 0 ? <Element/>:  null
             }
 
             {
@@ -24,7 +23,7 @@ const OrderMain = () => {
     )
 }
 
-const Eleme = () => {
+const Element = () => {
     return (
         <> 
             <div className="user-content__title title-24">
