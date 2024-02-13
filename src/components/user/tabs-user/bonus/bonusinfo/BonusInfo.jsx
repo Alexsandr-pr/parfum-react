@@ -11,13 +11,12 @@ const BonusInfo = ({currentUser}) => {
     let number = 5;
     let cachback = 2;
     const orderLenght = Object.keys(order).length;
-    if(orderLenght < 5) {
-        
-    } else if(orderLenght >= 5) {
+    if(orderLenght >= 5) {
         number = 15;
         cachback = 3;
         status = "Постоянный покупатель";
     }
+
     return (
         <div  className="user-content__info">
             <div className="user-content__block-info block-info">

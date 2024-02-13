@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { setUser } from '../reducers/userReducer'
+import { API_URL } from '../config'
 
 export const registration = async (email, password, gender, bonus) => {
     try {
-        const response = await axios.post(`http://localhost:5000/api/auth/registration`, {
+        const response = await axios.post(`${API_URL}api/auth/registration`, {
             email,
             password,
             gender,
@@ -20,7 +21,7 @@ export const registration = async (email, password, gender, bonus) => {
 export const login =  (email, password, remember) => {
     return async dispatch => {
         try {
-            const response = await axios.post(`http://localhost:5000/api/auth/login`, {
+            const response = await axios.post(`${API_URL}api/auth/login`, {
                 email,
                 password
             })
@@ -35,7 +36,7 @@ export const login =  (email, password, remember) => {
 export const auth =  () => {
     return async dispatch => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/auth/auth`,
+            const response = await axios.get(`${API_URL}api/auth/auth`,
                 {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
             )
             dispatch(setUser(response.data.user))
@@ -46,12 +47,43 @@ export const auth =  () => {
     }
 }
 
+export const uploadAvatar =  (file) => {
+    return async dispatch => {
+        try {
+            const formData = new FormData()
+            formData.append("file", file)
+            const response = await axios.post(`${API_URL}api/files/avatar`,formData, 
+                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
+            )
+            dispatch(setUser(response.data))
+            
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+export const deleteAvatar =  () => {
+    return async dispatch => {
+        try {
+            
+            const response = await axios.delete(`${API_URL}api/files/avatar`,
+                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
+            )
+            dispatch(setUser(response.data))
+            
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+
 
 /******************** */
 
 export const addUserAdress = async (adress, email) => {
     try {
-        const response = await axios.post(`http://localhost:5000/api/auth/adress`, {
+        const response = await axios.post(`${API_URL}api/auth/adress`, {
             adress,
             email
         });
@@ -66,7 +98,7 @@ export const addUserAdress = async (adress, email) => {
 export const addOrderMongoUser = async (dataOrder, sale, email, bonus) => {
 
     try {
-        const response = await axios.post(`http://localhost:5000/api/auth/order`, {
+        const response = await axios.post(`${API_URL}api/auth/order`, {
             dataOrder, 
             sale,
             email,

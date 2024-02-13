@@ -1,12 +1,14 @@
 
-
-import user from "./img/user-photo.svg"
-
 import "./progress-info.scss";
+import userDefault from "./img/user-default.png";
+import plus from "./img/plus.svg";
+import ParentModal from "../../../../modals/parent-modal/ParentModal"
+import ModalUploadAvatar from "../../../../modals/modalUploadAvatar/ModalUploadAvatar"
+import {  useState } from "react";
+import { API_URL } from "../../../../../config";
 
 const PersonInfo = ({currentUser}) => {
-    
-    
+    const avatar = currentUser.avatar ? `${API_URL + currentUser.avatar}` : userDefault;
 
     const {userSale, cachback, order} = currentUser;
     const orderLenght = Object.keys(order).length;
@@ -23,6 +25,12 @@ const PersonInfo = ({currentUser}) => {
     
     const styleAfter = {"width" : `${((orderLenght <=15 ? orderLenght : 15) / 15) * 100}%`};
     const styleBefore = {"left": `calc(${((orderLenght <=15 ? orderLenght : 15) / 15) * 100}% - 4px)` }
+
+    const [active, setActive] = useState(false);
+    const onActive = (e) => {
+        e.target.classList.contains("close") && setActive(false);
+    } 
+
     return (
         <>
                 <div className="user-content__person person-info">
@@ -42,12 +50,18 @@ const PersonInfo = ({currentUser}) => {
                             </div>
                         </div>
                         <div className="person-info__images">
-                            <div className="person-info__img">
-                                <img src={user} alt="user photo"/>
-                            </div>
+                            <img onClick={(e) => setActive(e)}s className="person-info__image" src={avatar} alt="user-photo" />
+                            <span className="person-info__star-1">
+                                <Star color={orderLenght > 5}/>
+                            </span>
+                            <span className="person-info__star-2">
+                                <Star color={((orderLenght > 5) && (orderLenght <= 15))}/>
+                            </span>
+                            <span className="person-info__star-3">
+                                <Star color={orderLenght >= 15}/>
+                            </span>
                         </div>
                     </div>
-                    
                     <div className="person-info__progress">
                         <div className="progress__person">
                             <span style={styleAfter} className="after"></span>
@@ -58,8 +72,25 @@ const PersonInfo = ({currentUser}) => {
                         <span title="Постоянный покупатель" className="person-info__span person-info__old"></span>
                     </div>
                 </div>
+
+                {
+                    <ParentModal close={false} onActive={onActive} active={active}>
+                        <ModalUploadAvatar onActive={onActive} setActive={setActive}/>
+                    </ParentModal>
+                }
         </>
     )
 }
+
+
+
+const Star = ({color}) => {
+
+    const style = {"color": color ? "" : "#36332E"}
+    return (
+        <i style={style} className="fa-solid fa-star"></i>
+    )
+}
+
 
 export default PersonInfo;
