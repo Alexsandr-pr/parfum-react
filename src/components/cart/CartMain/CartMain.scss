@@ -55,3 +55,6 @@
         width: 245px;
     }
 }
+.message-text {
+    width: clamp(300px, 50%, 600px);
+}

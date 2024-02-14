@@ -1,14 +1,22 @@
+import { useState } from "react";
+
 import LabelPassword from "../../../../forms/label-password/LabelPassword";
 import Label from "../../../../forms/label/Label";
 import Title from "../../../title/Title";
-import { useState } from "react";
+import Button from "../../../../buttons/button/Buttons"
 
 const ProfileMain = () => {
 
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("")
+    const [newPassword, setNewPassword] = useState("")
+    const [confirmNewPassword, setConfirmPassword] = useState("");
 
+    const changeDataUser = () => {
+
+    }
 
     return (
         <>
@@ -22,17 +30,34 @@ const ProfileMain = () => {
                     <div className="user-content__text">
                         <p>Смена пароля</p>
                     </div>
-                    <div className="user-content__button">
-                        <div className="button-add-to-cart-obol">
-                            <button type="submit" className="user-content__btn button-add-to-cart"><span>Сохранить изменения</span></button>
-                        </div>
+                    <div className="login-block__label">
+                        <LabelPassword  
+                            value={password}   
+                            setValue={setPassword}  
+                            text={"Действующий пароль (не заполняйте, чтобы оставить прежний)"} 
+                            name={"password-active"}
+                        />
                     </div>
+                    <div className="login-block__label">
+                        <LabelPassword  
+                            setValue={setNewPassword}  
+                            text={"Новый пароль (не заполняйте, чтобы оставить прежний)"} 
+                            name={"new-password"}
+                            value={newPassword}
+                        />
+                    </div>
+                    <div className="login-block__label">
+                        <LabelPassword  
+                            value={confirmNewPassword}   
+                            setValue={setConfirmPassword}  
+                            text={"Подтвердите новый пароль"} 
+                            name={"confirmation-password"}
+                        />
+                    </div>   
+                    <Button type={"submit"} onClickButton={(e) =>changeDataUser(e) } title={"Сохранить изменения"}/>
                 </form>
         </>
     )
 }
 
-//<LabelPassword  text={"Действующий пароль (не заполняйте, чтобы оставить прежний)"} name={"password-active"}/>
-//<LabelPassword  text={"Новый пароль (не заполняйте, чтобы оставить прежний)"} name={"new-password"}/>
-//<LabelPassword  text={"Подтвердите новый пароль"} name={"confirmation-password"}/>
 export default ProfileMain;

@@ -41,7 +41,8 @@ const CardPage = ({
                 <section className="main__slider-card slider-card">
                     <div className="slider-card__graniza">
                         <div className="slider-card__body">
-                            <Title title={"Вам так же может понравиться"}/>
+                            
+                            <Title align={"center"} title={"Вам так же может понравиться"}/>
                             <SliderCardPage2 
                                 data={cardData}
                                 onAddToCart={onAddToCart} 

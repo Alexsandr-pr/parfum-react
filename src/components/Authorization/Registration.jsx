@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import BonusUser from "../../action/bonus";
+import BonusUser from "../../models/bonusModal";
 import { registration } from "../../action/user";
 
 import Label from "../forms/label/Label";

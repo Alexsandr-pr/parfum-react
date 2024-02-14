@@ -8,13 +8,19 @@ const MainCurrent = ({ current, onChangeCurrent, children}) => {
             <div className="current">
                 {children}
                 <div className="current__body">
-                    <div onClick={() => onChangeCurrent(-1)} id="btn-minus" className="current__btn ">
+                    <button disabled={current === 1} onClick={(e) => {
+                        e.preventDefault()
+                        onChangeCurrent(-1)
+                    }} id="btn-minus" className="current__btn ">
                         <i className="fa-solid fa-minus"></i>
-                    </div>
+                    </button>
                     <span className="current__input" value={current} >{current}</span>
-                    <div onClick={() => onChangeCurrent(+1)} id="btn-plus" className="current__btn ">
+                    <button  disabled={current === 100} onClick={(e) => {
+                        e.preventDefault()
+                        onChangeCurrent(+1)
+                    }} id="btn-plus" className="current__btn ">
                         <i className="fa-solid fa-plus"></i>
-                    </div>
+                    </button>
                 </div>
             </div>    
     )

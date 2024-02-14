@@ -10,6 +10,7 @@ const BonusMain = () => {
     return (
         <div className="user-content__bonus user-bonus">
             <Title title={'Бонусы'}/>
+            <p className="user-bonus__text-info">Нажмите на аватар чтобы удалить или добавить аватар</p>
             <PersonInfo currentUser={currentUser}/>
             <BonusInfo currentUser={currentUser}/>
             <Title title={'История бонусов'}/>

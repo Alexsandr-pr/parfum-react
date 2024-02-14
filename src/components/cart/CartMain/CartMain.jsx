@@ -7,6 +7,7 @@ import CartModal from "../CartModal/CartModal";
 import ParentFromReplace from "../../ParentFromReplace/ParentFromReplace";
 
 import "./CartMain.scss"
+import { useSelector } from "react-redux";
 
 const CartMain = ({
     dataCart, 
@@ -14,6 +15,7 @@ const CartMain = ({
     onChangeCurrentOnClick, 
     onToggleOrder, 
 }) => {
+    const isAuth = useSelector(state => state.user.isAuth)
 
     const dataOrder = dataCart.filter(item => item.order)
     return (
@@ -22,7 +24,11 @@ const CartMain = ({
             <div className="main__items-in-cart items-in-cart">
                 <div className="items-in-cart__container">
                     <div className="items-in-cart__label cart-preview">
-                        <CartWindow disabled={Object.values(dataOrder).length <= 0} />
+
+                        {
+                            isAuth ? <CartWindow disabled={Object.values(dataOrder).length <= 0} /> : <p className="message-text">Зарегистрируйтесь, чтобы при покупке получать баллы, которые вы сможете потратить для получения скидки при следующих покупках</p>
+                        }
+                        
                         <div className="cart-preview__items">
                             
                             {
@@ -63,7 +69,6 @@ const CartMain = ({
         </>
     )
 }
-
 
 
 

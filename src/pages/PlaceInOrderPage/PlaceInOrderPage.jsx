@@ -8,8 +8,10 @@ import { useContext } from "react";
 import { Context } from "../myContext/MyContext";
 import { addOrderMongoUser } from "../../action/user";
 import { useSelector } from "react-redux";
-import BonusUser from "../../action/bonus";
-import Order from "./orderModel";
+
+import BonusUser from "../../models/bonusModal";
+
+import Order from "../../models/orderModel";
 
 import "./place-in-order-page.scss";
 

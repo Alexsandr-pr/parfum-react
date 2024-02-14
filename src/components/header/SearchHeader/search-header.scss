@@ -7,7 +7,11 @@
     border-radius: 0px 0px 6px 6px;
     background: #211E1C;
     gap: 10px;
-    
+    @media(max-width:387.98px){
+        position: fixed;
+        left: 0;
+        top: 80px;
+    }
 }
 .filter {
     position: relative;

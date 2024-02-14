@@ -1,10 +1,12 @@
 import { useState } from "react";
 
+import CartModel from "../../../models/cartModel"
 import numberWithSpace from "../../buttons/numberWithSpace/numberWithSpace"
 import CheckMlList from "../../buttons/check-ml-list/check-ml-list";
 import MainCurrent from "../../main-current/main-current"
 import MainMore from "../main-more/main-more";
 import Button from "../../buttons/button/Buttons";
+import Title from "../../user/title/Title"
 
 import "./main-catalog.scss";
 
@@ -13,9 +15,10 @@ const MainCatalog = ({post, cardNumber, onAddToCart, setActive}) => {
     const {id,imageSrc,imageAlt, title, price,description} = post
     const [valueMl, setValueMl] = useState(100);
     const [current, setCurrent] = useState(1);
-    const onChangeValue = (value) => {
-        setValueMl(value)
-    }
+
+    const onChangeValue = (value) => setValueMl(value);
+        
+    
 
     const onChangeCurrent = (i) => {
         if(current >= 100) {
@@ -24,14 +27,23 @@ const MainCatalog = ({post, cardNumber, onAddToCart, setActive}) => {
         if(current  <= 1 ) {
             setCurrent(1)
         }
+        
         setCurrent(prev => prev + i)
     }
 
     let salePrice = (Math.floor((price * valueMl) / 100)) * current;
     let quantity = current
-    const onClickButton = (e) => {
+    const onClickButton = async (e) => {
         e.preventDefault()
-        onAddToCart({id,imageSrc, title, salePrice, valueMl, quantity}, id, valueMl)
+        const obj = await new CartModel(
+            id,
+            imageSrc, 
+            quantity, 
+            title,
+            salePrice, 
+            valueMl
+        )
+        onAddToCart(obj, id, valueMl)
     }
 
     return (
@@ -43,15 +55,14 @@ const MainCatalog = ({post, cardNumber, onAddToCart, setActive}) => {
                             <img src={imageSrc} alt={imageAlt}/>
                         </div>
                         <div className="main-catalog__content">
-                            <div className="main-catalog__title title-24">
-                                <h2>{title}</h2>
-                            </div>
+                            <Title title={title}/>
+                            
                             <form className="main-catalog__form">
                                 <div className="main-catalog__sub-title">
                                     <p>Объем мл.</p>
                                 </div>
                                 <div className="main-catalog__labels ">
-                                    <CheckMlList name={id} onChangeValue={onChangeValue}/>
+                                    <CheckMlList name={id} valueMl={valueMl} onChangeValue={onChangeValue}/>
                                 </div>
                                 <div className="main-catalog__current">
                                     <MainCurrent
@@ -70,7 +81,7 @@ const MainCatalog = ({post, cardNumber, onAddToCart, setActive}) => {
                                         </div>
                                     </div>
                                     <div className="main-catalog__button">
-                                        <Button onClickButton={onClickButton}/>
+                                        <Button disabled={ current === 0 } onClickButton={onClickButton}/>
                                     </div>
                                 </div>
                             </form>

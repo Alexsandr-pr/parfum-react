@@ -50,7 +50,7 @@ const PersonInfo = ({currentUser}) => {
                             </div>
                         </div>
                         <div className="person-info__images">
-                            <img onClick={(e) => setActive(e)}s className="person-info__image" src={avatar} alt="user-photo" />
+                            <img onClick={(e) => setActive(e)} className="person-info__image" src={avatar} alt="user-photo" />
                             <span className="person-info__star-1">
                                 <Star color={orderLenght > 5}/>
                             </span>
@@ -82,11 +82,9 @@ const PersonInfo = ({currentUser}) => {
     )
 }
 
-
-
 const Star = ({color}) => {
 
-    const style = {"color": color ? "" : "#36332E"}
+    const style = {"color": color ? "yellow" : "#36332E"}
     return (
         <i style={style} className="fa-solid fa-star"></i>
     )

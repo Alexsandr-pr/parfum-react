@@ -19,9 +19,12 @@
         color:#BEAE97;
         font-weight: 500;
         @media(hover:hover) {
-        &:hover {
-         cursor: pointer;
+            &:hover {
+                cursor: pointer;
+            }   
         }
+        &:disabled {
+            opacity: 0.3;
         }
     }
     // .current__input

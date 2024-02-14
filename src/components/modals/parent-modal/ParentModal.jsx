@@ -9,7 +9,19 @@ const ParentModal = ({
     children, 
     close
 }) => {
+    /*
+    const body = document.querySelector("body")
+    const header = document.querySelector("header")
 
+    body.style.cssText = `
+        padding-right:${active ? '16px' : "0px"};
+        overflow:${active ? "hidden" : ""};
+    `
+
+    header.style.cssText = `
+        padding-right:${active ? '16px' : "0px"};
+    `
+*/
     return (
         <div className={active ? "popap _active" : "popap"} >
             <div onClick={(e) => !close && onActive(e) }  className="popap__wrapper close">

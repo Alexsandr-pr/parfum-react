@@ -4,7 +4,7 @@ import Button from "../buttons/button/Buttons";
 import numberWithSpaces from "../buttons/numberWithSpace/numberWithSpace"
 
 import {  useState } from "react";
-
+import CartModel from "../../models/cartModel";
 import "./card.scss"
 
 const Card = ({
@@ -12,22 +12,28 @@ const Card = ({
     onChangeCardNumber, 
     onAddToCart
 }) => {
-    
+
     const {id,imageSrc,imageAlt, title, price, rating} = data
-
     const [valueMl, setValueMl] = useState(100);
-
+    
     const onChangeValue = (value) => {
         setValueMl(value)
     }
 
     let salePrice = Math.floor((price * valueMl) / 100)
-    let quantity = 1;
-    let order = true;
-    
+
     const onClickButton = (e) => {
         e.preventDefault()
-        onAddToCart({id,imageSrc, title, salePrice, valueMl, quantity, order}, id, valueMl)
+        let quantity = 1;
+        const obj = new CartModel(
+            id,
+            imageSrc, 
+            quantity,
+            title,
+            salePrice, 
+            valueMl
+        )
+        onAddToCart(obj, id, valueMl)
     }
 
     return (
