@@ -4,7 +4,8 @@ const ADD_FILE = "ADD_FILE"
 
 const defaultState = {
     files: [],
-    currentDir: null
+    currentDir: null,
+    
 }
 
 export default function fileReducer(state = defaultState, action ) {

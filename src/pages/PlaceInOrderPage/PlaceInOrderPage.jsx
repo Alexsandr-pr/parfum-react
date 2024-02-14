@@ -61,10 +61,14 @@ const PlaceInOrderPage = () => {
             )
             let balls = Math.floor((allPrice * currentUser.cachback) / 100);
             let reason = "Покупки"
-            const bonus = new BonusUser(balls, reason)
+            
             if(isAuth) {
-                addOrderMongoUser(obj, sale, currentUser.email,bonus );
+                balls = 0;
             }
+            const bonus = new BonusUser(balls, reason)
+            
+            addOrderMongoUser(obj, sale, currentUser.email, bonus );
+        
 
             setName("");
             setSurname("");

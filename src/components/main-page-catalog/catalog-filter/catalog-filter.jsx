@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import PolList from "./pol-list/pol-list";
 import SearchList from "./search/search-list/search-list";
@@ -19,12 +19,45 @@ const CatalogFilter = ({
     data, 
     onChangeFilterBrand
 }) => {
-    const [ activeFilter, setActiveFilter] = useState(false);
-    const [ inputValue, setSearchInput] = useState("");
+    const [inputValue, setSearchInput] = useState("");
+    const [activeTab1, setActiveTab1] = useState(false);
+    const [activeTab2, setActiveTab2] = useState(false);
 
-    const onChangeInputValue = (e) => {
-        setSearchInput(e.target.value)
+    const [width, setWidth] = useState(0)
+
+    let widt;
+    useEffect(() => {
+        widt = window.innerWidth;
+        setWidth(widt)
+        window.addEventListener("resize", () => {
+            setWidth(widt = window.innerWidth)
+        })
+    },[])
+
+
+    const onChangeActiveTab1 = () => {
+        setActiveTab1(prev => !prev)
     }
+    useEffect(() => {
+        if(width < 567.98) {
+            if(activeTab1) {
+                setActiveTab2(false)
+            }
+        }
+        
+    }, [activeTab1])
+    const onChangeActiveTab2 = () => {
+        setActiveTab2(prev => !prev)
+    }
+    useEffect(() => {
+        if(width < 567.98) {
+            if(activeTab2) {
+                setActiveTab1(false)
+            }
+        }
+    }, [activeTab2])
+    
+    const onChangeInputValue = (e) => setSearchInput(e.target.value)
 
     const onChangeFilterSelect = (data, value) => {
         if(value.lenght === 0) {
@@ -35,21 +68,21 @@ const CatalogFilter = ({
         })
     }
 
-    const onChangeActive = () => {
-        setActiveFilter(activeFilter => !activeFilter)
-    }
-
+    
+    
     return (
         <div className="main-cart__top-trigger  top-trigger-filter">
-            <div className={activeFilter ? "top-trigger-filter__item _active filter" : "top-trigger-filter__item  filter"}>
+            <div className={activeTab1 ? "top-trigger-filter__item _active filter" : "top-trigger-filter__item  filter"}>
                 <div  className="filter__button ">
                     <button 
-                        onClick={onChangeActive} 
+                        onClick={() => {
+                            onChangeActiveTab1()
+                        }} 
                         className="filter__btn filter__btn-popular"><p>Фильтры</p><span><i className="fa-solid fa-chevron-up"></i></span></button>
                 </div>
                 <div className="filter__content filter-content-1">
                     <form  className="filter-content__form">
-                        <Parent title={"Бренд"}>
+                        <Parent  title={"Бренд"}>
                             <div className="filter-content__list filter-search filter-content-items">
                                 <div className="filter-search__list search-list">
                                     <SeacrhInput onChangeInputValue={onChangeInputValue}/>
@@ -64,7 +97,7 @@ const CatalogFilter = ({
                                 </div>
                             </div>
                         </Parent>
-                        <Parent title={"Пол"}>
+                        <Parent  title={"Пол"}>
                             <PolList
                                 polList={polList} 
                                 onChangeRadioButton={onChangeRadioButton}/>
@@ -83,18 +116,17 @@ const CatalogFilter = ({
                 </div>
             </div>
             <div >
-                <FilterButton filter={filter}  onChangeFilter={onChangeFilter}/>
+                <FilterButton setActiveFilter={onChangeActiveTab2} activeTab2={activeTab2} filter={filter} onChangeFilter={onChangeFilter}/>
             </div>
         </div>
     )
 }
 
 const Parent = ({children, title}) => {
-    const [active, setAActive] = useState(false);
+    const [active, setActive] = useState(false);
     const onChangeActive = (e) => {
-
         e.preventDefault()
-        setAActive(prev => !prev)
+        setActive(prev => !prev)
     }
 
     return (

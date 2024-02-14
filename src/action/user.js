@@ -1,8 +1,10 @@
 import axios from 'axios'
-import { setUser } from '../reducers/userReducer'
+import { logout, setUser } from '../reducers/userReducer'
 import { API_URL } from '../config'
+import { modalActive } from '../reducers/userReducer'
 
-export const registration = async (email, password, gender, bonus) => {
+
+export const registration = async (email, password, gender, bonus, dispatch) => {
     try {
         const response = await axios.post(`${API_URL}api/auth/registration`, {
             email,
@@ -10,13 +12,12 @@ export const registration = async (email, password, gender, bonus) => {
             gender,
             bonus
         })
-        alert(response.data.message)
+        
+        dispatch(modalActive())
     } catch (e) {
         alert(e.response.data.message)
     }
-
 }
-
 
 export const login =  (email, password, remember) => {
     return async dispatch => {
@@ -47,6 +48,23 @@ export const auth =  () => {
     }
 }
 
+
+export const deleteUser = () => {
+    return async dispatch => {
+        try {
+            await axios.delete(
+                `${API_URL}api/auth/delete`,
+                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
+            );
+            dispatch(logout());
+        } catch (e) {
+            console.error(e); 
+        }
+    };
+};
+
+
+
 export const uploadAvatar =  (file) => {
     return async dispatch => {
         try {
@@ -62,10 +80,10 @@ export const uploadAvatar =  (file) => {
         }
     }
 }
+
 export const deleteAvatar =  () => {
     return async dispatch => {
         try {
-            
             const response = await axios.delete(`${API_URL}api/files/avatar`,
                 {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
             )
@@ -87,7 +105,6 @@ export const addUserAdress = async (adress, email) => {
             adress,
             email
         });
-        
         return response.data; 
     } catch(e) {
         console.error(e); 
@@ -95,9 +112,9 @@ export const addUserAdress = async (adress, email) => {
     }
 }
 
-export const addOrderMongoUser = async (dataOrder, sale, email, bonus) => {
-
+export const addOrderMongoUser = async (dataOrder, sale = 0, email, bonus) => {
     try {
+        console.log(dataOrder, sale , email, bonus)
         const response = await axios.post(`${API_URL}api/auth/order`, {
             dataOrder, 
             sale,
@@ -106,7 +123,17 @@ export const addOrderMongoUser = async (dataOrder, sale, email, bonus) => {
         });
         return response.data; 
     } catch(e) {
-        console.error(e); 
-        throw e; 
+        return alert("Errtor")
+    }
+}
+
+export const addOrderMongoNoUser = async (dataOrder) => {
+    try {
+        const response = await axios.post(`${API_URL}api/auth/order/nouser`, {
+            dataOrder
+        });
+        return response.data; 
+    } catch(e) {
+        return alert("Errtor")
     }
 }

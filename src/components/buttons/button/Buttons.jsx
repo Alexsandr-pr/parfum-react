@@ -29,7 +29,6 @@ const Button = ({
     return (
         <div className="button-add-body">
             <button 
-
                 disabled={loading || disabled}
                 onClick={(e) => {
                     onClickButton(e)

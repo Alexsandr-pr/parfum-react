@@ -4,15 +4,14 @@ import HeaderMale from "../header-male/header-male";
 
 import "./header-catalog-select.scss";
 
-const HeaderCatalogSelect = () => {
-    const [active, setActive] = useState(false);
+const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
+   
 
     const toggleActive = () => {
-        setActive(active => !active);
+        setActive(prev => !prev);
     }
-    const changeActive = () => {
-        setActive(false);
-    }
+
+
     return (
         <>
             <div className={ active ? "header-button active" : "header-button"}>

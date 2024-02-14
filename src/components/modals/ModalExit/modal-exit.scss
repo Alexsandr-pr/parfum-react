@@ -1,0 +1,18 @@
+
+
+
+.exit-modal__body {
+    padding: 30px 20px;
+    flex-direction: column;
+    display: flex;
+    gap: 20px;
+    @media(max-width:487.98px){
+        padding: 30px 0px;
+    }
+    .button-add-body {
+        width: 100%;
+    }
+}
+.exit__title {
+    font-size: 20px;
+}

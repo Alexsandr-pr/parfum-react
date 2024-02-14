@@ -1,5 +1,4 @@
 
-import { useState } from "react"
 
 import "./filter-button.scss"
 
@@ -9,13 +8,10 @@ const data = [
     { name: "ascending", label: "Цена по возрастанию"},
 ]
 
-const FilterButton = ({onChangeFilter, filter}) => {
+const FilterButton = ({onChangeFilter, filter, setActiveFilter, activeTab2}) => {
 
-    const [active, setActive] = useState(false)
-
-    const onChangeActive = () => setActive(active => !active);
-    
     let text = "По популярности";
+
     data.forEach(({name, label}) => name === filter ? text = label : null) 
 
     const elements = data.map(({name,label}) => {
@@ -33,9 +29,11 @@ const FilterButton = ({onChangeFilter, filter}) => {
 
 
     return (
-        <div className={active ? "top-trigger-filter__item _active filter-popular" : "top-trigger-filter__item filter-popular"}>
+        <div className={activeTab2 ? "top-trigger-filter__item _active filter-popular" : "top-trigger-filter__item filter-popular"}>
             <div  className="filter__button">
-                <button onClick={onChangeActive} className="filter__btn filter__btn-popular"><p>{text}</p> <span><i className="fa-solid fa-chevron-up"></i></span></button>
+                <button onClick={ () => {
+                    setActiveFilter()
+                }} className="filter__btn filter__btn-popular"><p>{text}</p> <span><i className="fa-solid fa-chevron-up"></i></span></button>
             </div>
             <div className="filter__content filter-content-2">
                 <ul className="filter__list">

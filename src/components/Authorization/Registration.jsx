@@ -9,10 +9,16 @@ import Title from "../user/title/Title"
 import ParentModal from "../modals/parent-modal/ParentModal";
 import ModalRe from "../modals/modal-re/ModalRe";
 import CheckedPol from "../forms/checked-pol/CheckedPol";
+import { useDispatch, useSelector } from "react-redux";
+import ModalExit from "../modals/ModalExit/ModalExit";
+import { modalOnActive } from "../../reducers/userReducer";
+
 
 const Registration = () => {
-    const [checked, setChecked] = useState(false)
+    const dispatch = useDispatch()
+    const modal = useSelector(state => state.user.modal);
 
+    const [checked, setChecked] = useState(false)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [active, setActive] = useState(false);
@@ -21,6 +27,7 @@ const Registration = () => {
     const [summ, setSumm] = useState(0);
     const [disabled, setDisabled] = useState(true)
     const [gender, setGender] = useState("male")
+
     function getRandomNumber() {
         return Math.floor(Math.random() * 51); 
     } 
@@ -54,13 +61,16 @@ const Registration = () => {
         const balls = 100;
         const reason = "Регистрация"
         const obj = new BonusUser(balls, reason)
-        registration(email, password, gender, obj );
+        registration(email, password, gender, obj, dispatch );
         setPassword("");
         setEmail("");
         setChecked(false);
         setDisabled(true);
     }
 
+    const onActiveThank = () => {
+        dispatch(modalOnActive())
+    }
 
     return (
         <>
@@ -114,8 +124,14 @@ const Registration = () => {
             <ParentModal active={active} close={true}>
                 <ModalRe onActive={onActive} setSumm={setSumm} disabled={disabled} number1={number1} number2={number2} />
             </ParentModal>
+            {
+                <ModalExit to={""} text={"Спасибо, что зарегистрировались."} cb={onActiveThank} titleButton={"Назад"} titleH={"Используйте кнопку ниже, чтобы вернуться назад"} active={modal} onActive={onActiveThank}/>
+            }
         </>
     )
 }
+
+
+
 
 export default Registration;

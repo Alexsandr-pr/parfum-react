@@ -84,6 +84,15 @@
         outline: none;
         box-shadow: 1px 1px 1px orange, 1px 1px 1px orange inset ;
     }
+    &._active {
+        span {
+            color: #36332E;
+            -webkit-text-fill-color: inherit;
+        }
+        &::before {
+            opacity: 1;
+        }
+    }
 }
 
 .image-loading {

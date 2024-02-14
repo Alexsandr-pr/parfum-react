@@ -40,6 +40,12 @@ const Header = () => {
         setActiveMobile(activeMobile => !activeMobile)
     }
 
+    const [active, setActive] = useState(false);
+    const changeActive = () => {
+        setActive(false);
+    }
+
+
     return (
         <>
             <header className={activeMobile ? "header fix-offset active" : "header fix-offset"}>
@@ -57,7 +63,7 @@ const Header = () => {
                             </Link>
                             <div className="header-bottom__form">
                                 <div className="header-ds">
-                                    <HeaderCatalogSelect/>
+                                    <HeaderCatalogSelect active={active} setActive={setActive} changeActive={changeActive}/>
                                     <HeaderSearchDesktop/>
                                 </div>
                                 <div onClick={changeActiveMobile} className="trigger-mobilke header-bottom__button">
@@ -84,7 +90,7 @@ const Header = () => {
                         <Link to="/" className="header__logo-mobile">
                             <HeaderLogo/>
                         </Link>
-                        <HeaderMale/>
+                        <HeaderMale changeActive={() => setActiveMobile(false)}/>
                         <div className="header__menu-mobile">
                             <HeaderTop/>
                         </div>

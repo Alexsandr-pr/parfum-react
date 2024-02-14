@@ -156,6 +156,8 @@
 .filter-content {
     //filter-content__form
     &__form {
+        z-index: 500;
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 20px;

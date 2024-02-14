@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import {useSelector} from "react-redux"
 import { addUserAdress } from "../../../../../action/user"
+import AdressModel from "../../../../../models/adressModel"
 
 import Label from "../../../../forms/label/Label"
 import Title from "../../../title/Title"
@@ -43,12 +44,11 @@ const AdressMain = () => {
     const [email, setEmail] = useState("");
 
     
-    const onCloseForm = () => {
-        setForm(false)
-    }
+    const onCloseForm = () => setForm(false)
+
     const formData = async (e) => {
         e.preventDefault();
-        await setObject({name, surname, country, adresss, region, zip, tel, email});
+        await setObject(new AdressModel(name, surname, country, adresss, region, zip, tel, email));
         onCloseForm();
         setAdress(true);
         setTimerId(true);
