@@ -1,60 +1,31 @@
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import BonusUser from "../../models/bonusModal";
 import { registration } from "../../action/user";
-
 import Label from "../forms/label/Label";
 import LabelPassword from "../forms/label-password/LabelPassword";
 import Title from "../user/title/Title"
-import ParentModal from "../modals/parent-modal/ParentModal";
-import ModalRe from "../modals/modal-re/ModalRe";
 import CheckedPol from "../forms/checked-pol/CheckedPol";
 import { useDispatch, useSelector } from "react-redux";
 import ModalExit from "../modals/ModalExit/ModalExit";
-import { modalOnActive } from "../../reducers/userReducer";
-
+import { modalTrueNoActive } from "../../reducers/userReducer";
+import {modalNoActiveError} from "../../reducers/userReducer";
+import Robots from "../robots/Robots";
 
 const Registration = () => {
     const dispatch = useDispatch()
     const modal = useSelector(state => state.user.modal);
+    const modalFalse = useSelector(state => state.user.modalFalse);
 
     const [checked, setChecked] = useState(false)
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [active, setActive] = useState(false);
-    const [number1, setNubmer1] = useState(0);
-    const [number2, setNubmer2] = useState(0);
-    const [summ, setSumm] = useState(0);
-    const [disabled, setDisabled] = useState(true)
     const [gender, setGender] = useState("male")
+    const [password, setPassword] = useState("");
+    const [disabled, setDisabled] = useState(true)
 
-    function getRandomNumber() {
-        return Math.floor(Math.random() * 51); 
-    } 
+    const [activeModalRobots, setActiveRobots] = useState(false);
 
-    const onActive = (e) => {
-        setActive(false)
-        setNubmer1(0)
-        setNubmer2(0)
-        setSumm(0)
-        setChecked(true)
-    } 
-
-    const onActiveModal = () => {
-        !checked &&  setNubmer1(getRandomNumber())
-        !checked &&  setNubmer2(getRandomNumber())
-        !checked &&  setActive(true)
-    }
-
-    const onChangeSumm = () => {
-        if(summ == number2 + number1 && summ !== 0) {
-            setDisabled(false)
-        }
-    }
-    useEffect(() => {
-        onChangeSumm()
-    }, [summ])
-
+    const onChangeModalRobots = (arg) =>  setActiveRobots(arg)
 
     const registrationUser = (e) => {
         e.preventDefault();
@@ -69,8 +40,23 @@ const Registration = () => {
     }
 
     const onActiveThank = () => {
-        dispatch(modalOnActive())
+        dispatch(modalTrueNoActive())
     }
+    
+    const onActiveErrorModal = () => {
+        dispatch(modalNoActiveError())
+        setPassword("");
+        setEmail("");
+        setChecked(false);
+        setDisabled(true);
+    }
+
+    useEffect(() => {
+        if(checked && email.length > 2 && gender && password.length >= 3) {
+            setDisabled(false);
+        }
+    }, [checked,email,gender,password ])
+
 
     return (
         <>
@@ -86,7 +72,8 @@ const Registration = () => {
                             required 
                             value={email} 
                             placeholder={"Enter your email"} 
-                            type={"email"} name={"email"} 
+                            type={"email"} 
+                            name={"email"} 
                             text={"Email"}
                         /> 
                     </div>
@@ -102,30 +89,26 @@ const Registration = () => {
                         <p>Пол</p>
                     </div>
                     <CheckedPol setGender={setGender} gender={gender}/>
-                    <ul className="re-catcha pol-list">
-                        <li className="pol-list__item">
-                            <label onClick={() => onActiveModal()} className="pol-list__label">
-                                <input type="checkbox" required defaultChecked={checked} name="pol" className="pol-list__input"/>
-                                <span className="pol-list__span"></span>
-                                <p className="pol-list__p">Я не робот</p>
-                            </label>
-                        </li>
-                    </ul>
-                    
+                    <Robots 
+                        setChecked={setChecked} 
+                        noActive={() => onChangeModalRobots(false)} 
+                        setActive={() => onChangeModalRobots(true)} 
+                        checked={checked} 
+                        active={activeModalRobots}
+                    />
                     <div className="login-block__button button-add-to-cart-obol">
                         <button
                         disabled={disabled}
-                        onClick={(e) =>registrationUser(e)}
-                        
+                        onClick={(e) => registrationUser(e)}
                         className="login-block__btn button-add-to-cart"><span>Регистрация</span></button>
                     </div>
                 </form>
             </div>
-            <ParentModal active={active} close={true}>
-                <ModalRe onActive={onActive} setSumm={setSumm} disabled={disabled} number1={number1} number2={number2} />
-            </ParentModal>
             {
-                <ModalExit to={""} text={"Спасибо, что зарегистрировались."} cb={onActiveThank} titleButton={"Назад"} titleH={"Используйте кнопку ниже, чтобы вернуться назад"} active={modal} onActive={onActiveThank}/>
+                <ModalExit to={""} text={"Спасибо, что зарегистрировались."} cb={onActiveThank} titleButton={"Назад"} titleH={"Нажмите, чтобы вернуться назад"} active={modal} onActive={onActiveThank}/>
+            }
+            {
+                <ModalExit to={""} text={"Ошибка!!!"} cb={onActiveErrorModal} titleButton={"Назад"} titleH={"Пользователь с таким email уже существует"} active={modalFalse} onActive={onActiveErrorModal}/>
             }
         </>
     )

@@ -64,7 +64,7 @@ const CatalogFilter = ({
             return data;
         }
         return data.filter(item => {
-            return item.title.indexOf(value) > -1;
+            return item.name.indexOf(value) > -1;
         })
     }
 

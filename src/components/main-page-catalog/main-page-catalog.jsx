@@ -10,10 +10,13 @@ import "./main-page-catalog.scss";
 
 const Catalog = ({onChangeCardNumber, onAddToCart}) => {
 
+    
     const service = new Services()
+
     const [loading, setLoading] = useState(true);
 
     const [currentPage, setCurrentPage] = useState(1);
+    
     const onChangePageNumber = () => {
         setCurrentPage((1))
     }
@@ -37,6 +40,26 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
             })
     }, [])
     
+    const [brands, setBrands] = useState([]);
+    useEffect(() => {
+        const brandMap = new Map();
+        posts.forEach(item => {
+            const brandName = item.brand;
+            if (brandMap.has(brandName)) {
+                brandMap.set(brandName, {
+                count: brandMap.get(brandName).count + 1,
+                check: false
+                });
+            } else {
+                brandMap.set(brandName, { count: 1, check: false });
+            }
+        });
+    
+        const brandArray = Array.from(brandMap, ([name, info]) => ({ name, ...info }));
+        setBrands(brandArray);
+        
+    }, [posts]);
+
 
     const [filter, setActiveButtonFilter] = useState("");
     const onChangeFilter = (name) => {
@@ -49,16 +72,10 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
     }
     const onResetFilter = () => setSexFilter("");
 
-    
-
-    const [dataBrand, setData] = useState([]);
-
-    useEffect(() => {
-        service.getAllBrands().then(res => setData(res))
-    }, [])
     const onChangeFilterBrand = (id) => {
-        const index = dataBrand.findIndex(item => item.id === id)
-        setData(prev => {
+        
+        const index = brands.findIndex(item => item.name === id)
+        setBrands(prev => {
             const updateData = prev.map((item, i) => {
                 if(i === index) {
                     return {...item, check: !item.check}
@@ -68,12 +85,14 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
             })
             return updateData;
         })
+        
     }
 
     const [newData, setNewData] =  useState([])
+    
     useEffect(() => {
-        setNewData(dataBrand.filter(item => item.check))
-    },[dataBrand])
+        setNewData(brands.filter(item => item.check))
+    },[brands])
 
 
     const [filterPosts, setFilterPosts] = useState([]);
@@ -113,8 +132,8 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
 
     const filters = (arr) => {
         if(newData.length > 0) {
-            const filtersData = newData.map(({id}) => {
-                return arr.filter(item => item.brand === id)
+            const filtersData = newData.map(({name}) => {
+                return arr.filter(item => item.brand === name)
             })
             const mergedArray = [].concat(...filtersData);
             return mergedArray
@@ -148,7 +167,7 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
                         </div>
                         <CatalogFilter 
                             onChangeFilterBrand={onChangeFilterBrand}
-                            data={dataBrand}
+                            data={brands}
                             onResetFilter={onResetFilter}
                             onChangeRadioButton={onChangeRadioButton}
                             filter={filter} 

@@ -8,6 +8,7 @@ import Title from "../../components/user/title/Title"
 import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
 import ParentModal from "../../components/modals/parent-modal/ParentModal";
 import ReviewModal from "../../components/modals/review-modal/ReviewModal";
+import ModalExit from "../../components/modals/ModalExit/ModalExit";
 
 import "./Cardpage.scss";
 
@@ -24,6 +25,7 @@ const CardPage = ({
         e.target.classList.contains("close") && setActive(false);
     } 
 
+    const {_id, title} = post;
     const [cardData, setCards] = useState([]);
 
     useEffect(() => {
@@ -34,6 +36,11 @@ const CardPage = ({
         service.getOneCard(cardNumber).then(res => setPost(res))
     }, [cardNumber])
     
+    const [textTitle, setTextTitle] = useState("")
+    const [text, setText] = useState("")
+
+    const [modalThank, setModalThank] = useState(false)
+    
     return (
         <>
                 <Breadcrumbs page={"Подробнее"}/>
@@ -41,7 +48,6 @@ const CardPage = ({
                 <section className="main__slider-card slider-card">
                     <div className="slider-card__graniza">
                         <div className="slider-card__body">
-                            
                             <Title align={"center"} title={"Вам так же может понравиться"}/>
                             <SliderCardPage2 
                                 data={cardData}
@@ -52,9 +58,16 @@ const CardPage = ({
                     </div>
                 </section>
                 <ParentModal close={false} onActive={onActive} active={active}>
-                    <ReviewModal />
+                    <ReviewModal 
+                        setActive={() => setActive(false)}
+                        setTextTitle={setTextTitle}
+                        setText={setText}
+                        setModalThank={() => setModalThank(true)} 
+                        id={_id} 
+                        title={title}
+                    />
                 </ParentModal>
-                
+                <ModalExit to={""} text={textTitle} cb={() => setModalThank(false)} titleButton={"Назад"} titleH={text} active={modalThank} onActive={() => setModalThank(false)}/>
         </>
     )
 }

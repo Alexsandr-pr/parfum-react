@@ -10,7 +10,7 @@ const CartModal = ({
     childrenPay, 
     text
 }) => {
-    
+
     const isAuth = useSelector(state => state.user.isAuth)
     const {dataCart, sale, allPrice} = useContext(Context);
     const userCachback = useSelector(state => state.user.currentUser.cachback)
@@ -31,14 +31,10 @@ const CartModal = ({
                                 <p>Доставка</p>
                                 <p>{text}</p>
                             </li>
-
                             <li className="item-order__item">
                                 <p>Скидка</p>
                                 <p>{isAuth ? sale + " баллов" : "Чтобы иметь возможность потратить баллы для получения скидки, требуется авторизация"}</p>
                             </li>
-                            
-
-
                             <li className="item-order__item">
                                 <p>Кэшбэк</p>
                                 <p>{isAuth ? Math.floor((allPrice * userCachback) /100) + "баллов" : "Чтобы получать кэшбэк, зарегистрируйтесь на сайте"}</p>

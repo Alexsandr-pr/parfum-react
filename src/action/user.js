@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { logout, setUser } from '../reducers/userReducer'
 import { API_URL } from '../config'
-import { modalActive } from '../reducers/userReducer'
+import { modalTrueActive } from '../reducers/userReducer'
+import {modalActiveError}  from '../reducers/userReducer';
 
 
 export const registration = async (email, password, gender, bonus, dispatch) => {
@@ -12,10 +13,9 @@ export const registration = async (email, password, gender, bonus, dispatch) => 
             gender,
             bonus
         })
-        
-        dispatch(modalActive())
+        dispatch(modalTrueActive())
     } catch (e) {
-        alert(e.response.data.message)
+        dispatch(modalActiveError())
     }
 }
 
@@ -63,8 +63,6 @@ export const deleteUser = () => {
     };
 };
 
-
-
 export const uploadAvatar =  (file) => {
     return async dispatch => {
         try {
@@ -73,8 +71,7 @@ export const uploadAvatar =  (file) => {
             const response = await axios.post(`${API_URL}api/files/avatar`,formData, 
                 {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
             )
-            dispatch(setUser(response.data))
-            
+            dispatch(setUser(response.data)) 
         } catch (e) {
             console.log(e)
         }
@@ -95,6 +92,33 @@ export const deleteAvatar =  () => {
     }
 }
 
+export const changeUserPassword = async (password, newPassword, dispatch) => {
+        const formData = new FormData()
+        formData.append("password", password)
+        formData.append("newPassword", newPassword)
+        try {
+            const response = await axios.post(`${API_URL}api/auth/change`,formData,
+                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
+            )
+            
+            dispatch(setUser(response.data))
+            return response
+        } catch(e) {
+            return e
+        }
+}
+/******************** */
+export const addComment = async (arr, id) => {
+    try {
+        const response = await axios.post(`${API_URL}api/auth/comment`,
+            { arr, id },
+            { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+        );
+        return response;
+    } catch(e) {
+        return e
+    }
+};
 
 
 /******************** */
@@ -123,7 +147,7 @@ export const addOrderMongoUser = async (dataOrder, sale = 0, email, bonus) => {
         });
         return response.data; 
     } catch(e) {
-        return alert("Errtor")
+        return alert("Error")
     }
 }
 
@@ -134,6 +158,7 @@ export const addOrderMongoNoUser = async (dataOrder) => {
         });
         return response.data; 
     } catch(e) {
-        return alert("Errtor")
+        return alert("Error")
     }
 }
+

@@ -9,7 +9,7 @@ const Reviews = ({cardNumber}) => {
     const service = new Services();
     const [loading, setLoading] = useState(false)
     const [reviews, setReviews] = useState([])
-    
+
     useEffect(() => {
         onLoading();
         service.getOneCard(cardNumber)
@@ -35,18 +35,19 @@ const Reviews = ({cardNumber}) => {
 const NoReview = () => {
     return (
         <div className="no-review">
-            <h3>This product has no reviews yet. Leave your review and be the first</h3>
+            <h3>У этого товара еще нет комментариев, станьте первым пользователем, кто оставит комментарий!</h3>
         </div>
     )
 }
 
 const Comments = ({reviews}) => {
+    const [number, setNumber] = useState(2)
     return (
         <>
             <div className="catalog-description__retvit retvit"> 
                 {
                     reviews.map(({author, data, reviewtext}, i) => {
-                        if(i > 2) return
+                        if(i > number) return
                         return (
                             <div key={i} className="retvit__item">
                                     <div className="retvit__header">
@@ -69,7 +70,7 @@ const Comments = ({reviews}) => {
                     
                 }
             </div>
-            {reviews.length > 3 ? <div className="catalog-description__btn-add"><button>Показать еще</button></div>  : null}
+            { number <= reviews.length ? <div className="catalog-description__btn-add"><button onClick={() => setNumber(prev => prev + 3)}>Показать еще</button></div>  : null}
             
         </>
     )

@@ -62,7 +62,7 @@ const PlaceInOrderPage = () => {
             let balls = Math.floor((allPrice * currentUser.cachback) / 100);
             let reason = "Покупки"
             
-            if(isAuth) {
+            if(!isAuth) {
                 balls = 0;
             }
             const bonus = new BonusUser(balls, reason)

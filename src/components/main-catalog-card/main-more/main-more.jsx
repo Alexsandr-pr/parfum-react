@@ -26,7 +26,7 @@ const MainMore = ({description, reviews, cardNumber, setActive}) => {
                                 </button>
                             </div>
                         </div>
-                        <Reviews cardNumber={cardNumber} />
+                        <Reviews  cardNumber={cardNumber} />
                     </div>
                 </Parent>
             </div>

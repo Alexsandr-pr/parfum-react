@@ -7,52 +7,26 @@ import { login } from "../../action/user";
 import Label from "../forms/label/Label";
 import LabelPassword from "../forms/label-password/LabelPassword";
 import Title from "../user/title/Title";
-import ParentModal from "../modals/parent-modal/ParentModal"
-import ModalRe from "../modals/modal-re/ModalRe";
+import Robots from "../robots/Robots";
 
 const Login = () => {
+    const dispatch = useDispatch()
 
     const [checked, setChecked] = useState(false)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    const dispatch = useDispatch()
-    
-    const [active, setActive] = useState(false);
-
-    const [number1, setNubmer1] = useState(0);
-    const [number2, setNubmer2] = useState(0);
-    const [summ, setSumm] = useState(0);
+    const [activeModalRobots, setActiveRobots] = useState(false);
     const [disabled, setDisabled] = useState(true)
-
-    function getRandomNumber() {
-        return Math.floor(Math.random() * 51); 
-    } 
-
-    const onActive = (e) => {
-        setActive(false)
-        setNubmer1(0)
-        setNubmer2(0)
-        setSumm(0)
-        setChecked(true)
-    } 
-
-    const onActiveModal = () => {
-        !checked &&  setNubmer1(getRandomNumber())
-        !checked &&  setNubmer2(getRandomNumber())
-        !checked &&  setActive(true)
-    }
-
-    const onChangeSumm = () => {
-        if(summ == number2 + number1 && summ !== 0) {
-            setDisabled(false)
-        }
-    }
-    useEffect(() => {
-        onChangeSumm()
-    }, [summ])
     const [remember, setRemember] = useState(false)
 
+    const onChangeModalRobots = (arg) =>  setActiveRobots(arg)
+
+    useEffect(() => {
+        if(checked && email.length > 2  && password.length >= 3) {
+            setDisabled(false);
+        }
+    }, [checked,email,password ])
+    
     return (
 
         <>
@@ -77,15 +51,13 @@ const Login = () => {
                             name={"password"}
                         />
                     </div>
-                    <ul className="re-catcha pol-list">
-                        <li className="pol-list__item">
-                            <label onClick={() => onActiveModal()} className="pol-list__label">
-                                <input type="checkbox" required defaultChecked={checked} name="pol" className="pol-list__input"/>
-                                <span className="pol-list__span"></span>
-                                <p className="pol-list__p">Я не робот</p>
-                            </label>
-                        </li>
-                    </ul>
+                    <Robots 
+                        noActive={() => onChangeModalRobots(false)} 
+                        setActive={() => onChangeModalRobots(true)} 
+                        checked={checked}
+                        active={activeModalRobots}
+                        setChecked={setChecked}
+                    />
                     <ul className="login-block__pol-list pol-list">
                         <li className="pol-list__item">
                             <label className="pol-list__label">
@@ -108,9 +80,6 @@ const Login = () => {
                     <a className="login-block__link" href="#">Забыли свой пароль?</a>
                 </form>
             </div>
-            <ParentModal active={active} close={true}>
-                <ModalRe onActive={onActive} setSumm={setSumm} disabled={disabled} number1={number1} number2={number2} />
-            </ParentModal>
         </>
     )
 }

@@ -9,8 +9,9 @@ const Label = ({
     children, 
     setValue,
     required, 
-    disabled
+    disabled,
 }) => {
+    
     return (
         <label className="user-content__label input-block">
             <p className="user-content__text input-block__text">{text} <span>*</span></p>

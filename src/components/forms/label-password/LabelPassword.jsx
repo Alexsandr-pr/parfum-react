@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import "./label-password.scss"
 
-const LabelPassword = ({name, text, setValue}) => {
+const LabelPassword = ({name, text, setValue, value}) => {
     const [active, setType] = useState(true);
 
     const onChangeActive = () => {
@@ -14,6 +14,7 @@ const LabelPassword = ({name, text, setValue}) => {
 
     return (
         <Label 
+            value={value}
             setValue={setValue} 
             name={name} 
             text={text} 

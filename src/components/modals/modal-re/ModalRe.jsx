@@ -1,4 +1,5 @@
 
+
 import Button from "../../buttons/button/Buttons";
 import Label from "../../forms/label/Label";
 
@@ -9,14 +10,15 @@ const ModalRe = ({
     number1, 
     number2, 
     disabled, 
-    setSumm
+    setSumm,
+    summ
 }) => {
 
     return (
         <div className='re-modal__body'>
             <div className="re-modal__sum">
                 <div className="re-modal__input">
-                    <Label setValue={setSumm} text={"Введите сумму чисел"}/>
+                    <Label required value={summ} setValue={setSumm} type={"number"} name={"summ"} text={"Введите сумму чисел"}/>
                 </div>
                 <span className="current__input" value={number1} >{number1}</span>
                 <span className="re-modal__plus">+</span>
