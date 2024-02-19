@@ -23,15 +23,13 @@ const CheckedPol = ({setGender, gender}) => {
                 pol.map(({name, text, value}) => {
                     return (
                         <label htmlFor={value} key={value} className="pol-list__label">
-                            <input id={value} onChange={() => setGender(value)} readOnly defaultChecked={gender === value}  type="radio"  name={name} value={value} className="pol-list__input"/>
+                            <input id={value} onChange={() => setGender(value)} readOnly checked={gender === value}  type="radio"  name={name} value={value} className="pol-list__input"/>
                             <span className="pol-list__span"></span>
                             <p className="pol-list__p">{text}</p>
                         </label>
                     )
                 })
             }
-           
-            
         </div>
     )
 }

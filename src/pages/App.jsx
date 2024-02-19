@@ -1,19 +1,23 @@
 
+import { lazy, Suspense } from "react"
 import {Routes, Route} from "react-router-dom"
 import { useContext , useEffect} from "react";
 import { Context } from "./myContext/MyContext";
 import { useDispatch } from "react-redux";
-import Home from "./Homepage";
-import About from "./Aboutpage/Aboutpage";
-import Layout from "./Layout/layout";
-import Userpage from "./User/Userpage";
-import BonusPage from "./Bonuspage/bonuspage";
-import Document from "./Documentpage/documentpage";
-import CardPage from "./Cardpage/Cardpage";
-import CartTovar from "./CartTovar/CartTovar"
-import MalePage from "./Malepage/Malepage";
-import PlaceInOrderPage from "./PlaceInOrderPage/PlaceInOrderPage"
+
 import { auth } from "../action/user";
+import Loading from "../components/Loading/Loading";
+
+const Layout = lazy(() => import("./Layout/layout"));
+const Home = lazy(() => import("./Homepage"));
+const About = lazy(() => import("./Aboutpage/Aboutpage"));
+const Userpage = lazy(() => import("./User/Userpage"));
+const BonusPage = lazy(() => import("./Bonuspage/bonuspage"));
+const Document = lazy(() => import("./Documentpage/documentpage"));
+const CardPage = lazy(() => import("./Cardpage/Cardpage"));
+const CartTovar = lazy(() => import("./CartTovar/CartTovar"));
+const MalePage = lazy(() => import("./Malepage/Malepage"));
+const PlaceInOrderPage = lazy(() => import("./PlaceInOrderPage/PlaceInOrderPage"));
 
 function App () {
     const dispatch = useDispatch()
@@ -37,10 +41,7 @@ function App () {
                 const end = prev.slice(indexValue + 1)
                 element = { ...element, quantity: element.quantity + newCard.quantity };
                 return [...start, element, ...end]
-                
                 /*
-                    
-
                     const updatedCart = prev.map((item, i) => {
                         if (i === indexValue) {
                             return { ...item, quantity: item.quantity + 1 };
@@ -48,7 +49,6 @@ function App () {
                             return item;
                         }
                     });
-                    
                     return updatedCart;                
                 */
             });
@@ -93,7 +93,11 @@ function App () {
     return (
         <>   
             <Routes>
-                <Route path="/" element={<Layout/>}>
+                <Route path="/" element={
+                    <Suspense >
+                        <Layout/>
+                    </Suspense>
+                }>
                     <Route index element={<Home  onAddToCart={onAddToCart} onChangeCardNumber={onChangeCardNumber}/>}/>
                     <Route path="user" element={<Userpage/>}/>
                     <Route path="about" element={<About/>}/>

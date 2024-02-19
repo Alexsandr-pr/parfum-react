@@ -4,6 +4,7 @@ import HeaderMale from "../header-male/header-male";
 
 
 import "./header-catalog-select.scss";
+import { useLocation } from "react-router-dom";
 
 const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
 
@@ -15,7 +16,11 @@ const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
             setActive(false)
         })
     }, [])
+    const {pathname} = useLocation();
 
+    useEffect(() => {
+        setActive(false)
+    },[pathname])
 
 
     return (

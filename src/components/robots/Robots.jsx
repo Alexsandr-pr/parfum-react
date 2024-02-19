@@ -1,7 +1,7 @@
 import ParentModal from "../modals/parent-modal/ParentModal";
 import ModalRe from "../modals/modal-re/ModalRe";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 const Robots = ({
     checked,
@@ -51,7 +51,7 @@ const Robots = ({
             <ul className="re-catcha pol-list">
                 <li className="pol-list__item">
                     <label onClick={() => onActiveModal()} className="pol-list__label">
-                        <input  type="checkbox" checked={checked}  className="pol-list__input"/>
+                        <input onChange={() => onActiveModal()}  type="checkbox" checked={checked}  className="pol-list__input"/>
                         <span className="pol-list__span"></span>
                         <p className="pol-list__p">Я не робот</p>
                     </label>
