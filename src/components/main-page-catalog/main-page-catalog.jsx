@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import CatalogPagination from "./catalog-pagination/catalog-pagination";
 import CatalogItems from "./catalog-items/catalog-items";
 import CatalogFilter from "./catalog-filter/catalog-filter";
 import Services from "../../services/service";
 import Loading from "../../components/Loading/Loading";
+
 
 import "./main-page-catalog.scss";
 
@@ -22,9 +23,11 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
     }
     const nextPage = () => {
         currentPage === pageNumbers.length ?  setCurrentPage(1) : setCurrentPage(prev =>  prev + 1);
+        scrollToElement()
     }
     const prevPage = () => {
         currentPage === 1 ? setCurrentPage(prev =>  prev = pageNumbers.length) : setCurrentPage(prev =>  prev - 1)
+        scrollToElement()
     }
 
     const [countriesPerPage] = useState(12);
@@ -85,7 +88,6 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
             })
             return updateData;
         })
-        
     }
 
     const [newData, setNewData] =  useState([])
@@ -157,12 +159,26 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
         pageNumbers.push(i);
     }
 
+    const catalogRef = useRef(null)
+    let offTop = catalogRef.current
+    useEffect(() => {
+        offTop = catalogRef.current.offsetTop;
+    },[currentPage])
+
+    const scrollToElement = () => {
+        offTop = catalogRef.current.offsetTop
+        window.scrollTo({
+            top: offTop - 100,
+            behavior:"smooth"
+        })
+    }
+
     return (
         <>
-            <section className="main__cart main-cart">
+            <section  className="main__cart main-cart">
                 <div className="main-cart__container">
                     <div className="main-cart__body ">
-                        <div className="top-trigger-filter__title title-24">
+                        <div ref={catalogRef} className="top-trigger-filter__title title-24">
                             <h2 >Каталог</h2>
                         </div>
                         <CatalogFilter 
@@ -183,6 +199,7 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
                         }
                         { loading && <Loading/>}
                         <CatalogPagination 
+                            scrollToElement={scrollToElement}
                             nextPage={nextPage}
                             prevPage={prevPage}
                             currentPage={currentPage}           

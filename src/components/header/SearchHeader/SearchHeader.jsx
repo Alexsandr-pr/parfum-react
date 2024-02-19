@@ -8,7 +8,8 @@ import "./search-header.scss"
 const SearchHeader = ({
     active,
     data, 
-    onResetValue
+    onResetValue,
+    isFocused
 }) => {
 
     const {onChangeCardNumber} = useContext(Context)
@@ -25,11 +26,11 @@ const SearchHeader = ({
     })
     
     return (
-        <div  className={active ? "header-filters__search _active" : "header-filters__search"}>
-            <ul className="filter__list">
-                { Object.values(elements).length > 0 ? elements : <Replacemente/>}  
-            </ul>
-        </div>
+        isFocused ? <div  className={active ? "header-filters__search _active" : "header-filters__search"}>
+                        <ul className="filter__list">
+                            { Object.values(elements).length > 0 ? elements : <Replacemente/>}  
+                        </ul>
+                    </div> : null
     )
 }
 

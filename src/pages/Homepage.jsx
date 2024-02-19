@@ -8,9 +8,7 @@ import Catalog from "../components/main-page-catalog/main-page-catalog";
 const Home = ({onChangeCardNumber, onAddToCart}) => {
 
     return (
-
         <>
-
             <section className="main__slider main-slider">
                 <div className="main-slider__body">
                     <div className="main-slider__swiper swiper">
@@ -18,7 +16,6 @@ const Home = ({onChangeCardNumber, onAddToCart}) => {
                     </div>
                 </div>
 			</section>
-
             <section className="main__tovar-slider tovar-slider">
 					<div className="tovar-slider__container">
 						<Title title={"Популярные ароматы"}/>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import PolList from "./pol-list/pol-list";
 import SearchList from "./search/search-list/search-list";
 import SeacrhInput from "./search/search-input/search-input"
@@ -39,16 +38,10 @@ const CatalogFilter = ({
         setActiveTab1(prev => !prev)
     }
     useEffect(() => {
-        if(width < 567.98) {
-            if(activeTab1) {
-                setActiveTab2(false)
-            }
-        }
-        
+        if(width < 567.98) activeTab1 && setActiveTab2(false)
     }, [activeTab1])
-    const onChangeActiveTab2 = () => {
-        setActiveTab2(prev => !prev)
-    }
+    const onChangeActiveTab2 = () => setActiveTab2(prev => !prev)
+
     useEffect(() => {
         if(width < 567.98) {
             if(activeTab2) {
@@ -62,14 +55,14 @@ const CatalogFilter = ({
     const onChangeFilterSelect = (data, value) => {
         if(value.lenght === 0) {
             return data;
+        } else {
+            return data.filter(item => {
+                const lowerCaseName = item.name.toLowerCase();
+                return lowerCaseName.includes(value.toLowerCase());
+            })
         }
-        return data.filter(item => {
-            return item.name.indexOf(value) > -1;
-        })
     }
 
-    
-    
     return (
         <div className="main-cart__top-trigger  top-trigger-filter">
             <div className={activeTab1 ? "top-trigger-filter__item _active filter" : "top-trigger-filter__item  filter"}>

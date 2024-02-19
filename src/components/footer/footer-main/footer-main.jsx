@@ -14,12 +14,12 @@ const Footer = () => {
                         <HeaderLogo/>
                     </div>
                     <div className="footer__body footer-body">
-                        <div className="footer-body__item footer-body__item-2">
+                        <div className="footer-body__item ">
                             <ul className="footer-body__list">
                                 <li className="footer-body__item">
                                     <Link to="page-404" className="footer-body__link ">
                                         <i className="fa-solid fa-location-dot"></i>
-                                        <p>г. Астрахань: ул. Свердлова, 106;ул. <br/> Победы 55А, пав. 10.</p>
+                                        <p>г. TYYY: ул. Свердлова, 7106;ул. <br/> 5095А, пав. 10.</p>
                                     </Link>
                                 </li>
                                 <li className="footer-body__item">
@@ -28,10 +28,6 @@ const Footer = () => {
                                         <p>Ежедневно с 9:00 до 18:00</p>
                                     </Link>
                                 </li>
-                            </ul>
-                        </div>
-                        <div className="footer-body__item footer-body__item-2">
-                            <ul className="footer-body__list">
                                 <li className="footer-body__item">
                                     <Link to="page-404" className="footer-body__link ">
                                         <i className="fa-brands fa-whatsapp"></i>
@@ -45,15 +41,11 @@ const Footer = () => {
                                     </Link>
                                 </li>
                                 <li className="footer-body__item">
-                                    <Link href="mailto:parfumpomotivam@gmail.com" className="footer-body__link ">
+                                    <a href="mailto:parfumpomotivam@gmail.com" className="footer-body__link ">
                                         <i className="fa-regular fa-envelope"></i>
                                         <p>parfumpomotivam@gmail.com</p>
-                                    </Link>
+                                    </a>
                                 </li>
-                            </ul>
-                        </div>
-                        <div className="footer-body__item footer-body__item-3">
-                            <ul className="footer-body__list">
                                 <li className="footer-body__item">
                                     <Link to="page-404" className="footer-body__link  ">
                                         <i className="fa-solid fa-building"></i>
@@ -62,6 +54,7 @@ const Footer = () => {
                                 </li>
                             </ul>
                         </div>
+                        
                     </div>
                     <div className="footer__content">
                         <p>© Parfumpomotivam 2023</p>

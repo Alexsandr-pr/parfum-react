@@ -41,6 +41,11 @@ const NoReview = () => {
 }
 
 const Comments = ({reviews}) => {
+
+    const months = [
+        "января", "февраля", "марта", "апреля", "мая", "июня",
+        "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+        
     const [number, setNumber] = useState(2)
     return (
         <>
@@ -48,6 +53,11 @@ const Comments = ({reviews}) => {
                 {
                     reviews.map(({author, data, reviewtext}, i) => {
                         if(i > number) return
+
+                        const datar = new Date(data)
+                        const day = datar.getDate();
+                        const monthIndex = datar.getMonth();
+                        const year = datar.getFullYear();
                         return (
                             <div key={i} className="retvit__item">
                                     <div className="retvit__header">
@@ -60,7 +70,7 @@ const Comments = ({reviews}) => {
                                     </div>
                                     <div className="retvit__data">
                                         
-                                        <p>{data}</p>
+                                        <p>{`${day} ${months[monthIndex]} ${year}`}</p>
                                     </div>
                                     <div className="retvit__text">
                                         <p>{reviewtext}</p>

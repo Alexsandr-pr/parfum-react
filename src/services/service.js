@@ -2,7 +2,7 @@
 
 
 class Services {
-    _apiBase = "https://server-parfum.onrender.com/api/auth/";
+    _apiBase = "http://localhost:5000/api/auth/";
 
     gerResourse = async (url) => {
         const res = await fetch(url);
@@ -12,22 +12,28 @@ class Services {
         }
         return await res.json();
     }
+
     getAllCards = async () => {
         return await this.gerResourse(`${this._apiBase}tovar`);
     }
+
     getLimitCard = async () => {
         return await this.gerResourse(`${this._apiBase}card?limit=15`);
     }
+
     getAllBrands = async () => {
         return await this.gerResourse("http://localhost:3001/brands");
     }
+
     getOneCard = async (id = 1011001) => {
         return await this.gerResourse(`${this._apiBase}card/${id}`);
     }
+
     getSaleCards = async () => {
         const res =  await this.gerResourse(`${this._apiBase}tovar`);
         return res.filter(item => item.sale)
     }
+
     getMaleCards = async () => {
         return await this.gerResourse(`${this._apiBase}card-sort?gender=male&limit=12&sortBy=name`);
     }

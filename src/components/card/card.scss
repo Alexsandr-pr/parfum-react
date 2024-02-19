@@ -18,15 +18,7 @@
     @media(max-width:487.98px){
         padding: 25px 12px 12px 12px;
     }
-    @media(hover:hover) {
-        &:hover {
-            cursor: pointer;
-            border:#C09E6C 1px solid;
-        }
-    }
-
     &__image {
-        
         img {
             max-width: 100%;
             aspect-ratio: 1/1; /* 1/1 */

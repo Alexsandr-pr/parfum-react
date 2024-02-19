@@ -11,6 +11,10 @@ const HeaderSearchDesktop = () => {
 
     const [active, setActive] = useState(false)
     const [value, setValue] = useState("")
+    const [isFocused, setFocused] = useState(false)
+    
+    const handleFocus = () => setFocused(true)
+    const handleBlur = () => setFocused(false)
 
     const onChangeValue = (e) => {
         setValue(e.target.value)
@@ -35,13 +39,16 @@ const HeaderSearchDesktop = () => {
     }, [])
 
     const onChangeFilter = (data, val) => { 
-        if(val.length === 0) {
+        if(val.lenght === 0) {
             return data;
+        } else {
+            return data.filter(item => {
+                const lowerCaseName = item.title.toLowerCase();
+                return lowerCaseName.includes(val.toLowerCase());
+            })
         }
-        return data.filter(item => {
-            return item.title.indexOf(val) > -1;
-        })
     }
+
     useEffect(() => {
         setFilterData(onChangeFilter(data, value))
     }, [value])
@@ -50,7 +57,9 @@ const HeaderSearchDesktop = () => {
         <>  
             <div className="header-search-menu">
                 <label className="header-bottom__label">
-                    <input  onChange={(e) => onChangeValue(e)} 
+                    <input  onFocus={() => handleFocus()}
+                            onBlur={() => handleBlur()}
+                            onChange={(e) => onChangeValue(e)} 
                             autoComplete="off" 
                             value={value} 
                             type="search" 
@@ -64,6 +73,7 @@ const HeaderSearchDesktop = () => {
                 </label>
                 <div className="header-search__list">
                     <SearchHeader 
+                        isFocused={isFocused}
                         onResetValue={onResetValue} 
                         data={filterData} 
                         active={active}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 
 import CartModel from "../../../models/cartModel"
 import numberWithSpace from "../../buttons/numberWithSpace/numberWithSpace"
@@ -7,10 +7,14 @@ import MainCurrent from "../../main-current/main-current"
 import MainMore from "../main-more/main-more";
 import Button from "../../buttons/button/Buttons";
 import Title from "../../user/title/Title"
-
 import "./main-catalog.scss";
 
-const MainCatalog = ({post, cardNumber, onAddToCart, setActive}) => {
+const MainCatalog = ({
+    post, 
+    cardNumber, 
+    onAddToCart, 
+    setActive
+}) => {
 
     const {id,imageSrc,imageAlt, title, price,description} = post
     const [valueMl, setValueMl] = useState(100);
@@ -27,15 +31,15 @@ const MainCatalog = ({post, cardNumber, onAddToCart, setActive}) => {
         if(current  <= 1 ) {
             setCurrent(1)
         }
-        
         setCurrent(prev => prev + i)
     }
 
     let salePrice = (Math.floor((price * valueMl) / 100)) * current;
-    let quantity = current
-    const onClickButton = async (e) => {
+    let quantity = current;
+
+    const onClickButton =  (e) => {
         e.preventDefault()
-        const obj = await new CartModel(
+        const obj =  new CartModel(
             id,
             imageSrc, 
             quantity, 
@@ -69,22 +73,35 @@ const MainCatalog = ({post, cardNumber, onAddToCart, setActive}) => {
                                         title={"Кол - во"}
                                         onChangeCurrent={onChangeCurrent}
                                         current={current} 
-                                        />
+                                    />
                                 </div>
-                                <div className="main-catalog__item">
-                                    <div className="main-catalog__sum cart-sum">
-                                        <div className="cart-sum__cost">
+                                <div className="main-catalog__item mobile-none">
+                                    <div className="main-catalog__sum cart-sum mobile-440-desktop">
+                                        <div className="cart-sum__cost ">
                                             <p>Стоимость:</p>
                                         </div>
                                         <div className="cart-sum__total">
                                             <span>{numberWithSpace(salePrice) + " ₴"}</span>
                                         </div>
                                     </div>
-                                    <div className="main-catalog__button">
+                                    <div className="main-catalog__button desktop-btn">
                                         <Button disabled={ current === 0 } onClickButton={onClickButton}/>
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div className="main-catalog__item mobile-sum">
+                        <div className="main-catalog__sum cart-sum mobile-440">
+                            <div className="cart-sum__cost">
+                                <p>Стоимость:</p>
+                            </div>
+                            <div className="cart-sum__total">
+                                <span>{numberWithSpace(salePrice) + " ₴"}</span>
+                            </div>
+                        </div>
+                        <div className="main-catalog__button">
+                            <Button disabled={ current === 0 } onClickButton={onClickButton}/>
                         </div>
                     </div>
                     <MainMore setActive={setActive} cardNumber={cardNumber} description={description}/>
@@ -93,6 +110,8 @@ const MainCatalog = ({post, cardNumber, onAddToCart, setActive}) => {
         </>
     )
 }
+
+
 
 
 export default MainCatalog;

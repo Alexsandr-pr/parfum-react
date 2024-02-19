@@ -14,7 +14,7 @@ const SeacrhInput = ({onChangeInputValue}) => {
                         type="search" 
                         placeholder="Найти ноты.."
                     />
-                    <button className="filter-search__btn" type="submit">
+                    <button disabled={true} className="filter-search__btn " >
                         <img src={search} alt="Search"/>
                     </button>
                 </label>

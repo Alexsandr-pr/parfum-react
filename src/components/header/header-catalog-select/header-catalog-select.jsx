@@ -1,15 +1,21 @@
-import { useState } from "react";
+
+import { useEffect } from "react";
 import HeaderMale from "../header-male/header-male";
 
 
 import "./header-catalog-select.scss";
 
 const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
-   
 
     const toggleActive = () => {
         setActive(prev => !prev);
     }
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            setActive(false)
+        })
+    }, [])
+
 
 
     return (
@@ -26,7 +32,7 @@ const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
                     <span className="icon-menu-text">Каталог</span>
                 </button>
                 <div className="header-button__block">
-                    <HeaderMale changeActive={changeActive}/>
+                    <HeaderMale  changeActive={changeActive}/>
                 </div>
             </div>
         </>

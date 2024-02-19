@@ -25,7 +25,6 @@ export const MyContext = ({children}) => {
         setCadrNumber(id);
     }
     
-
     let all = []
     const [allPrice, setAllPrice] = useState(0)
     

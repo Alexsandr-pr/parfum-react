@@ -5,6 +5,8 @@ import Card from "../../card/card";
 
 import 'swiper/css';
 import "./slider-card-page-2.scss";
+import { useContext, useEffect } from 'react';
+import { Context } from '../../../pages/myContext/MyContext';
 
 const SliderCardPage2 = ({
     onChangeCardNumber, 
@@ -12,10 +14,19 @@ const SliderCardPage2 = ({
     data
 }) => {
 
+    const {cardNumber} = useContext(Context)
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "auto"
+        });
+    }, [cardNumber]);
+
     return (
         <Swiper
             speed={400}
-            spaceBetween={20}
+            spaceBetween={30}
             simulateTouch={true}
             touchRatio={1}
             touchAngle={4}

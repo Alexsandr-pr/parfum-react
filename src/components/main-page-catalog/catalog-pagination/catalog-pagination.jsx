@@ -1,7 +1,7 @@
 
 import "./catalog-pagination.scss";
 
-const CatalogPagination = ({prevPage,nextPage, paginate, currentPage, data}) => {
+const CatalogPagination = ({prevPage,nextPage, paginate, currentPage, data, scrollToElement}) => {
 
     const displayPages = 4; // Number of buttons to display
     const getPageSubset = () => {
@@ -20,7 +20,10 @@ const CatalogPagination = ({prevPage,nextPage, paginate, currentPage, data}) => 
                     {
                         pageSubset.map((number, i) => (
                             <li key={i} className="cart-pagination__item">
-                                <button className={currentPage === number ? "cart-pagination__link active" : "cart-pagination__link"} onClick={() => paginate(number)}>{number}</button>
+                                <button className={currentPage === number ? "cart-pagination__link active" : "cart-pagination__link"} onClick={() => {
+                                    paginate(number) 
+                                    scrollToElement()
+                                }}>{number}</button>
                             </li>
                     ))
                 }

@@ -7,17 +7,20 @@ const dataPage = [
         page: "Мужские"
     },
     {
-        to: "/female",
+        to: "/male",
         page: "Женские"
     },
     {
-        to: "/unisex",
+        to: "/male",
         page: "Унисекс"
     }
 ]
 
 
-const HeaderMale = ({changeActive}) => {
+const HeaderMale = ({
+    changeActive
+}) => {
+
     return (
         <>
             <ul  className="header-button__list">
@@ -28,7 +31,7 @@ const HeaderMale = ({changeActive}) => {
                                 <Link onClick={() => changeActive()} to={to} className="header-button__item">{page}</Link>
                             </li>
                         )
-                    })
+                    }) 
                 }
             </ul>
         </>

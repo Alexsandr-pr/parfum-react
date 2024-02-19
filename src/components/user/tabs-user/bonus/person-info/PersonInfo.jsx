@@ -1,7 +1,6 @@
 
 import "./progress-info.scss";
 import userDefault from "./img/user-default.png";
-import plus from "./img/plus.svg";
 import ParentModal from "../../../../modals/parent-modal/ParentModal"
 import ModalUploadAvatar from "../../../../modals/modalUploadAvatar/ModalUploadAvatar"
 import {  useState } from "react";

@@ -1,12 +1,12 @@
 
-
 import "./search-list.scss"
 
 const SearchList = ({data, onChangeFilterBrand}) => {
+    
     return (
         <>
             {
-                data.map(({name, count, check}) => {
+                Object.keys(data).length > 0 && data.map(({name, count, check}) => {
                     return (
                         <label key={name}
                             onChange={() => onChangeFilterBrand(name)}
@@ -18,8 +18,10 @@ const SearchList = ({data, onChangeFilterBrand}) => {
                     )
                 })
             }
+            {
+                Object.keys(data).length <= 0  && <span className="list-search__p">"Не найдено"</span>
+            }
         </>
     )
 }
-
 export default SearchList;

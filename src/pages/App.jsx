@@ -12,8 +12,6 @@ import Document from "./Documentpage/documentpage";
 import CardPage from "./Cardpage/Cardpage";
 import CartTovar from "./CartTovar/CartTovar"
 import MalePage from "./Malepage/Malepage";
-import Unisexpage from "./Unisexpage/Unisexpage";
-import Femalepage from "./Femalepage/Femalepage";
 import PlaceInOrderPage from "./PlaceInOrderPage/PlaceInOrderPage"
 import { auth } from "../action/user";
 
@@ -111,8 +109,6 @@ function App () {
                                                         onDeleteItemInCart={onDeleteItemInCart} 
                                                         dataCart={dataCart}/>}/>
                     <Route path="male" element={<MalePage onAddToCart={onAddToCart}/>}/>
-                    <Route path="female" element={<Femalepage/>}/>
-                    <Route path="unisex" element={<Unisexpage/>}/>
                     <Route path="order" element={<PlaceInOrderPage/>}/>
                 </Route>
             </Routes>

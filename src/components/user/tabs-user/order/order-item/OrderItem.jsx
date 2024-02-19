@@ -8,7 +8,7 @@ const OrderItem = ({data}) => {
     const months = [
         "января", "февраля", "марта", "апреля", "мая", "июня",
         "июля", "августа", "сентября", "октября", "ноября", "декабря"];
-
+        
     const [numberOnShow, setNumberOnShow] = useState(3);
     const dataReverse = data.reverse();
 

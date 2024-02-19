@@ -11,6 +11,8 @@ import ReviewModal from "../../components/modals/review-modal/ReviewModal";
 import ModalExit from "../../components/modals/ModalExit/ModalExit";
 
 import "./Cardpage.scss";
+import Loading from "../../components/Loading/Loading";
+import ParentFromReplace from "../../components/ParentFromReplace/ParentFromReplace";
 
 const CardPage = ({
     cardNumber,
@@ -21,6 +23,9 @@ const CardPage = ({
     const service = new Services();
     const [post, setPost] = useState([])
     const [active, setActive] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false)
+
     const onActive = (e) => {
         e.target.classList.contains("close") && setActive(false);
     } 
@@ -33,7 +38,18 @@ const CardPage = ({
     },[]);
 
     useEffect(() => {
-        service.getOneCard(cardNumber).then(res => setPost(res))
+        setLoading(true)
+        service.getOneCard(cardNumber)
+            .then(res => setPost(res))
+            .then(() => {
+                setLoading(false)
+                setError(false)
+            })
+            .catch(() => {
+                setError(true)
+                setLoading(false)
+            })
+
     }, [cardNumber])
     
     const [textTitle, setTextTitle] = useState("")
@@ -44,7 +60,13 @@ const CardPage = ({
     return (
         <>
                 <Breadcrumbs page={"Подробнее"}/>
-                <MainCatalog onAddToCart={onAddToCart} setActive={setActive} cardNumber={cardNumber} post={post}/>
+                {(!loading && !error) && <MainCatalog  onAddToCart={onAddToCart} setActive={setActive} cardNumber={cardNumber} post={post}/>}
+                {loading && <Loading/>}
+                {
+                    error &&    <ParentFromReplace>
+                                        <p>Сервер временно недоступен, попробуйте обновить страницу</p>
+                                </ParentFromReplace>
+                }
                 <section className="main__slider-card slider-card">
                     <div className="slider-card__graniza">
                         <div className="slider-card__body">
