@@ -1,14 +1,15 @@
-
-import AdressMain from "../tabs-user/adress/adress-main/AdressMain";
-import BonusMain from "../tabs-user/bonus/bonus-main/BonusMain";
-import DownloadTabs from "../tabs-user/download/DownloadTabs";
-import OrderMain from "../tabs-user/order/order-main/OrderMain";
-import Panel from "../tabs-user/panel/Panel";
+import { lazy } from "react";
 import ParentTabs from "../tabs-user/parent-tabs/ParentTabs";
-import ProfileMain from "../tabs-user/profile/profile-main/ProfileMain";
-import Exit from "../tabs-user/exit/Exit"
 
 import "./user-content.scss";
+
+const AdressMain = lazy(() => import("../tabs-user/adress/adress-main/AdressMain"))
+const BonusMain = lazy(() => import("../tabs-user/bonus/bonus-main/BonusMain"))
+const DownloadTabs = lazy(() => import("../tabs-user/download/DownloadTabs"))
+const OrderMain = lazy(() => import("../tabs-user/order/order-main/OrderMain"))
+const Panel = lazy(() => import("../tabs-user/panel/Panel"))
+const ProfileMain = lazy(() => import("../tabs-user/profile/profile-main/ProfileMain"))
+const Exit = lazy(() => import("../tabs-user/exit/Exit"))
 
 const UserContent = ({stateTabs, onChangeTabs}) => {
     

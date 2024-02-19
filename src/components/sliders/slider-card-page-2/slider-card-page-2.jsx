@@ -22,7 +22,6 @@ const SliderCardPage2 = ({
             behavior: "auto"
         });
     }, [cardNumber]);
-
     return (
         <Swiper
             speed={400}

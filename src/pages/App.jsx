@@ -1,14 +1,12 @@
 
-import { lazy, Suspense } from "react"
+import { lazy } from "react"
 import {Routes, Route} from "react-router-dom"
 import { useContext , useEffect} from "react";
 import { Context } from "./myContext/MyContext";
 import { useDispatch } from "react-redux";
-
+import Layout from "./Layout/layout"
 import { auth } from "../action/user";
-import Loading from "../components/Loading/Loading";
 
-const Layout = lazy(() => import("./Layout/layout"));
 const Home = lazy(() => import("./Homepage"));
 const About = lazy(() => import("./Aboutpage/Aboutpage"));
 const Userpage = lazy(() => import("./User/Userpage"));
@@ -93,11 +91,7 @@ function App () {
     return (
         <>   
             <Routes>
-                <Route path="/" element={
-                    <Suspense >
-                        <Layout/>
-                    </Suspense>
-                }>
+                <Route path="/" element={ <Layout/>}>
                     <Route index element={<Home  onAddToCart={onAddToCart} onChangeCardNumber={onChangeCardNumber}/>}/>
                     <Route path="user" element={<Userpage/>}/>
                     <Route path="about" element={<About/>}/>

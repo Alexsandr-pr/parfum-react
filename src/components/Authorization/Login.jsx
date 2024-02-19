@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react"
+import { Suspense, lazy, useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
 
 import { login } from "../../action/user";
@@ -7,7 +7,8 @@ import { login } from "../../action/user";
 import Label from "../forms/label/Label";
 import LabelPassword from "../forms/label-password/LabelPassword";
 import Title from "../user/title/Title";
-import Robots from "../robots/Robots";
+
+const Robots = lazy(() => import("../robots/Robots"))
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -51,13 +52,15 @@ const Login = () => {
                             name={"password"}
                         />
                     </div>
-                    <Robots 
-                        noActive={() => onChangeModalRobots(false)} 
-                        setActive={() => onChangeModalRobots(true)} 
-                        checked={checked}
-                        active={activeModalRobots}
-                        setChecked={setChecked}
-                    />
+                    <Suspense>
+                        <Robots 
+                            noActive={() => onChangeModalRobots(false)} 
+                            setActive={() => onChangeModalRobots(true)} 
+                            checked={checked}
+                            active={activeModalRobots}
+                            setChecked={setChecked}
+                        />
+                    </Suspense>
                     <ul className="login-block__pol-list pol-list">
                         <li className="pol-list__item">
                             <label className="pol-list__label">

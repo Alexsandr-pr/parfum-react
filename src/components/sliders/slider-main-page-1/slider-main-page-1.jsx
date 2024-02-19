@@ -2,6 +2,7 @@
 import { Pagination, Autoplay  } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 import "./slider-main-page-1.scss";
@@ -11,34 +12,34 @@ const data = [
         title: "Оптовая продажа люксовой парфюмерии с маржой до 100% и доставкой по  СНГ", 
         id: "slide13", 
         sub: "В наличии более 500 ароматов", 
-        imgSrcMobile: "./img/card/img/slide1-mobile.jpg", 
-        imgSrcDesktop: "./img/card/img/slide1.jpg", 
+        imgSrcMobile: "./img/card/img/slide1-mobile.webp", 
+        imgSrcDesktop: "./img/card/img/slide1.webp", 
         alt: "image",
     },
     {
         title: "Оптовая продажа люксовой парфюмерии с маржой до 100% и доставкой по  СНГ", 
         id: "slide23", 
         sub: "В наличии более 500 ароматов", 
-        imgSrcMobile: "./img/card/img/On-The-Beache-Вy-Luis-Vuitton-mobile.jpg", 
-        imgSrcDesktop: "./img/card/img/On-The-Beache-Вy-Luis-Vuitton.jpg", 
+        imgSrcMobile: "./img/card/img/On-The-Beache-Вy-Luis-Vuitton-mobile.webp", 
+        imgSrcDesktop: "./img/card/img/On-The-Beache-Вy-Luis-Vuitton.webp", 
         alt: "On-The-Beache-Вy-Luis-Vuitton",
     },
     {
         title: "Оптовая продажа люксовой парфюмерии с маржой до 100% и доставкой по  СНГ", 
         id: "slide33", 
         sub: "В наличии более 500 ароматов", 
-        imgSrcMobile: "./img/card/img/davidof2-mobile.jpg", 
-        imgSrcDesktop: "./img/card/img/davidof2.jpg", 
+        imgSrcMobile: "./img/card/img/davidof2-mobile.webp", 
+        imgSrcDesktop: "./img/card/img/davidof2.webp", 
         alt: "davidof2",
     }
 ]
 
 const SliderMainPage1 = () => {
-    
     return (
         <>
             <Swiper
-                modules={[ Pagination , Autoplay  ]}
+                lazy={true}
+                modules={[ Pagination , Autoplay]}
                 slidesPerView={1}
                 pagination={{ 
                     clickable: true ,
@@ -81,7 +82,7 @@ const SliderMainPage1 = () => {
                                     <picture>
                                         <source media="(min-width: 767.98px )" srcSet={imgSrcDesktop} type="image/jpeg"/>
                                         <source media="(max-width: 767.98px )" srcSet={imgSrcMobile} type="image/jpeg"/>
-                                        <img src={imgSrcDesktop} alt={alt}/>
+                                        <img data-src={imgSrcDesktop} alt={alt}/>
                                     </picture>
                                 </div>
                             </SwiperSlide>

@@ -1,10 +1,15 @@
 
-import Reviews from "../description/reviews";
+import { Suspense, lazy } from "react";
 import Parent from "../../buttons/parent/Parent";
 
 import "./main-more.scss"
 
-const MainMore = ({description, reviews, cardNumber, setActive}) => {
+
+const Reviews = lazy(() => import("../description/reviews"))
+
+
+
+const MainMore = ({description, cardNumber, setActive}) => {
     
     return (
         <div className="main-catalog__description catalog-description">
@@ -26,7 +31,9 @@ const MainMore = ({description, reviews, cardNumber, setActive}) => {
                                 </button>
                             </div>
                         </div>
-                        <Reviews  cardNumber={cardNumber} />
+                        <Suspense>
+                            <Reviews cardNumber={cardNumber} />
+                        </Suspense>
                     </div>
                 </Parent>
             </div>
