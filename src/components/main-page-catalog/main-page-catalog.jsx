@@ -13,14 +13,10 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
 
     
     const service = new Services()
-
     const [loading, setLoading] = useState(true);
-
     const [currentPage, setCurrentPage] = useState(1);
     
-    const onChangePageNumber = () => {
-        setCurrentPage((1))
-    }
+    const onChangePageNumber = () => setCurrentPage(1)
     const nextPage = () => {
         currentPage === pageNumbers.length ?  setCurrentPage(1) : setCurrentPage(prev =>  prev + 1);
         scrollToElement()
@@ -44,6 +40,7 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
     }, [])
     
     const [brands, setBrands] = useState([]);
+    
     useEffect(() => {
         const brandMap = new Map();
         posts.forEach(item => {
@@ -57,11 +54,9 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
                 brandMap.set(brandName, { count: 1, check: false });
             }
         });
+        setBrands(Array.from(brandMap, ([name, info]) => ({ name, ...info })));
+    },[posts])
     
-        const brandArray = Array.from(brandMap, ([name, info]) => ({ name, ...info }));
-        setBrands(brandArray);
-        
-    }, [posts]);
 
 
     const [filter, setActiveButtonFilter] = useState("");
@@ -70,13 +65,11 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
     }
 
     const [sex, setSexFilter] = useState("");
-    const onChangeRadioButton = (e) => {
-        setSexFilter(e.target.value)
-    }
+    const onChangeRadioButton = (e) => setSexFilter(e.target.value)
+    
     const onResetFilter = () => setSexFilter("");
 
     const onChangeFilterBrand = (id) => {
-        
         const index = brands.findIndex(item => item.name === id)
         setBrands(prev => {
             const updateData = prev.map((item, i) => {

@@ -22,7 +22,7 @@ function App () {
 
     useEffect(() => {
         dispatch(auth())
-    }, [])
+    }, [dispatch])
 
 
     const {cardNumber, onChangeCardNumber} = useContext(Context);
@@ -91,7 +91,7 @@ function App () {
     return (
         <>   
             <Routes>
-                <Route path="/" element={ <Layout/>}>
+                <Route path="/" element={ <Layout />}>
                     <Route index element={<Home  onAddToCart={onAddToCart} onChangeCardNumber={onChangeCardNumber}/>}/>
                     <Route path="user" element={<Userpage/>}/>
                     <Route path="about" element={<About/>}/>

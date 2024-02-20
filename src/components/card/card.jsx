@@ -35,7 +35,6 @@ const Card = ({
         )
         onAddToCart(obj, id, valueMl)
     }
-    
     return (
         <>
             <article  key={id} className="cart-item">
@@ -43,7 +42,7 @@ const Card = ({
                     onClick={() => onChangeCardNumber(id)}
                     to="/card" 
                     className="cart-item__image">
-                    <img className="swiper-lazy" src={imageSrc} alt={imageAlt}/>
+                    <img loading="lazy"  src={imageSrc} alt={imageAlt}/>
                 </Link>
                 
                 <div className="cart-item__title">

@@ -14,8 +14,14 @@ const SliderCardPage2 = ({
     onChangeCardNumber, 
     onAddToCart
 }) => {
-    const service = new Services();
-    const [limit, setLimit] = useState(4)
+    const [cardData, setCards] = useState([]);
+    useEffect(() => {
+        const service = new Services();
+
+        return () => {
+            service.getLimitCard(15).then(res => setCards(res))
+        };
+    }, []);
 
 
     const {cardNumber} = useContext(Context)
@@ -27,11 +33,7 @@ const SliderCardPage2 = ({
         });
     }, [cardNumber]);
 
-    const [cardData, setCards] = useState([]);
-
-    useEffect(() => {
-        service.getLimitCard(limit).then(res => setCards(res))
-    },[limit]);
+    
 
     return (
         <Swiper
@@ -81,21 +83,18 @@ const SliderCardPage2 = ({
                     )
                 })
             }
-            <Buttons setLimit={setLimit}/>
+            <Buttons />
         </Swiper>
     )
 }
 
-const Buttons  = ({setLimit}) => {
+const Buttons  = () => {
     const swiper = useSwiper();
 
     return (
         <div className="slider-card__buttons">
             <button onClick={() => swiper.slidePrev()} className="cart-pagination__button"><i className="fa-solid fa-chevron-left"></i></button>
-            <button onClick={() => {
-                    swiper.slideNext()
-                    setLimit(prev => prev + 1);
-                }} 
+            <button onClick={() => swiper.slideNext()} 
             className="cart-pagination__button"><i className="fa-solid fa-chevron-right"></i></button>
         </div>
     )

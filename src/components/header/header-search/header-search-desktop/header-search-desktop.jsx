@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Services from "../../../../services/service";
 import SearchHeader from "../../SearchHeader/SearchHeader";
@@ -6,15 +6,12 @@ import SearchHeader from "../../SearchHeader/SearchHeader";
 import search from "./img/search.svg";
 
 import "./header-search-desktop.scss";
+import { Context } from "../../../../pages/myContext/MyContext";
 
 const HeaderSearchDesktop = () => {
 
-    const [active, setActive] = useState(false)
+    const {activeSearch, setActiveSearch} = useContext(Context)
     const [value, setValue] = useState("")
-    const [isFocused, setFocused] = useState(false)
-    
-    const handleFocus = () => setFocused(true)
-    const handleBlur = () => setFocused(false)
 
     const onChangeValue = (e) => {
         setValue(e.target.value)
@@ -25,7 +22,7 @@ const HeaderSearchDesktop = () => {
     }
 
     useEffect(() => {
-        value.length > 0 ? setActive(true) : setActive(false)
+        value.length > 0 ? setActiveSearch(true) : setActiveSearch(false)
     }, [value])
 
     const [data, setData] = useState([])
@@ -57,8 +54,7 @@ const HeaderSearchDesktop = () => {
         <>  
             <div className="header-search-menu">
                 <label className="header-bottom__label">
-                    <input  onFocus={() => handleFocus()}
-                            onBlur={() => handleBlur()}
+                    <input  
                             onChange={(e) => onChangeValue(e)} 
                             autoComplete="off" 
                             value={value} 
@@ -73,10 +69,10 @@ const HeaderSearchDesktop = () => {
                 </label>
                 <div className="header-search__list">
                     <SearchHeader 
-                        isFocused={isFocused}
+                        
                         onResetValue={onResetValue} 
                         data={filterData} 
-                        active={active}
+                        active={activeSearch}
                     />
                 </div>
             </div>

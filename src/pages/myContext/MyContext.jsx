@@ -13,6 +13,8 @@ export const MyContext = ({children}) => {
     const [cardNumber, setCadrNumber] = useState(1011001);
     const [sale, setSale] = useState(0)
 
+    const [activeSearch, setActiveSearch] = useState(false)
+
     const onChangeSaleUser = (e) => {
         if(e > saleCurrentUserBD) {
             setSale(saleCurrentUserBD)
@@ -45,7 +47,8 @@ export const MyContext = ({children}) => {
     },[dataCart])
 
     return (
-        <Context.Provider  value={{ sale,setSale, onChangeSaleUser, 
+        <Context.Provider  value={{ setActiveSearch, activeSearch,
+            sale,setSale, onChangeSaleUser, 
                                     dataCart, setDataCart, 
                                     cardNumber, setCadrNumber, onChangeCardNumber, 
                                     allPrice}}>
