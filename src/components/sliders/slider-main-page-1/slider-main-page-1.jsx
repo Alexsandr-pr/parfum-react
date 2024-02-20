@@ -81,7 +81,7 @@ const SliderMainPage1 = () => {
                                     <picture>
                                         <source media="(min-width: 767.98px )" srcSet={imgSrcDesktop} type="image/webp"/>
                                         <source media="(max-width: 767.98px )" srcSet={imgSrcMobile} type="image/webp"/>
-                                        <img height={500} loading='lazy' data-src={imgSrcDesktop} alt={alt}/>
+                                        <img style={{ objectFit: 'cover' }} height={500} loading='lazy' data-src={imgSrcDesktop} alt={alt}/>
                                     </picture>
                                 </div>
                             </SwiperSlide>

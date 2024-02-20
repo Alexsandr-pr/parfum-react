@@ -5,6 +5,9 @@ import numberWithSpaces from "../buttons/numberWithSpace/numberWithSpace"
 
 import {  useState } from "react";
 import CartModel from "../../models/cartModel";
+
+import image from "./img/image.webp"
+
 import "./card.scss"
 
 const Card = ({
@@ -42,7 +45,7 @@ const Card = ({
                     onClick={() => onChangeCardNumber(id)}
                     to="/card" 
                     className="cart-item__image">
-                    <img loading="lazy"  src={imageSrc} alt={imageAlt}/>
+                    <img loading="lazy"  src={imageSrc ? imageSrc : image} alt={imageAlt}/>
                 </Link>
                 
                 <div className="cart-item__title">

@@ -81,3 +81,11 @@ $_footer: #12110F;
 $_txt-dark: #36332E;
 $_txt-hover: #C09E6C;
 */
+
+#root {
+    display: flex !important;
+    flex-direction: column !important;
+}
+.main {
+    flex: 1 1 auto;
+}

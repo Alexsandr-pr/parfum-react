@@ -9,9 +9,9 @@ const Home = ({onChangeCardNumber, onAddToCart}) => {
 
     return (
         <>
-            <section className="main__slider main-slider">
-                <div className="main-slider__body">
-                    <div className="main-slider__swiper swiper">
+            <section style={{ height: '500px' }} className="main__slider main-slider">
+                <div style={{ height: '500px' }} className="main-slider__body">
+                    <div style={{ height: '500px' }} className="main-slider__swiper swiper">
                         <SliderMainPage1/>
                     </div>
                 </div>
