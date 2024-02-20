@@ -1,6 +1,6 @@
 
 import "./pol-list.scss"
-
+import React from "react"
 const data = [
     {id:"female", title:"Женские (33) "},
     {id:"male", title:"Мужские (32)"},
@@ -35,4 +35,4 @@ const PolList = ({onChangeRadioButton}) => {
     )
 }
 
-export default PolList;
+export default React.memo(PolList);

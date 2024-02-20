@@ -15,7 +15,7 @@ class Services {
     }
 
     getAllCards = async () => {
-        return await this.gerResourse(`${this._apiBase}tovar`);
+        return await this.gerResourse(`${this._apiBase}tovar?`);
     }
 
     getLimitCard = async (i = 3) => {

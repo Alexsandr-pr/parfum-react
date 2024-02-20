@@ -9,18 +9,17 @@ import App from './pages/App';
 import { MyContext } from './pages/myContext/MyContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <Provider store={store}>
-      <MyContext> 
-          <ScrollToTop />
-          <App />
-      </MyContext>
-    </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
-);
-
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter>
+      <Provider store={store}>
+        <MyContext> 
+            <ScrollToTop />
+            <App />
+        </MyContext>
+      </Provider>
+      </BrowserRouter>
+    </React.StrictMode>
+  );
 
 

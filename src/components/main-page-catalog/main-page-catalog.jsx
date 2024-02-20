@@ -89,7 +89,6 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
         setNewData(brands.filter(item => item.check))
     },[brands])
 
-
     const [filterPosts, setFilterPosts] = useState([]);
     
     const filterPost = (items, param) => { 

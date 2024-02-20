@@ -7,11 +7,12 @@ import { Context } from "../myContext/MyContext";
 const Layout = () => {
 
     const {setActiveSearch} = useContext(Context)
+
     return (
         <>  
             <Header/>
             <main className="main" onClick={() => setActiveSearch(false)}>
-                <Suspense>
+                <Suspense >
                     <Outlet/>
                 </Suspense>
             </main>

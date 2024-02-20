@@ -1,9 +1,9 @@
-
+import React, { memo } from "react";
 import search from "./img/search.svg"
 
 import "./search-input.scss";
 
-const SeacrhInput = ({onChangeInputValue}) => {
+const SeacrhInput = memo(({onChangeInputValue}) => {
     return (
         <>
             <div className="search-list__item">
@@ -21,6 +21,6 @@ const SeacrhInput = ({onChangeInputValue}) => {
             </div>
         </>
     )
-}
+})
 
 export default SeacrhInput;

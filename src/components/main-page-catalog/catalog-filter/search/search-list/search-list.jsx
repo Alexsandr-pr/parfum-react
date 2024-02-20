@@ -1,4 +1,4 @@
-
+import React from "react"
 import "./search-list.scss"
 
 const SearchList = ({data, onChangeFilterBrand}) => {
@@ -24,4 +24,4 @@ const SearchList = ({data, onChangeFilterBrand}) => {
         </>
     )
 }
-export default SearchList;
+export default React.memo(SearchList);

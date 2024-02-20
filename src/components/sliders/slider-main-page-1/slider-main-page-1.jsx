@@ -1,10 +1,15 @@
 
-import { Pagination, Autoplay  } from 'swiper/modules';
+import { Autoplay  } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import davidof2 from "./img/davidof2.webp";
+import davidof2Mobile from "./img/davidof2-mobile.webp";
+import beacheMobile from "./img/On-The-Beache-Вy-Luis-Vuitton-mobile.webp";
+import beache from "./img/On-The-Beache-Вy-Luis-Vuitton.webp";
+import slide1 from "./img/slide1.webp"
+import slide1Mobile from "./img/slide1-mobile.webp"
 
 import 'swiper/css';
-import 'swiper/css/pagination';
 import "./slider-main-page-1.scss";
 
 const data = [
@@ -12,24 +17,24 @@ const data = [
         title: "Оптовая продажа люксовой парфюмерии с маржой до 100% и доставкой по  СНГ", 
         id: "slide13", 
         sub: "В наличии более 500 ароматов", 
-        imgSrcMobile: "./img/card/img/slide1-mobile.webp", 
-        imgSrcDesktop: "./img/card/img/slide1.webp", 
+        imgSrcMobile: slide1Mobile, 
+        imgSrcDesktop: slide1, 
         alt: "image",
     },
     {
         title: "Оптовая продажа люксовой парфюмерии с маржой до 100% и доставкой по  СНГ", 
         id: "slide23", 
         sub: "В наличии более 500 ароматов", 
-        imgSrcMobile: "./img/card/img/On-The-Beache-Вy-Luis-Vuitton-mobile.webp", 
-        imgSrcDesktop: "./img/card/img/On-The-Beache-Вy-Luis-Vuitton.webp", 
+        imgSrcMobile: beacheMobile, 
+        imgSrcDesktop: beache, 
         alt: "On-The-Beache-Вy-Luis-Vuitton",
     },
     {
         title: "Оптовая продажа люксовой парфюмерии с маржой до 100% и доставкой по  СНГ", 
         id: "slide33", 
         sub: "В наличии более 500 ароматов", 
-        imgSrcMobile: "./img/card/img/davidof2-mobile.webp", 
-        imgSrcDesktop: "./img/card/img/davidof2.webp", 
+        imgSrcMobile: davidof2Mobile, 
+        imgSrcDesktop: davidof2, 
         alt: "davidof2",
     }
 ]
@@ -38,14 +43,8 @@ const SliderMainPage1 = () => {
     return (
         <>
             <Swiper
-                lazy={true}
-                modules={[ Pagination , Autoplay]}
+                modules={[ Autoplay]}
                 slidesPerView={1}
-                pagination={{ 
-                    clickable: true ,
-                    type: 'bullets',
-                    dynamicBullets: true,
-                }}
                 loop={true}
                 simulateTouch={true}
                 touchRatio={1}
@@ -80,9 +79,9 @@ const SliderMainPage1 = () => {
                                 </div>
                                 <div className="slider-slide__image">
                                     <picture>
-                                        <source media="(min-width: 767.98px )" srcSet={imgSrcDesktop} type="image/jpeg"/>
-                                        <source media="(max-width: 767.98px )" srcSet={imgSrcMobile} type="image/jpeg"/>
-                                        <img data-src={imgSrcDesktop} alt={alt}/>
+                                        <source media="(min-width: 767.98px )" srcSet={imgSrcDesktop} type="image/webp"/>
+                                        <source media="(max-width: 767.98px )" srcSet={imgSrcMobile} type="image/webp"/>
+                                        <img height={500} loading='lazy' data-src={imgSrcDesktop} alt={alt}/>
                                     </picture>
                                 </div>
                             </SwiperSlide>

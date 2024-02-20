@@ -1,12 +1,22 @@
+import React, { memo } from "react";
+
 import { useState, useEffect } from "react";
 import PolList from "./pol-list/pol-list";
 import SearchList from "./search/search-list/search-list";
 import SeacrhInput from "./search/search-input/search-input"
 import FilterButton from "./filter-button/filter-button";
 
+
+
 import close from "./img/close.svg"
 
 import "./catalog-filter.scss";
+
+const dataButton = [
+    { name: "popular", label: "По популярности"},
+    { name: "last", label: "Цена по убыванию"},
+    { name: "ascending", label: "Цена по возрастанию"},
+]
 
 
 const CatalogFilter = ({
@@ -21,7 +31,7 @@ const CatalogFilter = ({
     const [inputValue, setSearchInput] = useState("");
     const [activeTab1, setActiveTab1] = useState(false);
     const [activeTab2, setActiveTab2] = useState(false);
-
+    
     const [width, setWidth] = useState(0)
 
     let widt;
@@ -109,13 +119,13 @@ const CatalogFilter = ({
                 </div>
             </div>
             <div >
-                <FilterButton setActiveFilter={onChangeActiveTab2} activeTab2={activeTab2} filter={filter} onChangeFilter={onChangeFilter}/>
+                <FilterButton data={dataButton} setActiveFilter={onChangeActiveTab2} activeTab2={activeTab2} filter={filter} onChangeFilter={onChangeFilter}/>
             </div>
         </div>
     )
 }
 
-const Parent = ({children, title}) => {
+const Parent = memo(({children, title}) => {
     const [active, setActive] = useState(false);
     const onChangeActive = (e) => {
         e.preventDefault()
@@ -133,5 +143,5 @@ const Parent = ({children, title}) => {
             </div>
         </>
     )
-}
-export default CatalogFilter;
+})
+export default React.memo(CatalogFilter);
