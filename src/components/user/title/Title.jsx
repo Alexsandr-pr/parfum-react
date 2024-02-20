@@ -1,5 +1,5 @@
 
-import "./title.scss"
+import "./Title.scss";
 
 
 const Title = ({title, align}) => {
