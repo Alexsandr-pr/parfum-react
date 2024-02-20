@@ -88,4 +88,5 @@ $_txt-hover: #C09E6C;
 }
 .main {
     flex: 1 1 auto;
+    min-height: 100%;
 }
