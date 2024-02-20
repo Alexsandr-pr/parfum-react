@@ -10,6 +10,9 @@ import ParentModal from "../../components/modals/parent-modal/ParentModal";
 import ReviewModal from "../../components/modals/review-modal/ReviewModal";
 import ModalExit from "../../components/modals/ModalExit/ModalExit";
 
+
+
+
 import "./Cardpage.scss";
 import Loading from "../../components/Loading/Loading";
 import ParentFromReplace from "../../components/ParentFromReplace/ParentFromReplace";
@@ -31,11 +34,7 @@ const CardPage = ({
     } 
 
     const {_id, title} = post;
-    const [cardData, setCards] = useState([]);
-
-    useEffect(() => {
-        service.getLimitCard().then(res => setCards(res))
-    },[]);
+    
 
     useEffect(() => {
         setLoading(true)
@@ -72,7 +71,6 @@ const CardPage = ({
                         <div className="slider-card__body">
                             <Title align={"center"} title={"Вам так же может понравиться"}/>
                             <SliderCardPage2 
-                                data={cardData}
                                 onAddToCart={onAddToCart} 
                                 onChangeCardNumber={onChangeCardNumber}
                             />
