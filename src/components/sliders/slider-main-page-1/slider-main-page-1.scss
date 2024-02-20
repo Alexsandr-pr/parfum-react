@@ -1,24 +1,14 @@
 .main-slider {
 
     // .main-slider__body
-
     &__body {
         position: relative;
         z-index: 34;
     }
-
     // .main-slider__swiper
 }
 
 .slider-slide {
-
-    // .slider-slide__container
-
-    &__container {
-    }
-
-    // .slider-slide__body
-
     &__body {
         display: flex;
         flex-direction: column;

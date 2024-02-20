@@ -25,7 +25,7 @@ const BonusPage = () => {
                                     <p>Совершая покупки, а также определённые действия у нас на сайте, вы можете зарабатывать себе бонусные баллы. Этими баллами можно оплачивать покупки! Бонусные баллы можно найти в вашей Корзине</p>
                                 </div>
                                 <div className="main-bonus__image">
-                                    <img src={image1} alt="ewtreyhfr esgtregxc asrf"/>
+                                    <img loading="lazy" src={image1} alt="ewtreyhfr esgtregxc asrf"/>
                                 </div>
                             </div>
                             <div className="main-bonus__item">
@@ -36,7 +36,7 @@ const BonusPage = () => {
                                     <p>Первое – регистрация. За регистрацию на сайте вам полагается 100 баллов. Сделать это не трудно: просто перейдите во вкладку Мой аккаунт</p>
                                 </div>
                                 <div className="main-bonus__image">
-                                    <img src={image2} alt="ewtreyhfr esgtregxc asrf"/>
+                                    <img loading="lazy" src={image2} alt="ewtreyhfr esgtregxc asrf"/>
                                 </div>
                             </div>
                             <div className="main-bonus__item">
@@ -44,7 +44,7 @@ const BonusPage = () => {
                                     <p>Второе – покупки. Если вы зарегистрированы на сайте, то после каждой покупки вам моментально начисляется кэшбэк. Причём, чем больше у вас покупок, тем больше кэшбек!</p>
                                 </div>
                                 <div className="main-bonus__image">
-                                    <img src={image3} alt="ewtreyhfr esgtregxc asrf"/>
+                                    <img loading="lazy" src={image3} alt="ewtreyhfr esgtregxc asrf"/>
                                 </div>
                             </div>
                             <div className="main-bonus__item">
@@ -55,7 +55,7 @@ const BonusPage = () => {
                                     <p>* – в отзыве необходимо указать свои фамилию и имя, а также место, куда был сделан заказ. Себя снимать не нужно – только духи</p>
                                 </div>
                                 <div className="main-bonus__image">
-                                    <img src={image4} alt="ewtreyhfr esgtregxc asrf"/>
+                                    <img loading="lazy" src={image4} alt="ewtreyhfr esgtregxc asrf"/>
                                 </div>
                             </div>
                             <div className="main-bonus__item">
@@ -63,7 +63,7 @@ const BonusPage = () => {
                                     <p>Информацию о текущем количестве бонусных баллов, а также их историю, можно узнать в личном кабинете: откройте вкладку «Мой аккаунт» и выберите там пункт Бонусы»</p>
                                 </div>
                                 <div className="main-bonus__image">
-                                    <img src={image5} alt="ewtreyhfr esgtregxc asrf"/>
+                                    <img loading="lazy" src={image5} alt="ewtreyhfr esgtregxc asrf"/>
                                 </div>
                                 <div className="main-bonus__text">
                                     <p>С любыми вопросами о бонусной системе вы всегда можете обратиться к нам</p>

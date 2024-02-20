@@ -1,4 +1,6 @@
 
+import "./title.scss"
+
 
 const Title = ({title, align}) => {
     return (

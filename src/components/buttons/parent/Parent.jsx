@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "./parent.scss"
+
 const Parent = (props) => {
     const [active, setActive] = useState(false);
     const onClickButton = () => {

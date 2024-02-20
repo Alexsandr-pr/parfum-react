@@ -1,0 +1,17 @@
+.title-24 {
+    font-family: Montserrat;
+    font-size: 24px;
+    background:  linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @media(max-width:767.98px){
+        font-size: 22px;
+    }
+    &:not(:last-child){
+    margin-bottom:30px;
+    @media(max-width:991.98px){
+        margin-bottom: 20px;
+    }
+    }
+}

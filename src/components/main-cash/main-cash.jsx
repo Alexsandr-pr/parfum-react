@@ -4,6 +4,7 @@ import Title from "../user/title/Title"
 
 import imagefon from "./img/imagefon.png"
 
+
 import "./main-cash.scss"
 
 const MainCash = () => {
@@ -30,7 +31,7 @@ const MainCash = () => {
                         </div>    
                     </div>
                     <div className="cash-body__image _ibg">
-                        <img src={imagefon} alt="Image fon "/>
+                        <img loading="lazy" src={imagefon} alt="Image fon "/>
                     </div>
                 </div>
 			</div>

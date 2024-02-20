@@ -17,3 +17,18 @@
 .slider-card__body .swiper-wrapper {
     padding: 3px;
 }
+.main__slider-card {
+    padding: 50px 0px;
+}
+.slider-card__title {
+    text-align: center;
+}
+
+.slider-card__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.slider-card__swiper-wrapper {
+    margin-bottom: 30px;
+}
