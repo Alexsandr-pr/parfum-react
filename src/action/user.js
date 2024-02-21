@@ -123,12 +123,11 @@ export const addComment = async (arr, id) => {
 
 /******************** */
 
-export const addUserAdress = async (adress, email) => {
+export const addUserAdress = async (adress) => {
     try {
-        const response = await axios.post(`${API_URL}api/auth/adress`, {
-            adress,
-            email
-        });
+        const response = await axios.post(`${API_URL}api/auth/adress`, {adress}, 
+            { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }}
+        );
         return response.data; 
     } catch(e) {
         console.error(e); 

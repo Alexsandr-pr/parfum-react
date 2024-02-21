@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import {BrowserRouter} from 'react-router-dom';
 import ScrollToTop from "../src/components/scroll-to-top/scroll-to-top"
 import {store} from "./reducers"

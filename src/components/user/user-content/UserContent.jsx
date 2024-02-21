@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 import ParentTabs from "../tabs-user/parent-tabs/ParentTabs";
 
 import "./user-content.scss";
@@ -15,13 +15,16 @@ const UserContent = ({stateTabs, onChangeTabs}) => {
     
     return (
         <div className="user__items-content">
-            { stateTabs === "panel" && <ParentTabs children={<Panel onChangeTabs={onChangeTabs}/>}/>}
-            { stateTabs === "bonus" && <ParentTabs children={<BonusMain/>}/>}
-            { stateTabs === "order" && <ParentTabs children={<OrderMain/>}/>} 
-            { stateTabs === "download" && <ParentTabs children={<DownloadTabs/>}/>}
-            { stateTabs === "adress" && <ParentTabs children={ <AdressMain/>} />}
-            { stateTabs === "details" && <ParentTabs children={ <ProfileMain/>} /> }
-            { stateTabs === "exit" && <ParentTabs children={<Exit/>}/>}
+            <Suspense>
+                { stateTabs === "panel" && <ParentTabs children={<Panel onChangeTabs={onChangeTabs}/>}/>}
+                { stateTabs === "bonus" && <ParentTabs children={<BonusMain/>}/>}
+                { stateTabs === "order" && <ParentTabs children={<OrderMain/>}/>} 
+                { stateTabs === "download" && <ParentTabs children={<DownloadTabs/>}/>}
+                { stateTabs === "adress" && <ParentTabs children={ <AdressMain/>} />}
+                { stateTabs === "details" && <ParentTabs children={ <ProfileMain/>} /> }
+                { stateTabs === "exit" && <ParentTabs children={<Exit/>}/>}
+            </Suspense>
+            
         </div>
     )
 }

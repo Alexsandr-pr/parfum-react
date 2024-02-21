@@ -1,6 +1,8 @@
 
 import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs"
+
 import "./bonuspage.scss"
+
 import image1 from "./img/image1.webp";
 import image2 from "./img/image2.webp";
 import image3 from "./img/image3.webp";

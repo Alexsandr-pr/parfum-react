@@ -55,11 +55,7 @@ const SliderMainPage1 = () => {
                     onlyInViewport: true,
                     pageUpDown: true,
                 }}
-                autoplay={{
-                    delay: 2000,
-                    stopOnLastSlide: true,
-                    disableOnInteraction: false,
-                }}
+                
                 speed={1200}
             >
                 {
@@ -79,9 +75,8 @@ const SliderMainPage1 = () => {
                                 </div>
                                 <div className="slider-slide__image">
                                     <picture>
-                                        <source media="(min-width: 767.98px )" srcSet={imgSrcDesktop} type="image/webp"/>
-                                        <source media="(max-width: 767.98px )" srcSet={imgSrcMobile} type="image/webp"/>
-                                        <img style={{ objectFit: 'cover' }} height={500} loading='lazy' data-src={imgSrcDesktop} alt={alt}/>
+                                        <source media="(min-width: 767px )" srcSet={imgSrcDesktop} type="image/webp"/>
+                                        <img style={{ objectFit: 'cover' }} height={500} loading='lazy' src={imgSrcMobile} alt={alt}/>
                                     </picture>
                                 </div>
                             </SwiperSlide>

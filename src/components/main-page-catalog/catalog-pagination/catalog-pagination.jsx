@@ -14,9 +14,9 @@ const CatalogPagination = ({prevPage,nextPage, paginate, currentPage, data, scro
     return (
         <div className="main-cart__pagination cart-pagination">
             <ul className="cart-pagination__list">
-                <div className="cart-pagination__btn">
+                <li className="cart-pagination__btn">
                     <button onClick={() => prevPage()} className="cart-pagination__button"><i className="fa-solid fa-chevron-left"></i></button>
-                </div>
+                </li>
                     {
                         pageSubset.map((number, i) => (
                             <li key={i} className="cart-pagination__item">
@@ -27,9 +27,9 @@ const CatalogPagination = ({prevPage,nextPage, paginate, currentPage, data, scro
                             </li>
                     ))
                 }
-                <div className="cart-pagination__btn">
+                <li className="cart-pagination__btn">
                     <button onClick={() => nextPage()} className="cart-pagination__button"><i className="fa-solid fa-chevron-right"></i></button>
-                </div>
+                </li>
             </ul>
         </div>
     );

@@ -47,28 +47,26 @@ const data = [
 
 const Userpage = () => {
     const [stateTabs, setStateTabs] = useState("panel");
+    const [pageItem, setPageItem] = useState("")
     const isAuth = useSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(auth())
-    }, [])
+    }, [dispatch])
     const onChangeTabs = (tab) => {
         setStateTabs(tab)
     }
+
+    useEffect(() => {
+        data.forEach(item => item.id === stateTabs  ? setPageItem(item.name) : null)
+    },[stateTabs])
     
-
-    let pageItem = "";
-    data.forEach(item => {
-        if(item.id === stateTabs) {
-            pageItem = item.name
-        }
-    })
-
     return (
+
         <>  
-                {!isAuth ?  <Authorization/> : null}
-                {isAuth && <Breadcrumbs page={pageItem}/> }
-                {isAuth && <UserMain data={data} stateTabs={stateTabs} onChangeTabs={onChangeTabs} />}
+            {!isAuth ?  <Authorization/> : null}
+            {isAuth && <Breadcrumbs page={pageItem}/> }
+            {isAuth && <UserMain data={data} stateTabs={stateTabs} onChangeTabs={onChangeTabs} />}
         </>
     )
 }

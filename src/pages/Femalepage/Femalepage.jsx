@@ -16,6 +16,9 @@ const data1 = [
 ]
 
 
+import "./femalepage.scss"
+
+
 const Femalepage = ({onAddToCart}) => {
     const {onChangeCardNumber} = useContext(Context)
     const [cardData, setCards] = useState([]);

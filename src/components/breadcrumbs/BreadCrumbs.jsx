@@ -12,7 +12,7 @@ const Breadcrumbs = ({page}) => {
                         </div>
                         <ul className="breadcrumb__list">
                             <li className="breadcrumb__item">
-                                <Link to="/" className="breadcrumb__link">Главная</Link>
+                                <Link to="/" className="breadcrumb__link breadcrumb__link-18" >Главная</Link>
                             </li>
                             <li className="breadcrumb__item">
                                 <p className="breadcrumb__link">{page}</p>

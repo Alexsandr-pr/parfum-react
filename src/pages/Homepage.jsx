@@ -3,10 +3,11 @@ import Title from "../components/user/title/Title";
 import MainCash from "../components/main-cash/main-cash";
 import SliderMainPage1 from "../components/sliders/slider-main-page-1/slider-main-page-1";
 import TovarSlider from "../components/sliders/slider-male-page-1/tovar-slider";
-import Catalog from "../components/main-page-catalog/main-page-catalog";
+import { Suspense, lazy } from "react";
+
+const Catalog = lazy(() => import("../components/main-page-catalog/main-page-catalog"));
 
 const Home = ({onChangeCardNumber, onAddToCart}) => {
-
     return (
         <>
             <section style={{ height: '500px' }} className="main__slider main-slider">
@@ -16,7 +17,7 @@ const Home = ({onChangeCardNumber, onAddToCart}) => {
                     </div>
                 </div>
 			</section>
-            <section className="main__tovar-slider tovar-slider">
+            <section style={{ height: '546px' }} className="main__tovar-slider tovar-slider">
 					<div className="tovar-slider__container">
 						<Title title={"Популярные ароматы"}/>
                         <div className="tovar-slider__swiper">
@@ -25,9 +26,11 @@ const Home = ({onChangeCardNumber, onAddToCart}) => {
 					</div>
 			</section>
             <MainCash/>
-            <Catalog 
-                onAddToCart={onAddToCart} 
-                onChangeCardNumber={onChangeCardNumber}/>
+            <Suspense>
+                <Catalog 
+                    onAddToCart={onAddToCart} 
+                    onChangeCardNumber={onChangeCardNumber}/>
+            </Suspense>
         </>
 
     )

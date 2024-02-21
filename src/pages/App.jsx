@@ -14,7 +14,7 @@ const BonusPage = lazy(() => import("./Bonuspage/bonuspage"));
 const Document = lazy(() => import("./Documentpage/documentpage"));
 const CardPage = lazy(() => import("./Cardpage/Cardpage"));
 const CartTovar = lazy(() => import("./CartTovar/CartTovar"));
-const MalePage = lazy(() => import("./Malepage/Malepage"));
+
 const PlaceInOrderPage = lazy(() => import("./PlaceInOrderPage/PlaceInOrderPage"));
 
 function App () {
@@ -106,7 +106,7 @@ function App () {
                                                         onChangeCurrentOnClick={onChangeCurrentOnClick}
                                                         onDeleteItemInCart={onDeleteItemInCart} 
                                                         dataCart={dataCart}/>}/>
-                    <Route path="male" element={<MalePage onAddToCart={onAddToCart}/>}/>
+                    
                     <Route path="order" element={<PlaceInOrderPage/>}/>
                 </Route>
             </Routes>

@@ -10,7 +10,7 @@ import "./documentpage.scss";
 const Document = () => {
     return (
         <>
-                <Breadcrumbs type={"Бонусы"}/>
+                <Breadcrumbs page={"Документация"}/>
 
                 <section className="main__doc main-doc">
                     <div className="main-doc__container">

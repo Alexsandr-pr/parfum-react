@@ -24,40 +24,11 @@ const TovarSlider = ({onChangeCardNumber}) => {
             })
     }, [])
     
-
-    const elements = posts.map(({title,gender, id, imageSrc, imageAlt}) => {
-        let name = "";
-        switch (gender) {
-            case 'unisex': name = "Унисекс";
-                break;
-            case 'female': name = "Для неё";
-                break;
-            case 'male':  name = "Для него";
-                break;
-            default :  name = "";
-        }
-        
-        return (
-            <SwiperSlide key={id} className='tovar-slider__slide tovar-slide'>
-                <div className="tovar-slide__image">
-                    <img src={imageSrc} alt={imageAlt}/>
-                </div>
-                <div className="tovar-slide__title">
-                    <h3>{name}</h3>
-                </div>
-                <div className="tovar-slide__item">
-                    <div className="tovar-slide__name title-20">
-                        <p>{title}</p>
-                    </div>
-                    <div className="tovar-slide__button">
-                        <div className="button-add-body">
-                            <Link onClick={() => onChangeCardNumber(id)} to="/card" className="button-add-to-cart add"><span className="add">Перейти </span></Link>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-        )
-    })
+    const genderNames = {
+        'unisex': "Унисекс",
+        'female': "Для неё",
+        'male': "Для него"
+    };
     return(
         <>
             {
@@ -99,7 +70,31 @@ const TovarSlider = ({onChangeCardNumber}) => {
                                 observeParents={true}
                                 observeSlideChildren={true}
                                 >
-                                {elements}
+                                {
+                                    posts.map(({ title, gender, id, imageSrc, imageAlt }) => {
+                                        const name = genderNames[gender] || ""; 
+                                        return (
+                                            <SwiperSlide key={id} className='tovar-slider__slide tovar-slide'>
+                                                <div className="tovar-slide__image">
+                                                    <img src={imageSrc} alt={imageAlt}/>
+                                                </div>
+                                                <div className="tovar-slide__title">
+                                                    <h3>{name}</h3>
+                                                </div>
+                                                <div className="tovar-slide__item">
+                                                    <div className="tovar-slide__name title-20">
+                                                        <p>{title}</p>
+                                                    </div>
+                                                    <div className="tovar-slide__button">
+                                                        <div className="button-add-body">
+                                                            <Link onClick={() => onChangeCardNumber(id)} to="/card" className="button-add-to-cart add"><span className="add">Перейти </span></Link>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </SwiperSlide>
+                                        )
+                                        })
+                                }
                             </Swiper>
             }   
             {

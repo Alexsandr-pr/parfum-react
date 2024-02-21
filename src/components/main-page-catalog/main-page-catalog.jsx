@@ -9,9 +9,11 @@ import Loading from "../../components/Loading/Loading";
 
 import "./main-page-catalog.scss";
 
-const Catalog = ({onChangeCardNumber, onAddToCart}) => {
+const Catalog = ({
+    onChangeCardNumber, 
+    onAddToCart
+}) => {
 
-    
     const service = new Services()
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
@@ -21,6 +23,8 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
         currentPage === pageNumbers.length ?  setCurrentPage(1) : setCurrentPage(prev =>  prev + 1);
         scrollToElement()
     }
+
+
     const prevPage = () => {
         currentPage === 1 ? setCurrentPage(prev =>  prev = pageNumbers.length) : setCurrentPage(prev =>  prev - 1)
         scrollToElement()
@@ -60,6 +64,7 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
 
 
     const [filter, setActiveButtonFilter] = useState("");
+
     const onChangeFilter = (name) => {
         setActiveButtonFilter(name);
     }
@@ -152,7 +157,9 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
     }
 
     const catalogRef = useRef(null)
-    let offTop = catalogRef.current
+
+    let offTop = catalogRef.current;
+
     useEffect(() => {
         offTop = catalogRef.current.offsetTop;
     },[currentPage])
@@ -171,7 +178,7 @@ const Catalog = ({onChangeCardNumber, onAddToCart}) => {
                 <div className="main-cart__container">
                     <div className="main-cart__body ">
                         <div ref={catalogRef} className="top-trigger-filter__title title-24">
-                            <h2 >Каталог</h2>
+                            <h2>Каталог</h2>
                         </div>
                         <CatalogFilter 
                             onChangeFilterBrand={onChangeFilterBrand}
