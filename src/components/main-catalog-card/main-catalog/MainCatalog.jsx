@@ -1,4 +1,4 @@
-import {  lazy, useState } from "react";
+import { useState } from "react";
 
 
 import numberWithSpace from "../../buttons/numberWithSpace/numberWithSpace"
@@ -9,6 +9,7 @@ import Button from "../../buttons/button/Buttons";
 import Title from "../../user/title/Title"
 import "./main-catalog.scss";
 import CartModel from "../../../models/cartModel";
+
 
 const MainCatalog = ({
     post, 

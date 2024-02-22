@@ -1,14 +1,14 @@
 
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import { useContext, useEffect } from 'react';
+import {useContext, useEffect } from 'react';
 import { Context } from '../../../pages/myContext/MyContext';
 import 'swiper/css';
 import "./slider-card-page-2.scss";
 import { useState } from 'react';
 import Services from '../../../services/service';
 import { PaginationButtonLeft, PaginationButtonRight } from '../../buttons/PaginationButton/PaginationButton';
-
 import Card from "../../card/card";
+
 
 const SliderCardPage2 = ({
     onChangeCardNumber, 

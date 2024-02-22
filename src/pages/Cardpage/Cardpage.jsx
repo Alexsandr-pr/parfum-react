@@ -9,13 +9,12 @@ import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
 import ParentModal from "../../components/modals/parent-modal/ParentModal";
 import ReviewModal from "../../components/modals/review-modal/ReviewModal";
 import ModalExit from "../../components/modals/ModalExit/ModalExit";
-
+import Loading from "../../components/Loading/Loading";
+import ParentFromReplace from "../../components/ParentFromReplace/ParentFromReplace";
 
 
 
 import "./Cardpage.scss";
-import Loading from "../../components/Loading/Loading";
-import ParentFromReplace from "../../components/ParentFromReplace/ParentFromReplace";
 
 const CardPage = ({
     cardNumber,
