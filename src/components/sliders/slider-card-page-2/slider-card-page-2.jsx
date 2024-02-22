@@ -14,13 +14,10 @@ const SliderCardPage2 = ({
     onChangeCardNumber, 
     onAddToCart
 }) => {
+    const service = new Services();
     const [cardData, setCards] = useState([]);
     useEffect(() => {
-        const service = new Services();
-
-        return () => {
-            service.getLimitCard(15).then(res => setCards(res))
-        };
+        service.getLimitCard(15).then(res => setCards(res))
     }, []);
 
 
@@ -72,11 +69,11 @@ const SliderCardPage2 = ({
                     const {id} = item
                     return (
                         <SwiperSlide key={id} >
-                                <Card
-                                    onAddToCart={onAddToCart}
-                                    onChangeCardNumber={onChangeCardNumber}
-                                    data={item}
-                                    /> 
+                            <Card
+                                onAddToCart={onAddToCart}
+                                onChangeCardNumber={onChangeCardNumber}
+                                data={item}
+                                /> 
                         </SwiperSlide>
                     )
                 })
