@@ -8,8 +8,7 @@ import MainMore from "../main-more/main-more";
 import Button from "../../buttons/button/Buttons";
 import Title from "../../user/title/Title"
 import "./main-catalog.scss";
-
-const CartModel = lazy(() => import("../../../models/cartModel"));
+import CartModel from "../../../models/cartModel";
 
 const MainCatalog = ({
     post, 
