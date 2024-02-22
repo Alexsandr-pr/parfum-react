@@ -24,8 +24,8 @@ const CatalogFilter = ({
     filter, 
     onChangeRadioButton, 
     onResetFilter, 
-    polList, 
     data, 
+    polData,
     onChangeFilterBrand
 }) => {
     const [inputValue, setSearchInput] = useState("");
@@ -96,7 +96,7 @@ const CatalogFilter = ({
                         </Parent>
                         <Parent  title={"Пол"}>
                             <PolList
-                                polList={polList} 
+                                polData={polData}
                                 onChangeRadioButton={onChangeRadioButton}/>
                         </Parent>
                         <div className="filter-content__item">

@@ -1,5 +1,7 @@
 import { memo, useEffect, useState } from "react"
 
+import "./label-checked.scss"
+
 const LabelChecked = memo( ({
     onToggleOrder, 
     id, 

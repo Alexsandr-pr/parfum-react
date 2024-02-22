@@ -3,10 +3,10 @@ import Title from "../../title/Title"
 
 import "./downloadtabs.scss";
 
-const DownloadTabs = () => {
+const DownloadTabs = ({title, text}) => {
     return (
         <>
-            <Title title={"Загрузки"}/>
+            <Title title={title}/>
             <div className="user-content__block-info block-info">
                 <div className="block-info__body">
                     <div className="block-info__image">
@@ -16,7 +16,7 @@ const DownloadTabs = () => {
                             <path d="M12 17H12.01" stroke="#BEAE97" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
-                    <p className="block-info__text">Доступных загрузок нет</p> 
+                    <p className="block-info__text">{text}</p> 
                 </div>
             </div>
         </>

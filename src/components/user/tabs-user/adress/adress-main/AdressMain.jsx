@@ -1,18 +1,25 @@
-import { useState, useEffect, Suspense } from "react"
-import { useSelector } from "react-redux"
+import { useState, useEffect, Suspense, useMemo } from "react"
+import { useSelector} from "react-redux"
 import { addUserAdress } from "../../../../../action/user"
 import { lazy } from "react"
 import Title from "../../../title/Title"
 
 import "./adress-main.scss"
-
+import "../../download/downloadtabs.scss"
 const SuccsessMessage = lazy(() => import("../SuccsessMessage/SuccsessMessage"))
 const FormAdress = lazy(() => import("../FormAdress/FormAdress"))
 
 
 const AdressMain = () => {
 
-    const adressCurrentUserBD = useSelector(state => state.user.currentUser.adress) || [];
+    const currentUserAddress = useSelector(state => state.user.currentUser.address) || [];
+
+    const memoizedAddress = useMemo(() => currentUserAddress, [currentUserAddress]);
+    const [adressUserDB, setAdressUserDB] = useState([])
+    const [form, setForm] = useState(false);
+    const [object, setObject] = useState({});
+    const [timerId, setTimerId] = useState(false);
+
     function convertToArr(obj) {
         let arr = [];
         for (let key in obj) {
@@ -21,26 +28,18 @@ const AdressMain = () => {
         return arr;
     }
     
-    const [adressUserDB, setAdressUserDB] = useState([])
-
     useEffect(() => {
-        setAdressUserDB(convertToArr(adressCurrentUserBD))
-    }, [])
-
-    const [form, setForm] = useState(false);
-    const [object, setObject] = useState({});
-    const [timerId, setTimerId] = useState(false);
+        setAdressUserDB(convertToArr(memoizedAddress))
+    }, [memoizedAddress])
 
     const onChangeFormEditing = () => setForm(true)
 
     const onCloseForm = () => setForm(false)
 
-
     useEffect(() => {
         if(Object.keys(object).length > 0) {
             addUserAdress(object);   
         }
-        console.log(object)
     }, [object])
 
     const timer = () => {
@@ -50,8 +49,10 @@ const AdressMain = () => {
         }, 3000)
     }
 
+    useEffect(() => {
+        setAdressUserDB(Object.values(memoizedAddress));
+    }, [memoizedAddress]);
     
-
     return (
         <>
             <div className="user-content__add">

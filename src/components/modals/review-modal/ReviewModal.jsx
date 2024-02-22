@@ -91,9 +91,8 @@ const ReviewModal = ({
                     type={"submit"} 
                     onClickButton={() => {
                         onAddComment()
-
                     }} 
-                    text={"Отправить отзыв"}/>
+                    title={"Отправить отзыв"}/>
                 {
                     !isAuth &&  <Link to="/user">
                                     <button className="button-add-to-cart"><span>регистрация</span></button>

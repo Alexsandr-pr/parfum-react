@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext , useMemo} from "react";
 import {Context}  from "../../pages/myContext/MyContext";
 
 import Title from "../../components/user/title/Title";
@@ -50,12 +50,16 @@ const data3 = [
 ]
 
 const MalePage = ({onAddToCart}) => {
+    const service = useMemo(() => {
+        return new Services()
+    }, []);
+
     const {onChangeCardNumber} = useContext(Context)
     const [cardData, setCards] = useState([]);
-    const service = new Services()
+    
     useEffect(() => {
         service.getMaleCards().then(res => setCards(res)) 
-    }, [])
+    }, [service])
 
     return (
             <>

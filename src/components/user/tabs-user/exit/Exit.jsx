@@ -38,8 +38,7 @@ const Exit = () => {
                 <Button onClickButton={() => setActiveDelete(true) } title={"Удалить аккаунт"}/>
             </div>
                 <Suspense>
-                {
-                    active && <ModalExit 
+                <ModalExit 
                                 text={"Мы были вместе на этом пути некоторое время."} 
                                 cb={exit} 
                                 titleButton={"Выйти"} 
@@ -47,11 +46,9 @@ const Exit = () => {
                                 active={active} 
                                 onActive={onActive}
                             />
-                }
                 </Suspense>
-                {
-                    activeDelete && <ModalExit cb={deleteCurrentUser} text={"Вы уверены, что хотите удалить свой аккаунт?"}  active={activeDelete} onActive={onActiveDelete} titleButton={"Удалить"} titleH={"Все данные будут безвозвратно удалены. Это действие нельзя отменить. Пожалуйста, подтвердите удаление."}/>
-                }
+                <ModalExit cb={deleteCurrentUser} text={"Вы уверены, что хотите удалить свой аккаунт?"}  active={activeDelete} onActive={onActiveDelete} titleButton={"Удалить"} titleH={"Все данные будут безвозвратно удалены. Это действие нельзя отменить. Пожалуйста, подтвердите удаление."}/>
+                
         </>
     )
 }

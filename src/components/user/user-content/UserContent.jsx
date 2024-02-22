@@ -19,7 +19,7 @@ const UserContent = ({stateTabs, onChangeTabs}) => {
                 { stateTabs === "panel" && <ParentTabs children={<Panel onChangeTabs={onChangeTabs}/>}/>}
                 { stateTabs === "bonus" && <ParentTabs children={<BonusMain/>}/>}
                 { stateTabs === "order" && <ParentTabs children={<OrderMain/>}/>} 
-                { stateTabs === "download" && <ParentTabs children={<DownloadTabs/>}/>}
+                { stateTabs === "download" && <ParentTabs children={<DownloadTabs title={"Загрузки"} text={"Доступных загрузок нет"}/>}/>}
                 { stateTabs === "adress" && <ParentTabs children={ <AdressMain/>} />}
                 { stateTabs === "details" && <ParentTabs children={ <ProfileMain/>} /> }
                 { stateTabs === "exit" && <ParentTabs children={<Exit/>}/>}

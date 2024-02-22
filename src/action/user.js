@@ -1,21 +1,18 @@
 import axios from 'axios'
 import { logout, setUser } from '../reducers/userReducer'
 import { API_URL } from '../config'
-import { modalTrueActive } from '../reducers/userReducer'
-import {modalActiveError}  from '../reducers/userReducer';
 
-
-export const registration = async (email, password, gender, bonus, dispatch) => {
+export const registration = async (email, password, gender, bonus) => {
     try {
-        const response = await axios.post(`${API_URL}api/auth/registration`, {
+        return await axios.post(`${API_URL}api/auth/registration`, {
             email,
             password,
             gender,
             bonus
         })
-        dispatch(modalTrueActive())
     } catch (e) {
-        dispatch(modalActiveError())
+        console.log(e)
+        throw e
     }
 }
 

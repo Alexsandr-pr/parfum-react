@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import MainCatalog from "../../components/main-catalog-card/main-catalog/MainCatalog";
 import SliderCardPage2 from "../../components/sliders/slider-card-page-2/slider-card-page-2";
@@ -13,16 +13,15 @@ import Loading from "../../components/Loading/Loading";
 import ParentFromReplace from "../../components/ParentFromReplace/ParentFromReplace";
 
 
-
-import "./Cardpage.scss";
-
 const CardPage = ({
     cardNumber,
     onChangeCardNumber, 
     onAddToCart
 }) => {
     
-    const service = new Services();
+    const service = useMemo(() => {
+        return new Services()
+    }, []);
     const [post, setPost] = useState([])
     const [active, setActive] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -48,7 +47,7 @@ const CardPage = ({
                 setLoading(false)
             })
 
-    }, [cardNumber])
+    }, [cardNumber, service])
     
     const [textTitle, setTextTitle] = useState("")
     const [text, setText] = useState("")

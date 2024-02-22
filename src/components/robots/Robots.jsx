@@ -11,17 +11,13 @@ const Robots = ({
     setChecked
 }) => {
 
-    
-
     const [disabled, setDisabled] = useState(true)
     const [number1, setNumber1] = useState(0);
     const [number2, setNumber2] = useState(0);
     const [summ, setSumm] = useState(0);
 
-    function getRandomNumber() {
-        return Math.floor(Math.random() * 51); 
-    } 
-
+    const getRandomNumber = () => Math.floor(Math.random() * 51); 
+    
     const onChangeSumm = () => {
         if(summ == number2 + number1 && summ !== 0) {
             setDisabled(false)
@@ -29,7 +25,7 @@ const Robots = ({
     }
     const onActiveModal = () => {
         if(!checked) {
-            setSumm(0)
+            setSumm("")
             setNumber1(getRandomNumber())
             setNumber2(getRandomNumber())
             setActive()
@@ -64,4 +60,4 @@ const Robots = ({
     )
 }
 
-export default Robots
+export default Robots;

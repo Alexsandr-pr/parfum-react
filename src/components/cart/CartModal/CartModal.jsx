@@ -36,8 +36,8 @@ const CartModal = ({
                                 <p>{isAuth ? sale + " баллов" : "Чтобы иметь возможность потратить баллы для получения скидки, требуется авторизация"}</p>
                             </li>
                             <li className="item-order__item">
-                                <p>Кэшбэк</p>
-                                <p>{isAuth ? Math.floor((allPrice * userCachback) /100) + "баллов" : "Чтобы получать кэшбэк, зарегистрируйтесь на сайте"}</p>
+                                <p>Кэшбэк </p>
+                                <p>{isAuth ? Math.floor((allPrice * userCachback) /100) + " баллов" : "Чтобы получать кэшбэк, зарегистрируйтесь на сайте"}</p>
                             </li> 
                             {
                                 childrenPay

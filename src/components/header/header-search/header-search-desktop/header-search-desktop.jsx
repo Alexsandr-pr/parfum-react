@@ -32,6 +32,14 @@ const HeaderSearchDesktop = () => {
         })
     },[])
 
+    
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            setActiveSearch(false)
+        })
+    }, [])
+
     const onChangeFilter = (data, val) => { 
         if(val.lenght === 0) {
             return data;

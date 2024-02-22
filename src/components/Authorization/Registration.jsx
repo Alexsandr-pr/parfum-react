@@ -6,16 +6,13 @@ import Label from "../forms/label/Label";
 import LabelPassword from "../forms/label-password/LabelPassword";
 import Title from "../user/title/Title"
 import CheckedPol from "../forms/checked-pol/CheckedPol";
-import { useDispatch, useSelector } from "react-redux";
 import ModalExit from "../modals/ModalExit/ModalExit";
-import { modalTrueNoActive } from "../../reducers/userReducer";
-import {modalNoActiveError} from "../../reducers/userReducer";
+
+
 import Robots from "../robots/Robots";
 
 const Registration = () => {
-    const dispatch = useDispatch()
-    const modal = useSelector(state => state.user.modal);
-    const modalFalse = useSelector(state => state.user.modalFalse);
+    const [modal, setModal] = useState(false)
 
     const [checked, setChecked] = useState(false)
     const [email, setEmail] = useState("");
@@ -25,6 +22,9 @@ const Registration = () => {
 
     const [activeModalRobots, setActiveRobots] = useState(false);
 
+    const [title, setTitle] = useState("")
+    const [message, setMessage] = useState("")
+
     const onChangeModalRobots = (arg) =>  setActiveRobots(arg)
 
     const registrationUser = (e) => {
@@ -32,19 +32,27 @@ const Registration = () => {
         const balls = 100;
         const reason = "Регистрация"
         const obj = new BonusUser(balls, reason)
-        registration(email, password, gender, obj, dispatch );
-        setPassword("");
-        setEmail("");
-        setChecked(false);
-        setDisabled(true);
+        registration(email, password, gender, obj).then(res => {
+                console.log(res)
+                setTitle("Нажмите, чтобы вернуться назад")
+                setMessage("Спасибо, что зарегистрировались.")
+            }).catch((e) => {
+                setTitle("Пользователь с таким email уже существует")
+                setMessage("Ошибка!!!")
+            }).finally(() => {
+                setModal(true)
+                setPassword("");
+                setEmail("");
+                setChecked(false);
+                setDisabled(true);
+            })
     }
 
     const onActiveThank = () => {
-        dispatch(modalTrueNoActive())
+        setModal(false)
     }
     
     const onActiveErrorModal = () => {
-        dispatch(modalNoActiveError())
         setPassword("");
         setEmail("");
         setChecked(false);
@@ -104,12 +112,7 @@ const Registration = () => {
                     </div>
                 </form>
             </div>
-            {
-                <ModalExit to={""} text={"Спасибо, что зарегистрировались."} cb={onActiveThank} titleButton={"Назад"} titleH={"Нажмите, чтобы вернуться назад"} active={modal} onActive={onActiveThank}/>
-            }
-            {
-                <ModalExit to={""} text={"Ошибка!!!"} cb={onActiveErrorModal} titleButton={"Назад"} titleH={"Пользователь с таким email уже существует"} active={modalFalse} onActive={onActiveErrorModal}/>
-            }
+            <ModalExit to={""} text={message} cb={onActiveThank} titleButton={"Назад"} titleH={title} active={modal} onActive={onActiveThank}/>
         </>
     )
 }

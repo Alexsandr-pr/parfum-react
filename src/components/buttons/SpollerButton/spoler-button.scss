@@ -111,3 +111,11 @@
     }
 }
 
+.span.active {
+
+    transform: rotateY(-180deg);
+} 
+.span {
+    transition: all 0s ease 0s !important;
+    transform: rotateY(90deg);
+}  

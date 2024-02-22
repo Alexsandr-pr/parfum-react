@@ -60,8 +60,20 @@ const Catalog = ({
         });
         setBrands(Array.from(brandMap, ([name, info]) => ({ name, ...info })));
     },[posts])
-    
-
+    const [polData, setPolData] = useState([])
+    useEffect(() => {
+        const genderMap = new Map();
+        posts.forEach(item => {
+            const gender = item.gender;
+            if (genderMap.has(gender)) {
+                genderMap.set(gender, {
+                count: genderMap.get(gender).count + 1
+            })} else {
+                genderMap.set(gender, { count: 1 });
+            }   
+        });
+        setPolData(Array.from(genderMap, ([name, info]) => ({ name, ...info })));
+    }, [posts]);
 
     const [filter, setActiveButtonFilter] = useState("");
 
@@ -181,6 +193,7 @@ const Catalog = ({
                             <h2>Каталог</h2>
                         </div>
                         <CatalogFilter 
+                            polData={polData}
                             onChangeFilterBrand={onChangeFilterBrand}
                             data={brands}
                             onResetFilter={onResetFilter}

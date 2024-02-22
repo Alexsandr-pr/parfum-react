@@ -6,7 +6,7 @@ const BonusInfo = ({currentUser}) => {
     const {order} = currentUser;
     
 
-    let style = {"max-width":"350px;"}
+    let style = {"maxWidth":"350px;"}
     let status = "Частый покупатель";
     let number = 5;
     let cachback = 2;
