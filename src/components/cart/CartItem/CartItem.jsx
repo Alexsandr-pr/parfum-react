@@ -41,7 +41,7 @@ const CartItem = ({
                     />
                 </div>
                 <div className="tovar-in-cart__image">
-                    <img src={imageSrc} alt="Image"/>
+                    <img loading="lazy" src={imageSrc} alt="Image"/>
                 </div>
             </div>  
             <div className="tovar-in-cart__info">

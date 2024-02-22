@@ -7,6 +7,7 @@ import 'swiper/css';
 import "./slider-card-page-2.scss";
 import { useState } from 'react';
 import Services from '../../../services/service';
+import { PaginationButtonLeft, PaginationButtonRight } from '../../buttons/PaginationButton/PaginationButton';
 
 const Card = lazy(() => import("../../card/card"));
 
@@ -93,9 +94,8 @@ const Buttons  = () => {
 
     return (
         <div className="slider-card__buttons">
-            <button onClick={() => swiper.slidePrev()} className="cart-pagination__button"><i className="fa-solid fa-chevron-left"></i></button>
-            <button onClick={() => swiper.slideNext()} 
-            className="cart-pagination__button"><i className="fa-solid fa-chevron-right"></i></button>
+            <PaginationButtonLeft cb={() => swiper.slidePrev()}/> 
+            <PaginationButtonRight cb={() => swiper.slideNext()}/>
         </div>
     )
 }

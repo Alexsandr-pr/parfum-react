@@ -11,7 +11,6 @@ const Document = () => {
     return (
         <>
                 <Breadcrumbs page={"Документация"}/>
-
                 <section className="main__doc main-doc">
                     <div className="main-doc__container">
                         <div className="main-doc__body">

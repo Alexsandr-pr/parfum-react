@@ -31,7 +31,6 @@ const MainCash = () => {
                         </div>    
                     </div>
                     <div className="cash-body__image _ibg">
-                        
                         <img loading="lazy" src={imagefon} alt="Image fon "/>
                     </div>
                 </div>

@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
 
-const LabelChecked = ({onToggleOrder, id, value}) => {
-
+const LabelChecked = memo( ({
+    onToggleOrder, 
+    id, 
+    value
+}) => {
     const [check, setCheck] = useState(true)
-
     useEffect(() => {
         onToggleOrder(id, check, value)
     }, [check])
@@ -24,6 +26,6 @@ const LabelChecked = ({onToggleOrder, id, value}) => {
                 <span className="pol-list__span"></span>
             </label>
     )
-}
+})
 
 export default LabelChecked;

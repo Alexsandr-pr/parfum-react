@@ -11,12 +11,14 @@
         display: inline-flex;
         align-items:center;
         padding: 6px 10px;
-        // .current__btn
         gap: 10px;
     }
+    // .current__btn
     &__btn {
+        display: flex;
+
         font-size: 20px;
-        color:#BEAE97;
+        fill:#BEAE97;
         font-weight: 500;
         @media(hover:hover) {
             &:hover {

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import CartMain from "../../components/cart/CartMain/CartMain";
 
 
@@ -10,12 +11,14 @@ const CartTovar = ({
     
     return (
         <>
-            <CartMain 
-                onToggleOrder={onToggleOrder}
-                onChangeCurrentOnClick={onChangeCurrentOnClick} 
-                onDeleteItemInCart={onDeleteItemInCart} 
-                dataCart={dataCart}
-            />
+            <Suspense>
+                <CartMain 
+                    onToggleOrder={onToggleOrder}
+                    onChangeCurrentOnClick={onChangeCurrentOnClick} 
+                    onDeleteItemInCart={onDeleteItemInCart} 
+                    dataCart={dataCart}
+                />
+            </Suspense>
         </>
     )
 }

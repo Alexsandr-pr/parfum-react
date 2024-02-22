@@ -1,17 +1,18 @@
 import Label from "../label/Label";
 import password from "./img/password.svg";
 import passwordclose from "./img/password-close.svg";
-import { useState } from "react";
+import { memo, useState } from "react";
 
 import "./label-password.scss"
 
-const LabelPassword = ({name, text, setValue, value}) => {
+const LabelPassword = memo(({
+    name, 
+    text, 
+    setValue, 
+    value
+}) => {
     const [active, setType] = useState(true);
-
-    const onChangeActive = () => {
-        setType(prev => !prev)
-    }
-
+    const onChangeActive = () => setType(prev => !prev)
     return (
         <Label 
             value={value}
@@ -22,6 +23,7 @@ const LabelPassword = ({name, text, setValue, value}) => {
             >
             <a  className="password">
                 <img 
+                    loading="lazy"
                     onClick={() => onChangeActive()}  
                     className="password__before" 
                     src={active ? password : passwordclose}
@@ -29,6 +31,6 @@ const LabelPassword = ({name, text, setValue, value}) => {
             </a>
         </Label>
     )
-}
+})
 
 export default LabelPassword;

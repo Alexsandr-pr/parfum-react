@@ -80,14 +80,14 @@
         @media(max-width:325.98px){
             font-size: 14px;
         }
-        &::before, i {
+        span , i{
             min-width: 40px;
             min-height: 40px;
             display: flex;
             justify-content: center;
             align-items:center;
             border-radius:50%;
-            color: #BEAE97;
+            fill: #BEAE97;
             background-color: #37332F;
             transition: all 0.5s ease 0s;
             position: relative;
@@ -109,8 +109,8 @@
             &:hover {
                 cursor: pointer;
                 color:#C09E6C;
-                &::before, i {
-                    color: black;
+                &::before, span , i{
+                    fill: black;
                     background-color: transparent;
                     z-index: 1;
                 }

@@ -17,14 +17,16 @@ const Layout = () => {
     }, 1000)
     return (
         <>  
-            <Header/>
+            <Suspense>
+                <Header/>
+            </Suspense>
             <main className="main" onClick={() => setActiveSearch(false)}>
                 <Suspense>
                     <Outlet/>
                 </Suspense>
             </main>
             <Suspense>
-                   {footer &&  <Footer/>}
+                {footer &&  <Footer/>}
             </Suspense>
         </>
     )

@@ -1,5 +1,6 @@
-
 import "./catalog-pagination.scss";
+
+import { PaginationButtonLeft, PaginationButtonRight } from "../../buttons/PaginationButton/PaginationButton";
 
 const CatalogPagination = ({prevPage,nextPage, paginate, currentPage, data, scrollToElement}) => {
 
@@ -15,7 +16,7 @@ const CatalogPagination = ({prevPage,nextPage, paginate, currentPage, data, scro
         <div className="main-cart__pagination cart-pagination">
             <ul className="cart-pagination__list">
                 <li className="cart-pagination__btn">
-                    <button onClick={() => prevPage()} className="cart-pagination__button"><i className="fa-solid fa-chevron-left"></i></button>
+                    <PaginationButtonLeft cb={() => prevPage()}/>
                 </li>
                     {
                         pageSubset.map((number, i) => (
@@ -28,7 +29,7 @@ const CatalogPagination = ({prevPage,nextPage, paginate, currentPage, data, scro
                     ))
                 }
                 <li className="cart-pagination__btn">
-                    <button onClick={() => nextPage()} className="cart-pagination__button"><i className="fa-solid fa-chevron-right"></i></button>
+                    <PaginationButtonRight cb={() => nextPage()}/> 
                 </li>
             </ul>
         </div>

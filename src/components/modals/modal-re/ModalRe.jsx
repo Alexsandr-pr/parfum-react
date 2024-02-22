@@ -20,9 +20,11 @@ const ModalRe = ({
                 <div className="re-modal__input">
                     <Label required value={summ} setValue={setSumm} type={"number"} name={"summ"} text={"Введите сумму чисел"}/>
                 </div>
-                <span className="current__input" value={number1} >{number1}</span>
-                <span className="re-modal__plus">+</span>
-                <span className="current__input" value={number2} >{number2}</span>
+                <div className="re__sum-block">
+                    <span className="current__input" value={number1} >{number1}</span>
+                    <span className="re-modal__plus">+</span>
+                    <span className="current__input" value={number2} >{number2}</span>
+                </div>
             </div>
             <Button disabled={disabled} onClickButton={onActive} title={"Назад"}/>
         </div>

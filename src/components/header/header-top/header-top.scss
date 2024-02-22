@@ -6,4 +6,109 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    fill: #BEAE97;
+    span {
+        display: flex;
+
+    }
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+            fill: #C09E6C;
+        }
+    }
+}
+.header-top__select {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px;
+
+    fill: #BEAE97;
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+            fill: #C09E6C;
+        }
+    }
+
+}
+.header-top {
+
+    // .header-top__select
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    gap: 20px;
+    @media(max-width:767.98px){
+        flex-direction: column;
+        row-gap: 21.5px;
+    }
+    @media(max-width:367.98px){
+        gap: 12px;
+    }
+    &__select {
+        
+        transition: all 0.3s ease 0s;
+        position: relative;
+        display: inline-flex;
+        align-items: flex-start;
+        span {
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        @media(hover:hover) {
+            &:hover {
+                cursor: pointer;
+                color: #C09E6C;
+            }
+        }
+    }
+}
+.menu {
+
+    // .menu__list
+    display: flex;
+    align-items: center;
+    &__list {
+        display: flex;
+        align-items: center;
+        column-gap: 105px;
+        
+        @media(max-width:1200px){
+            column-gap: calc(26px + (105 - 26) * ((100vw - 768px) / ( 1200 - 768)));
+        }
+        @media(max-width:767.98px){
+            flex-direction: column;
+            align-items:center;
+            row-gap: 21.5px;
+
+        }
+    }
+    // .menu__link
+
+    &__link {
+        color:#BEAE97;
+        transition: all 0.3s ease 0s;
+        white-space: nowrap;
+        @media(hover:hover) {
+            &:hover {
+                cursor: pointer;
+                color: #C09E6C;
+            }
+        }
+        @media(max-width:767.98px){
+            font-size: 14px;
+        }
+    }
+    &__link-tel {
+        padding-left: 27px;
+        position: relative;
+        &::after {
+            position: absolute;
+            left: 0;
+            //content: url(@img/icon/phone.svg);
+        }
+    }
 }

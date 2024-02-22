@@ -5,7 +5,7 @@ import PolList from "./pol-list/pol-list";
 import SearchList from "./search/search-list/search-list";
 import SeacrhInput from "./search/search-input/search-input"
 import FilterButton from "./filter-button/filter-button";
-
+import SpolerButton from "../../buttons/SpollerButton/SpolerButton"
 
 
 import close from "./img/close.svg"
@@ -76,13 +76,7 @@ const CatalogFilter = ({
     return (
         <div className="main-cart__top-trigger  top-trigger-filter">
             <div className={activeTab1 ? "top-trigger-filter__item _active filter" : "top-trigger-filter__item  filter"}>
-                <div  className="filter__button ">
-                    <button 
-                        onClick={() => {
-                            onChangeActiveTab1()
-                        }} 
-                        className="filter__btn filter__btn-popular"><p>Фильтры</p><span><i className="fa-solid fa-chevron-up"></i></span></button>
-                </div>
+                <SpolerButton active={activeTab1} text={"Фильтры"} cb={() => onChangeActiveTab1()}/>
                 <div className="filter__content filter-content-1">
                     <form  className="filter-content__form">
                         <Parent  title={"Бренд"}>

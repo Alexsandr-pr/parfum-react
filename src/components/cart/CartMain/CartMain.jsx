@@ -1,13 +1,15 @@
 import { Link} from "react-router-dom"
 
 import Breadcrumbs from "../../breadcrumbs/BreadCrumbs";
-import CartWindow from "../CartWindow/CartWindow";
 import CartItem from "../CartItem/CartItem";
-import CartModal from "../CartModal/CartModal";
-import ParentFromReplace from "../../ParentFromReplace/ParentFromReplace";
 
 import "./CartMain.scss"
 import { useSelector } from "react-redux";
+import { lazy } from "react";
+
+const CartModal = lazy(() => import("../CartModal/CartModal"));
+const CartWindow = lazy(() => import("../CartWindow/CartWindow"));
+const ParentFromReplace = lazy(() => import("../../ParentFromReplace/ParentFromReplace"))
 
 const CartMain = ({
     dataCart, 
@@ -16,18 +18,22 @@ const CartMain = ({
     onToggleOrder, 
 }) => {
     const isAuth = useSelector(state => state.user.isAuth)
+    
+    const dataOrder = dataCart.filter(item => item.order);
 
-    const dataOrder = dataCart.filter(item => item.order)
     return (
         <>
             <Breadcrumbs page={"Корзина"}/>
             <div className="main__items-in-cart items-in-cart">
                 <div className="items-in-cart__container">
                     <div className="items-in-cart__label cart-preview">
-
-                        {
-                            isAuth ? <CartWindow disabled={Object.values(dataOrder).length <= 0} /> : <p className="message-text">Зарегистрируйтесь, чтобы при покупке получать баллы, которые вы сможете потратить для получения скидки при следующих покупках</p>
-                        }
+                            {
+                                isAuth ? <CartWindow 
+                                                disabled={Object.values(dataOrder).length <= 0} />
+                                                : 
+                                                <p className="message-text">Зарегистрируйтесь, чтобы при покупке получать баллы, которые вы сможете потратить для получения скидки при следующих покупках</p>
+                            }
+                        
                         
                         <div className="cart-preview__items">
                             
@@ -53,19 +59,21 @@ const CartMain = ({
                     </div>
                 </div>
             </div>
-            {
-                dataCart.length > 0 && <CartModal 
-                                            text={"Заказы до 10 000 ₽ доставим бесплатно в Ваш ближайший постамат. если в Вашем регионе их нет, то так же бесплатно доставим в Ваше отделение Почты России. Заказы свыше 10 000₽ доставим курьером до двери."}
-                                            childrenLink={
-                                                    <Link to="/order" className="button-add-body">
-                                                        <button 
-                                                            disabled={Object.values(dataOrder).length <= 0} 
-                                                            className="button-add-to-cart add">
-                                                            <span className="add">Оформить заказ</span>
-                                                        </button>
-                                                    </Link>
-                                            }/>
-            }
+            
+                {
+                        dataCart.length > 0 && <CartModal 
+                                                    text={"Заказы до 10 000 ₽ доставим бесплатно в Ваш ближайший постамат. если в Вашем регионе их нет, то так же бесплатно доставим в Ваше отделение Почты России. Заказы свыше 10 000₽ доставим курьером до двери."}
+                                                    childrenLink={
+                                                            <Link to="/order" className="button-add-body">
+                                                                <button 
+                                                                    disabled={Object.values(dataOrder).length <= 0} 
+                                                                    className="button-add-to-cart add">
+                                                                    <span className="add">Оформить заказ</span>
+                                                                </button>
+                                                            </Link>
+                                                    }/>
+                    }
+            
         </>
     )
 }

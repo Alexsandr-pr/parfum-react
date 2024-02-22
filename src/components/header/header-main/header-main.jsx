@@ -1,18 +1,18 @@
-import { useContext, useEffect, useState } from "react";
+import { lazy, useContext, useEffect, useState } from "react";
 import { Context } from "../../../pages/myContext/MyContext";
-import { NavLink, Link } from "react-router-dom";
-//
+import { NavLink, Link, useLocation } from "react-router-dom";
+
 import HeaderLogo from "../header-logo/header-logo";
-import HeaderCatalogSelect from "../header-catalog-select/header-catalog-select"
-import HeaderSearchDesktop from "../header-search/header-search-desktop/header-search-desktop";
-import HeaderSearchMobile from "../header-search/header-search-mobile/HeaderSearchMobile"
-import HeaderTop from "../header-top/header-top";
-import HeaderMale from "../header-male/header-male";
-//
 import carddesctop from "./img/cartdesctop.svg"
 import userdesctop from "./img/userdesctop.svg"
-//
+
 import "./header-main.scss";
+
+const HeaderCatalogSelect = lazy(() => import("../header-catalog-select/header-catalog-select"));
+const HeaderSearchDesktop = lazy(() => import("../header-search/header-search-desktop/header-search-desktop"));
+const HeaderSearchMobile =  lazy(() => import("../header-search/header-search-mobile/HeaderSearchMobile"));
+const HeaderTop = lazy(() => import("../header-top/header-top"));
+const HeaderMale = lazy(() => import("../header-male/header-male"));
 
 
 const Header = () => {
@@ -44,6 +44,11 @@ const Header = () => {
     const changeActive = () => {
         setActive(false);
     }
+    const {pathname} = useLocation()
+
+    useEffect(() => {
+        setActiveMobile(false)
+    }, [pathname])
 
 
     return (
@@ -51,12 +56,11 @@ const Header = () => {
             <header className={activeMobile ? "header fix-offset active" : "header fix-offset"}>
                 <div className="header__container">
                     <div className="header__desktop">
-                        {   width > 768 ? 
+                        {   width > 767.98 ? 
                             <div style={{'display' : (offset > 50) ? "none" :  'flex'}} className="header__top header-top">
-                                <HeaderTop/>
+                                <HeaderTop />
                             </div> : null
                         }
-                        
                         <div className="header__bottom header-bottom">
                             <Link to="/" className="header__logo">
                                 <HeaderLogo/>
@@ -66,14 +70,18 @@ const Header = () => {
                                     <HeaderCatalogSelect active={active} setActive={setActive} changeActive={changeActive}/>
                                     <HeaderSearchDesktop/>
                                 </div>
-                                <div onClick={changeActiveMobile} className="trigger-mobilke header-bottom__button">
-                                    <span  className="icon-menu">
-                                        <span></span>
-                                    </span>
-                                </div>
-                                <div className="header-search-mobile">
-                                    <HeaderSearchMobile/>
-                                </div>
+                               {
+                                width < 767.98  &&     <>
+                                                        <div onClick={changeActiveMobile} className="trigger-mobilke header-bottom__button">
+                                                            <span  className="icon-menu">
+                                                                <span></span>
+                                                            </span>
+                                                        </div>
+                                                        <div className="header-search-mobile">
+                                                            <HeaderSearchMobile/>
+                                                        </div>
+                                                    </>
+                               }
                             </div>
                             <div className="header-bottom__items">
                                 <NavLink to="/user" className="header-bottom__item">

@@ -22,10 +22,6 @@ class Services {
         return await this.gerResourse(`${this._apiBase}card?limit=${i}`);
     }
 
-    getAllBrands = async () => {
-        return await this.gerResourse("http://localhost:3001/brands");
-    }
-
     getOneCard = async (id = 1011001) => {
         return await this.gerResourse(`${this._apiBase}card/${id}`);
     }

@@ -13,17 +13,14 @@ const HeaderSearchDesktop = () => {
     const {activeSearch, setActiveSearch} = useContext(Context)
     const [value, setValue] = useState("")
 
-    const onChangeValue = (e) => {
-        setValue(e.target.value)
-    }
+    const onChangeValue = (e) => setValue(e.target.value)
+    
 
-    const onResetValue = () => {
-        setValue("")
-    }
-
+    const onResetValue = () => setValue("")
+    
     useEffect(() => {
         value.length > 0 ? setActiveSearch(true) : setActiveSearch(false)
-    }, [value])
+    }, [value, setActiveSearch])
 
     const [data, setData] = useState([])
     const [filterData, setFilterData] = useState([])
@@ -33,7 +30,7 @@ const HeaderSearchDesktop = () => {
         service.getAllCards().then(res => {
             setData(res.map(({id, title}) => ({id, title})))
         })
-    }, [])
+    },[])
 
     const onChangeFilter = (data, val) => { 
         if(val.lenght === 0) {
@@ -48,7 +45,7 @@ const HeaderSearchDesktop = () => {
 
     useEffect(() => {
         setFilterData(onChangeFilter(data, value))
-    }, [value])
+    }, [value, data])
 
     return (
         <>  

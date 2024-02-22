@@ -7,8 +7,6 @@ import "./main-more.scss"
 
 const Reviews = lazy(() => import("../description/reviews"))
 
-
-
 const MainMore = ({description, cardNumber, setActive}) => {
     
     return (

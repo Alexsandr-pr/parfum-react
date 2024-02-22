@@ -1,10 +1,7 @@
 
 import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
-
 import image from "./img/image2.svg";
-
 import "./aboutpage.scss";
-
 const data = [
     {
         text: "Верхние – это первое впечатление, которое оставляет о себе аромат. Их длительность не более часа"
@@ -16,7 +13,6 @@ const data = [
         text: "Базовые ноты – создают финальное впечатление об аромате и остаются на коже продолжительное время. Они оставляют легкий шлейф, который может длиться даже до нескольких дней" 
     }
 ]
-
 const About = () => {
     return (    
         <>
@@ -49,7 +45,7 @@ const About = () => {
                                         }
                                     </ul>
                                     <div className="main-about__image">
-                                        <img src={image} />
+                                        <img loading="lazy" src={image}  alt=" bofg"/>
                                     </div>
                                 </div>
                             </div>

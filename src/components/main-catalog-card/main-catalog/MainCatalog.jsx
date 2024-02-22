@@ -1,6 +1,6 @@
-import {  useState } from "react";
+import {  lazy, useState } from "react";
 
-import CartModel from "../../../models/cartModel"
+
 import numberWithSpace from "../../buttons/numberWithSpace/numberWithSpace"
 import CheckMlList from "../../buttons/check-ml-list/check-ml-list";
 import MainCurrent from "../../main-current/main-current"
@@ -9,6 +9,8 @@ import Button from "../../buttons/button/Buttons";
 import Title from "../../user/title/Title"
 import "./main-catalog.scss";
 
+const CartModel = lazy(() => import("../../../models/cartModel"));
+
 const MainCatalog = ({
     post, 
     cardNumber, 
@@ -16,13 +18,13 @@ const MainCatalog = ({
     setActive
 }) => {
 
-    const {id,imageSrc,imageAlt, title, price,description} = post
+    const {id,imageSrc,imageAlt, title, price,description} = post;
+    
     const [valueMl, setValueMl] = useState(100);
+
     const [current, setCurrent] = useState(1);
 
     const onChangeValue = (value) => setValueMl(value);
-        
-    
 
     const onChangeCurrent = (i) => {
         if(current >= 100) {
@@ -39,7 +41,7 @@ const MainCatalog = ({
 
     const onClickButton =  (e) => {
         e.preventDefault()
-        const obj =  new CartModel(
+        const obj = new CartModel(
             id,
             imageSrc, 
             quantity, 

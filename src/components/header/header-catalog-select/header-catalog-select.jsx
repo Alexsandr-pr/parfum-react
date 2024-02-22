@@ -1,10 +1,10 @@
 
-import { useEffect } from "react";
-import HeaderMale from "../header-male/header-male";
-
+import { Suspense, lazy, useEffect } from "react";
 
 import "./header-catalog-select.scss";
 import { useLocation } from "react-router-dom";
+
+const HeaderMale = lazy(() => import("../header-male/header-male"));
 
 const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
 
@@ -37,7 +37,9 @@ const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
                     <span className="icon-menu-text">Каталог</span>
                 </button>
                 <div className="header-button__block">
-                    <HeaderMale  changeActive={changeActive}/>
+                    <Suspense>
+                        <HeaderMale  changeActive={changeActive}/>
+                    </Suspense>
                 </div>
             </div>
         </>

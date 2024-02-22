@@ -1,8 +1,9 @@
 import { useState } from "react";
-
+import SpolerButton from "../SpollerButton/SpolerButton"
 import "./parent.scss"
 
 const Parent = (props) => {
+
     const [active, setActive] = useState(false);
     const onClickButton = () => {
         setActive(prev => !prev)
@@ -10,9 +11,7 @@ const Parent = (props) => {
     return (
         <>  
             <div className={active ? "catalog-description__item active" : "catalog-description__item"}>
-                <div className="catalog-description__trigger filter__button ">
-                    <button onClick={onClickButton} className="filter__btn filter__btn-popular"><p>{props.name}</p> <span><i className="fa-solid fa-chevron-up"></i></span></button>
-                </div>
+                <SpolerButton active={active} text={props.name} cb={onClickButton}/>
                 {props.children}
             </div>
         </>

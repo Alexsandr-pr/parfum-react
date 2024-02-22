@@ -1,15 +1,8 @@
 
 
 .breadcrumb {
-
-    // .breadcrumb__graniza
     padding: 23px 0px;
-    &__graniza {
-
-    }
-
     // .breadcrumb__title
-
     &__title {
         &:not(:last-child){
             margin-bottom:10px;

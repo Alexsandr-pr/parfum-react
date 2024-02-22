@@ -26,8 +26,11 @@ const PersonInfo = ({currentUser}) => {
     const styleBefore = {"left": `calc(${((orderLenght <=15 ? orderLenght : 15) / 15) * 100}% - 4px)` }
 
     const [active, setActive] = useState(false);
+
     const onActive = (e) => {
+
         e.target.classList.contains("close") && setActive(false);
+        
     } 
 
     return (
