@@ -72,13 +72,11 @@ const SliderCardPage2 = ({
                     const {id} = item
                     return (
                         <SwiperSlide key={id} >
-                            
                                 <Card
                                     onAddToCart={onAddToCart}
                                     onChangeCardNumber={onChangeCardNumber}
                                     data={item}
-                                    />
-                           
+                                    /> 
                         </SwiperSlide>
                     )
                 })
