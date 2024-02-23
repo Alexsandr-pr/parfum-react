@@ -16,18 +16,17 @@ export const registration = async (email, password, gender, bonus) => {
     }
 }
 
-export const login =  (email, password, remember) => {
-    return async dispatch => {
-        try {
-            const response = await axios.post(`${API_URL}api/auth/login`, {
-                email,
-                password
-            })
-            dispatch(setUser(response.data.user)) 
-            remember && localStorage.setItem('token', response.data.token)
-        } catch (e) {
-            alert(e.response.data.message)
-        }
+export const login = async (email, password, remember, dispatch) => {
+    try {
+        const response = await axios.post(`${API_URL}api/auth/login`, {
+            email,
+            password
+        })
+        dispatch(setUser(response.data.user)) 
+        remember && localStorage.setItem('token', response.data.token)
+        return response;
+    } catch (e) {
+        throw e 
     }
 }
 

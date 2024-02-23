@@ -7,6 +7,7 @@ import { login } from "../../action/user";
 import Label from "../forms/label/Label";
 import LabelPassword from "../forms/label-password/LabelPassword";
 import Title from "../user/title/Title";
+import LoadingButton from "../Loading/LoadingButton/LoadingButton";
 
 const Robots = lazy(() => import("../robots/Robots"))
 
@@ -19,6 +20,8 @@ const Login = () => {
     const [activeModalRobots, setActiveRobots] = useState(false);
     const [disabled, setDisabled] = useState(true)
     const [remember, setRemember] = useState(false)
+    const [loading, setLoading] = useState(false)
+
 
     const onChangeModalRobots = (arg) =>  setActiveRobots(arg)
 
@@ -26,8 +29,20 @@ const Login = () => {
         if(checked && email.length > 2  && password.length >= 3) {
             setDisabled(false);
         }
-    }, [checked,email,password ])
+    }, [checked,email,password])
     
+    const loginUser = (e) => {
+        e.preventDefault()
+        setLoading(true)
+        setDisabled(true)
+        login(email, password, remember, dispatch)
+            .finally(() => {
+                setLoading(false)
+            })
+    }
+
+
+
     return (
 
         <>
@@ -70,15 +85,12 @@ const Login = () => {
                             </label>
                         </li>
                     </ul>
-                    <div className="login-block__button button-add-to-cart-obol">
+                    <div className="login-block__button button-add-body">
                         <button 
-                            disabled={disabled}
-                            onClick={(e) => {
-                                e.preventDefault()
-                                dispatch(login(email, password, remember))
-                            }}
+                            disabled={disabled && loading}
+                            onClick={(e) => loginUser(e)}
                             type="submit" 
-                            className="login-block__btn button-add-to-cart"><span>Войти</span></button>
+                            className="login-block__btn button-add-to-cart"><span>{loading ? <LoadingButton/> : "Войти"}</span></button>
                     </div>
                     <button type="button" className="login-block__link">Забыли свой пароль?</button>
                 </form>

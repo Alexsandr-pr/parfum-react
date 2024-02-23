@@ -10,9 +10,12 @@ import ModalExit from "../modals/ModalExit/ModalExit";
 
 
 import Robots from "../robots/Robots";
+import LoadingButton from "../Loading/LoadingButton/LoadingButton";
 
 const Registration = () => {
     const [modal, setModal] = useState(false)
+
+    const [loading, setLoading] = useState(false)
 
     const [checked, setChecked] = useState(false)
     const [email, setEmail] = useState("");
@@ -28,23 +31,25 @@ const Registration = () => {
     const onChangeModalRobots = (arg) =>  setActiveRobots(arg)
 
     const registrationUser = (e) => {
+        setLoading(true)
+        setDisabled(true);
         e.preventDefault();
         const balls = 100;
         const reason = "Регистрация"
         const obj = new BonusUser(balls, reason)
         registration(email, password, gender, obj).then(res => {
-                console.log(res)
+                
                 setTitle("Нажмите, чтобы вернуться назад")
                 setMessage("Спасибо, что зарегистрировались.")
             }).catch((e) => {
                 setTitle("Пользователь с таким email уже существует")
                 setMessage("Ошибка!!!")
             }).finally(() => {
+                setLoading(false)
                 setModal(true)
                 setPassword("");
                 setEmail("");
                 setChecked(false);
-                setDisabled(true);
             })
     }
 
@@ -57,7 +62,6 @@ const Registration = () => {
             setDisabled(false);
         }
     }, [checked,email,gender,password ])
-
 
     return (
         <>
@@ -97,11 +101,11 @@ const Registration = () => {
                         checked={checked} 
                         active={activeModalRobots}
                     />
-                    <div className="login-block__button button-add-to-cart-obol">
+                    <div className="login-block__button button-add-body">
                         <button
                         disabled={disabled}
                         onClick={(e) => registrationUser(e)}
-                        className="login-block__btn button-add-to-cart"><span>Регистрация</span></button>
+                        className="login-block__btn button-add-to-cart"><span>{loading ? <LoadingButton/>: "Регистрация"}</span></button>
                     </div>
                 </form>
             </div>

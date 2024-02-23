@@ -48,7 +48,7 @@ const PersonInfo = ({currentUser}) => {
                             </div>
                         </div>
                         <div className="person-info__images">
-                            <img onClick={(e) => setActive(e)} className="person-info__image" src={avatar} alt="user-photo" />
+                            <img onClick={(e) => setActive(e)} className="person-info__image" src={avatar} alt="user" />
                             <span className="person-info__star-1">
                                 <Star color={orderLenght > 5}/>
                             </span>

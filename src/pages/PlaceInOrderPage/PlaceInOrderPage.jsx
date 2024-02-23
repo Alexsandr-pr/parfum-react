@@ -34,7 +34,7 @@ const PlaceInOrderPage = () => {
     const [email, setEmail] = useState("");
     const [inscription, setInscription] = useState("");
 
-    const [disabled, setDisabled] = useState(false)
+    const [disabled] = useState(false)
     const dataOrder = dataCart.filter(item => item.order);
     const {allPrice} = useContext(Context);
 
@@ -68,8 +68,7 @@ const PlaceInOrderPage = () => {
             const bonus = new BonusUser(balls, reason)
             
             addOrderMongoUser(obj, sale, currentUser.email, bonus );
-        
-
+            
             setName("");
             setSurname("");
             setCountry("");

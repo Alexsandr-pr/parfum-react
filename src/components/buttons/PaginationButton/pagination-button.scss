@@ -13,4 +13,9 @@
             fill: #36332E !important;
         }
     }
+    &:focus-visible {
+        cursor: pointer;
+        background: #B7A08B;
+        fill: #36332E !important;
+    }
 }

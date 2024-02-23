@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import image from "./img/grey-9026_128.gif";
+import LoadingButton from "../../Loading/LoadingButton/LoadingButton"
 
 import "./buttons.scss";
 
@@ -39,19 +38,11 @@ const Button = ({
                 className="button-add-to-cart add">
 
                 <span className="add">
-                    {loading ? <Loading/> : text}
+                    {loading ? <LoadingButton/> : text}
                 </span>
             </button>
         </div>
     )
 }
-
-const Loading = () => {
-    return (
-        <img className="image-loading" src={image} alt="loading" />
-    )
-}
-
-
 
 export default Button;

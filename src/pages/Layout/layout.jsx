@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Suspense, useContext, useState} from "react";
+import { Suspense, useContext} from "react";
 import { lazy } from "react";
 import Header from "../../components/header/header-main/header-main"
 import { Context } from "../myContext/MyContext";
@@ -10,11 +10,6 @@ const Layout = () => {
 
     const {setActiveSearch} = useContext(Context)
 
-    const [footer, setFooter] = useState(false)
-    const timer = setTimeout(() => {
-        setFooter(true)
-        clearInterval(timer)
-    }, 1000)
     return (
         <>  
             <Suspense>
@@ -26,7 +21,7 @@ const Layout = () => {
                 </Suspense>
             </main>
             <Suspense>
-                {footer &&  <Footer/>}
+                <Footer/>
             </Suspense>
         </>
     )

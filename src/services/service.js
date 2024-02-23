@@ -1,7 +1,6 @@
 
 
 class Services {
-    //_apiBase = "http://localhost:5000/api/auth/";
     _apiBase = "https://server-parfum.onrender.com/api/auth/";
     
     gerResourse = async (url) => {
@@ -24,6 +23,7 @@ class Services {
     getOneCard = async (id = 1011001) => {
         return await this.gerResourse(`${this._apiBase}card/${id}`);
     }
+
 
     getSaleCards = async () => {
         const res =  await this.gerResourse(`${this._apiBase}tovar`);

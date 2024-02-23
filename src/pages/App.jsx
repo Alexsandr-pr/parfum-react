@@ -16,7 +16,7 @@ const CardPage = lazy(() => import("./Cardpage/Cardpage"));
 const CartTovar = lazy(() => import("./CartTovar/CartTovar"));
 const Malepage = lazy(() => import("./Malepage/Malepage"))
 const PlaceInOrderPage = lazy(() => import("./PlaceInOrderPage/PlaceInOrderPage"));
-
+const Error = lazy(() => import("./Error/Error"))
 function App () {
     const dispatch = useDispatch()
 
@@ -108,6 +108,7 @@ function App () {
                                                         dataCart={dataCart}/>}/>
                     <Route path="male" element={<Malepage onAddToCart={onAddToCart}/>}/>
                     <Route path="order" element={<PlaceInOrderPage/>}/>
+                    <Route path="*" element={<Error/>}/>
                 </Route>
             </Routes>
         </>

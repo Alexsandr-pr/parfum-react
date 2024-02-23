@@ -17,9 +17,8 @@ const OrderItem = ({data}) => {
         <>
             {
                 dataReverse.map((item, i) => {
-                    if(i >= numberOnShow)  {
-                        return
-                    }
+                    if(i >= numberOnShow)  return;
+
                     const {completed, dataOrder, allPrice, timeOrder, tel} = item;
                     const data = new Date(timeOrder)
                     const day = data.getDate();
@@ -48,14 +47,14 @@ const OrderItem = ({data}) => {
                                     <p>{`${day} ${months[monthIndex]} ${year}`}</p>
                                 </div>
                             </div>
-                            <div data-spollers="" className="order-block__booking order-booking">
+                            <div  className="order-block__booking order-booking">
                                 <Parent name={"Состав заказа"}>
                                     <div className="order-booking__content">
                                         {
                                             dataOrder.map((item, i) => {
                                                 const {id,quantity, title, valueMl} = item;
                                                 return (
-                                                    <p key={id + valueMl}><span>{i + 1}</span> {title}: ( {valueMl + "ml"} <i className="fa-solid fa-xmark"></i> {quantity} )</p>
+                                                    <p key={id + valueMl}><span>{i + 1}</span> {title}: ( {valueMl + "ml"} - {quantity} )</p>
                                                 )
                                             })
                                         }
