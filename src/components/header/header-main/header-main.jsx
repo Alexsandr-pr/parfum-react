@@ -19,7 +19,7 @@ const Header = () => {
     const [activeMobile, setActiveMobile] = useState( false );
     const [offset, setOffset] = useState(0)
     const [width, setWidth] = useState(0)
-    const {dataCart} = useContext(Context)
+    const {quantity} = useContext(Context)
     
     let scroll;
     let widt ;
@@ -70,7 +70,7 @@ const Header = () => {
                                     <HeaderCatalogSelect active={active} setActive={setActive} changeActive={changeActive}/>
                                     <HeaderSearchDesktop/>
                                 </div>
-                               {
+                            {
                                 width < 767.98  &&     <>
                                                         <div onClick={changeActiveMobile} className="trigger-mobilke header-bottom__button">
                                                             <span  className="icon-menu">
@@ -81,7 +81,7 @@ const Header = () => {
                                                             <HeaderSearchMobile/>
                                                         </div>
                                                     </>
-                               }
+                            }
                             </div>
                             <div className="header-bottom__items">
                                 <NavLink to="/user" className="header-bottom__item">
@@ -89,7 +89,7 @@ const Header = () => {
                                 </NavLink>
                                 <NavLink to="/cart" className="header-bottom__item header-bottom__item-2">
                                     <img src={carddesctop}  alt="Cart"/> 
-                                    <span>{Object.values(dataCart).length}</span>
+                                    <span>{quantity}</span>
                                 </NavLink>
                             </div>
                         </div>

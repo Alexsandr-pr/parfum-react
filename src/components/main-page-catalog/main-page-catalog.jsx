@@ -183,7 +183,6 @@ const Catalog = ({
             behavior:"smooth"
         })
     }
-
     return (
         <>
             <section  className="main__cart main-cart">

@@ -3,7 +3,7 @@ import "./progress-info.scss";
 import userDefault from "./img/user-default.png";
 import ParentModal from "../../../../modals/parent-modal/ParentModal"
 import ModalUploadAvatar from "../../../../modals/modalUploadAvatar/ModalUploadAvatar"
-import {  useState } from "react";
+import { useState } from "react";
 import { API_URL } from "../../../../../config";
 
 const PersonInfo = ({currentUser}) => {

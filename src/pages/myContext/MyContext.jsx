@@ -27,19 +27,31 @@ export const MyContext = ({children}) => {
         setCadrNumber(id);
     }
     
-    let all = []
     const [allPrice, setAllPrice] = useState(0)
-    
+    const [quantity, setQuantity] = useState(0);
+
     const plusAllPrice = () => {
+        let all = []
         dataCart.forEach(item => {
-            const {salePrice, order} = item
-            order && all.push(item.quantity * salePrice)
+            const {salePrice, order, quantity} = item
+            order && all.push(quantity * salePrice)
         })
         setAllPrice(all.reduce((a, b) => a + b, 0));
     }
 
+    const allQuantityCart = () => {
+        let current = 0;
+        dataCart.forEach(({order, quantity}) => {
+            if(order) {
+                current += quantity
+            }
+        })
+        setQuantity(current)
+    }
+
     useEffect(() => {
         plusAllPrice()
+        allQuantityCart()
     }, [dataCart])
 
     useEffect(() => {
@@ -47,11 +59,20 @@ export const MyContext = ({children}) => {
     },[dataCart])
 
     return (
-        <Context.Provider  value={{ setActiveSearch, activeSearch,
-            sale,setSale, onChangeSaleUser, 
-                                    dataCart, setDataCart, 
-                                    cardNumber, setCadrNumber, onChangeCardNumber, 
-                                    allPrice}}>
+        <Context.Provider  value={{ 
+            quantity,
+            setActiveSearch, 
+            activeSearch,
+            sale,
+            setSale, 
+            onChangeSaleUser,                
+            dataCart, 
+            setDataCart,      
+            cardNumber, 
+            setCadrNumber, 
+            onChangeCardNumber, 
+            allPrice}
+        }>
             {children}
         </Context.Provider>
     )

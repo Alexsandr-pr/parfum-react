@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../../../pages/myContext/MyContext";
 import {useSelector} from "react-redux";
 import Button from "../../buttons/button/Buttons"
@@ -10,7 +10,7 @@ const CartWindow = ({disabled}) => {
     const saleCurrentUserBD = useSelector(state => state.user.currentUser.userSale) || 0;
     
     const [activeLabel, setActiveLabel] = useState(false)
-    const {sale, setSale, onChangeSaleUser} = useContext(Context)
+    const {sale, onChangeSaleUser} = useContext(Context)
     
     const onAddForm = () => {
         setActiveLabel(prev => !prev)

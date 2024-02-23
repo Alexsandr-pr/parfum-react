@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext , useMemo} from "react";
-import {Context}  from "../../pages/myContext/MyContext";
+import {Context}  from "../myContext/MyContext";
 
 import Title from "../../components/user/title/Title";
 import Breadcrumbs from "../../components/breadcrumbs/BreadCrumbs";
@@ -19,7 +19,6 @@ const data1 = [
         text: "Количество любимых ароматов у современных мужчин зачастую больше одного. Они меняют их в зависимости от ситуации или времени года, рискуют пробовать что-то новое и расширяют свой парфюмерный кругозор. Особенно привлекательной смена становится за счёт того, что сейчас мужские духи купить можно совсем недорого. Это все говорит о том, что теперь мужчины и духи однозначно идут по жизни рядом."
     }
 ]
-
 const data2 = [
     {
         id: 3,

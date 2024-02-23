@@ -12,7 +12,7 @@ const CartModal = ({
 }) => {
 
     const isAuth = useSelector(state => state.user.isAuth)
-    const {dataCart, sale, allPrice} = useContext(Context);
+    const {quantity, sale, allPrice} = useContext(Context);
     const userCachback = useSelector(state => state.user.currentUser.cachback)
 
     return (
@@ -22,7 +22,7 @@ const CartModal = ({
                     <div className="cart-modal__item item-order">
                         <div className="item-order__title title-24">
                             <h3>
-                                {dataCart.filter(item => item.order).length + " товаров на сумму:"}   
+                                {quantity + " товаров на сумму:"}   
                             </h3>
                             <input type="text" disabled value={numberWithSpaces(allPrice) + " ₴"} readOnly/>
                         </div>
