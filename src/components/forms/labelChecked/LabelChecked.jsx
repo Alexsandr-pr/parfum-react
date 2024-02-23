@@ -10,7 +10,7 @@ const LabelChecked = memo( ({
     const [check, setCheck] = useState(true)
     useEffect(() => {
         onToggleOrder(id, check, value)
-    }, [check])
+    }, [check, id, value])
 
     return (
             <label 

@@ -21,14 +21,14 @@ const LabelPassword = memo(({
             text={text} 
             type={active ? "password" : "text"}
             >
-            <a  className="password">
+            <button type="button" className="password">
                 <img 
                     loading="lazy"
                     onClick={() => onChangeActive()}  
                     className="password__before" 
                     src={active ? password : passwordclose}
                     alt="password"/>
-            </a>
+            </button>
         </Label>
     )
 })

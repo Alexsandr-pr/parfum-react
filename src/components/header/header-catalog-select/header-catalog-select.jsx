@@ -1,5 +1,5 @@
 
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy, useEffect, useMemo } from "react";
 
 import "./header-catalog-select.scss";
 import { useLocation } from "react-router-dom";
@@ -18,9 +18,11 @@ const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
     }, [])
     const {pathname} = useLocation();
 
-    useEffect(() => {
-        setActive(false)
-    },[pathname])
+    useMemo(() => {
+        if (pathname !== '/desiredPath') {
+            setActive(false);
+        }
+    }, [pathname]);
 
 
     return (

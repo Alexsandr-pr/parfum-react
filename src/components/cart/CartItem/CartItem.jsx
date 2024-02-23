@@ -28,7 +28,7 @@ const CartItem = ({
 
     useEffect(() => {
         onChangeCurrentOnClick(current, id)
-    }, [current])
+    }, [current, id])
 
     return (
         <div key={id} className="tovar-in-cart ">
@@ -41,7 +41,7 @@ const CartItem = ({
                     />
                 </div>
                 <div className="tovar-in-cart__image">
-                    <img loading="lazy" src={imageSrc} alt="Image"/>
+                    <img loading="lazy" src={imageSrc} alt={title}/>
                 </div>
             </div>  
             <div className="tovar-in-cart__info">

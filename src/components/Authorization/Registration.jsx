@@ -51,13 +51,6 @@ const Registration = () => {
     const onActiveThank = () => {
         setModal(false)
     }
-    
-    const onActiveErrorModal = () => {
-        setPassword("");
-        setEmail("");
-        setChecked(false);
-        setDisabled(true);
-    }
 
     useEffect(() => {
         if(checked && email.length > 2 && gender && password.length >= 3) {

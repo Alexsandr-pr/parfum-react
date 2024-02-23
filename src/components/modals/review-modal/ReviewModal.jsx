@@ -8,8 +8,6 @@ import image from "./img/image.svg";
 import "./ReviewModal.scss";
 import { Link } from "react-router-dom";
 
-
-
 const ReviewModal = ({
     id, 
     title, 
@@ -30,8 +28,6 @@ const ReviewModal = ({
             setSurname(user.adress.surname)
         }
     }, [])
-    
-    const rating = 4;
 
     const [reviewtext, setTextValue] = useState("")
     const [disabled, setDisabled ] = useState(true)

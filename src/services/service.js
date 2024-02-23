@@ -1,7 +1,7 @@
 
 
 class Services {
-   // _apiBase = "http://localhost:5000/api/auth/";
+    //_apiBase = "http://localhost:5000/api/auth/";
     _apiBase = "https://server-parfum.onrender.com/api/auth/";
     
     gerResourse = async (url) => {

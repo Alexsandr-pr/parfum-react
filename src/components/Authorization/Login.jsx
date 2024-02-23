@@ -80,7 +80,7 @@ const Login = () => {
                             type="submit" 
                             className="login-block__btn button-add-to-cart"><span>Войти</span></button>
                     </div>
-                    <a className="login-block__link" href="#">Забыли свой пароль?</a>
+                    <button type="button" className="login-block__link">Забыли свой пароль?</button>
                 </form>
             </div>
         </>
