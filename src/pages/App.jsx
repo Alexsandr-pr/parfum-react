@@ -14,7 +14,7 @@ const BonusPage = lazy(() => import("./Bonuspage/bonuspage"));
 const Document = lazy(() => import("./Documentpage/documentpage"));
 const CardPage = lazy(() => import("./Cardpage/Cardpage"));
 const CartTovar = lazy(() => import("./CartTovar/CartTovar"));
-const Malepage = lazy(() => import("../pages/Malepage/malepage"))
+const Malepage = lazy(() => import("../pages/Malepage/Malepage"))
 const PlaceInOrderPage = lazy(() => import("./PlaceInOrderPage/PlaceInOrderPage"));
 
 function App () {
