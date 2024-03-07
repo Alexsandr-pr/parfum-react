@@ -101,20 +101,20 @@
   position: relative;
   background: #0E0D0C;
 }
-.progress__person::after {
+.progress__person .after {
   left: 0;
   top: 0;
   content: "";
   position: absolute;
-  width: 60%;
+  width: 0%;
   height: 4px;
   border-radius: 4px;
   background: #FFEBCC;
   z-index: 3;
 }
-.progress__person::before {
+.progress__person .before {
   top: -3px;
-  left: calc(60% - 4px);
+  left: calc(0% - 4px);
   position: absolute;
   width: 9px;
   height: 9px;
@@ -123,4 +123,49 @@
   background-color: #4F4640;
   content: "";
   border: 1px solid #BEAE97;
+}
+
+.person-info__images {
+  position: relative;
+}
+
+.person-info__image {
+  border-radius: 50%;
+  width: 80px !important;
+  height: 80px !important;
+  scale: 1;
+  position: relative;
+}
+
+.person-info__star-1,
+.person-info__star-2,
+.person-info__star-3 {
+  font-size: 18px;
+  position: absolute;
+  color: #36332E;
+}
+
+.person-info__star-1 {
+  left: 12px;
+  bottom: -20px;
+}
+
+.person-info__star-2 {
+  left: calc(50% - 9px);
+  bottom: -25px;
+}
+
+.person-info__star-3 {
+  bottom: -20px;
+  right: 10px;
+}
+
+.person__plus {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  right: -45px;
+}
+.person__plus img {
+  width: 40px;
 }/*# sourceMappingURL=progress-info.css.map */

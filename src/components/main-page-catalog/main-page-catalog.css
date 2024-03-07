@@ -98,10 +98,6 @@
   position: absolute;
 }
 
-.filter-content-1 {
-  position: absolute;
-}
-
 @media (hover: hover) {
   .filter__item:hover {
     cursor: pointer;
@@ -139,6 +135,8 @@
   }
 }
 .filter-content__form {
+  z-index: 500;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;

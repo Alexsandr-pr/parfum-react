@@ -1,0 +1,129 @@
+.popap-retvit {
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (max-width: 767.98px) {
+  .popap-retvit {
+    max-width: 100%;
+  }
+}
+.popap-retvit__title {
+  background: linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.popap-retvit__text {
+  padding: 20px;
+  display: flex;
+  border-radius: 4px;
+  background: #211E1C;
+  gap: 20px;
+}
+@media (max-width: 487.98px) {
+  .popap-retvit__text {
+    flex-direction: column;
+  }
+}
+.popap-retvit__text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #BEAE97;
+}
+.popap-retvit__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.popap-retvit__label-text {
+  margin-bottom: 10px;
+}
+.popap-retvit__items-rating {
+  display: flex;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  row-gap: 5px;
+  align-items: center;
+}
+@media (max-width: 337.98px) {
+  .popap-retvit__items-rating {
+    flex-direction: column;
+  }
+}
+.popap-retvit__label {
+  color: #BEAE97;
+}
+.popap-retvit__label span {
+  color: red;
+}
+.popap-retvit__label input {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+}
+.popap-retvit__label-camera {
+  position: relative;
+}
+.popap-retvit__label-camera span::after {
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 100px;
+  content: "+";
+  border-radius: 4px;
+  background: #211E1C;
+}
+.popap-retvit__label-camera p {
+  margin-bottom: 20px;
+}
+.popap-retvit__textarea {
+  padding: 15px;
+  border-radius: 4px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid #565147;
+  height: 170px;
+  resize: none;
+}
+.popap-retvit__textarea:focus {
+  outline: #BEAE97 1px solid;
+}
+
+.modal__upload {
+  padding: 40px 20px;
+}
+@media (max-width: 487.98px) {
+  .modal__upload {
+    padding: 30px 0px;
+  }
+}
+
+input[type=file] {
+  position: absolute;
+  display: none;
+  clip: rect(0 0 0 0);
+}
+
+.modal__upload-body {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  gap: 20px;
+}
+.modal__upload-body .button-add-body {
+  width: 245px !important;
+}
+@media (max-width: 767.98px) {
+  .modal__upload-body {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.modal__upload-text {
+  margin-bottom: 15px;
+}/*# sourceMappingURL=modal-upload.css.map */

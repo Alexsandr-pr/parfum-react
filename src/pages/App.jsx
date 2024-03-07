@@ -66,8 +66,8 @@ function App () {
         })
     }
 
-    const onChangeCurrentOnClick = (curr, id) => {
-        const index = dataCart.findIndex(item => item.id === id);
+    const onChangeCurrentOnClick = (curr, id, value) => {
+        const index = dataCart.findIndex(item => item.valueMl === value && (item.id === id));
         setDataCart(prev => {
             prev[index].quantity = curr;
             return [...prev]

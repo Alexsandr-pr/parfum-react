@@ -1,4 +1,4 @@
-.filter__list {
+.header-filters__search .filter__list {
   box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.4);
   padding: 10px;
   display: flex;
@@ -6,6 +6,13 @@
   border-radius: 0px 0px 6px 6px;
   background: #211E1C;
   gap: 10px;
+}
+@media (max-width: 387.98px) {
+  .header-filters__search .filter__list {
+    position: fixed;
+    left: 0;
+    top: 80px;
+  }
 }
 
 .filter {

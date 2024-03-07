@@ -30,7 +30,7 @@ const HeaderSearchDesktop = () => {
         service.getAllCards().then(res => {
             setData(res.map(({id, title}) => ({id, title})))
         })
-    },[service])
+    },[])
 
     
 

@@ -40,8 +40,6 @@
 
 .catalog-description__item.active .catalog-description__content {
   transition: all 0.3s ease 0s;
+  margin-top: 20px;
   display: block;
-}
-.catalog-description__item.active .filter__btn-popular span {
-  transform: rotate(0deg);
 }/*# sourceMappingURL=main-more.css.map */

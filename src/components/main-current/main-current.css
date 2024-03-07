@@ -13,14 +13,18 @@
   gap: 10px;
 }
 .current__btn {
+  display: flex;
   font-size: 20px;
-  color: #BEAE97;
+  fill: #BEAE97;
   font-weight: 500;
 }
 @media (hover: hover) {
   .current__btn:hover {
     cursor: pointer;
   }
+}
+.current__btn:disabled {
+  opacity: 0.3;
 }
 .current__input {
   border-radius: 4px;

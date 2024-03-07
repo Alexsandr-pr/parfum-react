@@ -3,5 +3,30 @@
 }
 
 .catalog-description__item.active .order-booking__content {
-  display: block;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.catalog-description__btn-add {
+  text-align: center;
+}
+
+.post__awaits {
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #4A4D6C;
+}
+
+.post__received {
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #4A6C4D;
+}
+
+.post__canseled {
+  border-radius: 4px;
+  background: #6C4A4A;
+  padding: 6px 10px;
 }/*# sourceMappingURL=order-item.css.map */

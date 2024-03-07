@@ -1,10 +1,10 @@
 
-import { Suspense, lazy, useEffect, useMemo } from "react";
+import {  useEffect, useMemo } from "react";
 
 import "./header-catalog-select.scss";
 import { useLocation } from "react-router-dom";
 
-const HeaderMale = lazy(() => import("../header-male/header-male"));
+import  HeaderMale from "../header-male/header-male";
 
 const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
 
@@ -18,13 +18,14 @@ const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
     }, [])
     const {pathname} = useLocation();
 
-    useMemo(() => {
+    const changePath = () => {
         if (pathname !== '/desiredPath') {
             setActive(false);
         }
-    }, [pathname]);
-
-
+    }
+        useEffect(() => {
+            changePath()
+        },[pathname])
     return (
         <>
             <div className={ active ? "header-button active" : "header-button"}>
@@ -39,9 +40,9 @@ const HeaderCatalogSelect = ({active, setActive, changeActive}) => {
                     <span className="icon-menu-text">Каталог</span>
                 </button>
                 <div className="header-button__block">
-                    <Suspense>
+                   
                         <HeaderMale  changeActive={changeActive}/>
-                    </Suspense>
+                   
                 </div>
             </div>
         </>

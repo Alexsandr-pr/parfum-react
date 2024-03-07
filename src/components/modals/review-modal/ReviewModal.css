@@ -1,5 +1,4 @@
 .popap-retvit {
-  margin-top: 120px;
   max-width: 620px;
   display: flex;
   flex-direction: column;
@@ -19,6 +18,7 @@
 .popap-retvit__text {
   padding: 20px;
   display: flex;
+  align-items: center;
   border-radius: 4px;
   background: #211E1C;
   gap: 20px;
@@ -26,6 +26,8 @@
 @media (max-width: 487.98px) {
   .popap-retvit__text {
     flex-direction: column;
+    gap: 10px;
+    padding: 15px;
   }
 }
 .popap-retvit__svg {
@@ -37,6 +39,11 @@
   flex-direction: column;
   gap: 6px;
   color: #BEAE97;
+}
+@media (max-width: 487.98px) {
+  .popap-retvit__text-content {
+    text-align: center;
+  }
 }
 .popap-retvit__form {
   display: flex;

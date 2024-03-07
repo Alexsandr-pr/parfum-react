@@ -16,17 +16,10 @@
 }
 @media (max-width: 487.98px) {
   .cart-item {
-    padding: 25px 12px 12px 12px;
-  }
-}
-@media (hover: hover) {
-  .cart-item:hover {
-    cursor: pointer;
-    border: #C09E6C 1px solid;
+    padding: 27px 12px 12px 12px;
   }
 }
 .cart-item__image {
-  max-height: 220px;
   display: inline-flex;
   justify-content: center;
 }
@@ -125,6 +118,7 @@
   gap: 4px;
   right: 0px;
   display: flex;
+  align-items: center;
   flex-direction: row-reverse;
   top: 0px;
   padding: 5px;

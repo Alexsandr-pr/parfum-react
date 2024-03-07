@@ -20,14 +20,15 @@
   border-radius: 4px;
   border: 1px solid #565147;
   height: 54px;
-  transition: all 0.3s ease 0s;
   padding: 14px;
+  letter-spacing: normal;
   color: #BEAE97 !important;
-  font-size: 18px;
+  font-size: 14px;
 }
 .input-block__input:focus {
   border-radius: 4px;
   outline: 1px solid #C09E6C;
+  color: #BEAE97 !important;
 }
 .input-block__input::-moz-placeholder {
   color: #BEAE97 !important;
@@ -52,4 +53,14 @@
   .input-block__input::placeholder {
     font-size: 14px;
   }
+}
+.input-block__input:disabled {
+  opacity: 0.3;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 60px 60px #211E1C inset !important;
 }/*# sourceMappingURL=Label.css.map */

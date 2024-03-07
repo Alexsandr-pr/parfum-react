@@ -8,7 +8,7 @@ import userdesctop from "./img/userdesctop.svg"
 
 import "./header-main.scss";
 
-const HeaderCatalogSelect = lazy(() => import("../header-catalog-select/header-catalog-select"));
+import  HeaderCatalogSelect  from "../header-catalog-select/header-catalog-select";
 const HeaderSearchDesktop = lazy(() => import("../header-search/header-search-desktop/header-search-desktop"));
 const HeaderSearchMobile =  lazy(() => import("../header-search/header-search-mobile/HeaderSearchMobile"));
 const HeaderTop = lazy(() => import("../header-top/header-top"));

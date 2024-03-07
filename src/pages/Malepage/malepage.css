@@ -13,6 +13,7 @@
 .male-card__body .swiper-wrapper {
   margin-bottom: 20px;
   align-items: stretch;
+  padding: 2px;
 }
 
 .male-card__body .swiper-slide {

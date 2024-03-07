@@ -6,27 +6,23 @@
 .header-bottom__input {
   height: 48px;
   width: 100%;
-  padding: 14px 20px;
+  padding: 14px 50px 14px 20px;
   border-radius: 4px;
   border: 1px solid #514941;
   background: #12110F;
   box-shadow: 0px 0px 10px 0px rgba(160, 149, 133, 0.2);
-  color: #867A68;
+  color: #BEAE97;
   font-family: Inter;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.4; /* 19.6px */
 }
 .header-bottom__input::-moz-placeholder {
-  color: #867A68;
-  font-family: Inter;
-  font-size: 14px;
+  color: #BEAE97;
   line-height: 1.4;
 }
 .header-bottom__input::placeholder {
-  color: #867A68;
-  font-family: Inter;
-  font-size: 14px;
+  color: #BEAE97;
   line-height: 1.4;
 }
 .header-bottom__input:focus {
@@ -37,6 +33,11 @@
 @media (max-width: 767.98px) {
   .header-bottom__input {
     width: 100%;
+  }
+}
+@media (max-width: 487.98px) {
+  .header-bottom__input {
+    padding: 14px 40px 14px 10px;
   }
 }
 
@@ -61,14 +62,14 @@
   .header-search__content._active {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     position: absolute;
     padding: 20px;
     left: 0;
     top: 0;
     z-index: 4000;
     width: 100%;
-    height: 70px;
+    height: 80px;
     background-color: #12110F;
   }
 }
@@ -79,7 +80,6 @@
 
 .header-bottom__search {
   z-index: 20;
-  position: relative;
   position: absolute;
   z-index: 2;
   right: 20px;

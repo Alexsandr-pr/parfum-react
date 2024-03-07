@@ -1,5 +1,4 @@
 .top-trigger-filter__item._active {
-  position: relative;
   z-index: 301;
 }
 .top-trigger-filter__item._active .filter__content {
@@ -8,12 +7,6 @@
   opacity: 1;
   scale: 1;
 }
-.top-trigger-filter__item._active .filter__btn-popular span {
-  transform: rotateX(0deg);
-}
-.top-trigger-filter__item._active .filter__btn-filter span {
-  transform: rotate(90deg);
-}
 
 .top-trigger-filter__item {
   position: relative;
@@ -21,120 +14,6 @@
 
 .filter {
   position: relative;
-}
-.filter__btn {
-  width: 100%;
-  position: relative;
-  padding: 13.5px 20px;
-  display: flex;
-  align-items: flex-start;
-  border-radius: 4px;
-  border: 1px solid #D6B88D;
-}
-.filter__btn p {
-  transition: all 0.6s ease 0s;
-  font-size: 18px;
-  font-family: Open Sans;
-  position: relative;
-  z-index: 20;
-  background: linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.filter__btn::after {
-  content: "";
-  position: absolute;
-  border-radius: 4px;
-  left: 0;
-  width: 100%;
-  z-index: -1;
-  height: 100%;
-  top: 0;
-  background-color: #36332E;
-}
-@media (max-width: 991.98px) {
-  .filter__btn {
-    font-size: 16px;
-  }
-}
-@media (max-width: 767.98px) {
-  .filter__btn {
-    font-size: 14px;
-  }
-}
-.filter__btn span {
-  transition: all 0.3s ease 0s;
-  width: 40px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  position: absolute;
-  top: calc(50% - 20px);
-}
-.filter__btn span img {
-  display: block;
-}
-.filter__btn::before {
-  width: 100%;
-  content: "";
-  height: 100%;
-  background: linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
-  position: absolute;
-  left: 0;
-  top: 0;
-  transition: all 0.6s ease 0s;
-  opacity: 0;
-}
-@media (hover: hover) {
-  .filter__btn:hover {
-    cursor: pointer;
-  }
-  .filter__btn:hover p {
-    font-weight: 500;
-    color: #36332E;
-    -webkit-text-fill-color: inherit;
-  }
-  .filter__btn:hover::before {
-    opacity: 1;
-  }
-  .filter__btn:hover span {
-    color: #36332E;
-  }
-}
-.filter__btn:focus-visible {
-  outline: none;
-  cursor: pointer;
-}
-.filter__btn:focus-visible p {
-  font-weight: 500;
-  color: #36332E;
-  -webkit-text-fill-color: inherit;
-}
-.filter__btn:focus-visible::before {
-  opacity: 1;
-}
-.filter__btn:focus-visible span {
-  color: #36332E;
-}
-.filter__btn-filter span {
-  right: 15px;
-}
-@media (max-width: 991.98px) {
-  .filter__btn-filter span {
-    right: 5px;
-  }
-}
-.filter__btn-popular span {
-  transition: all 0.6s ease 0s;
-  transform: rotateX(180deg);
-  right: 20px;
-}
-@media (max-width: 991.98px) {
-  .filter__btn-popular span {
-    right: 5px;
-  }
 }
 .filter__item {
   border-radius: 4px;

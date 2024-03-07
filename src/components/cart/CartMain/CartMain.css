@@ -41,4 +41,16 @@
 
 .item-order__button {
   max-width: 245px;
+}
+
+.cart-preview__label {
+  padding: 20px 0px;
+}
+
+.cart-preview__button .button-add-to-cart {
+  width: 245px;
+}
+
+.message-text {
+  width: clamp(300px, 50%, 600px);
 }/*# sourceMappingURL=CartMain.css.map */

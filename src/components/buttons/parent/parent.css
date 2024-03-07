@@ -1,0 +1,20 @@
+.top-trigger-filter__item._active {
+  position: relative;
+  z-index: 301;
+}
+.top-trigger-filter__item._active .filter__content {
+  display: block;
+  z-index: 100;
+  opacity: 1;
+  scale: 1;
+}
+.top-trigger-filter__item._active .filter__btn-popular span {
+  transform: rotateX(0deg);
+}
+.top-trigger-filter__item._active .filter__btn-filter span {
+  transform: rotate(90deg);
+}
+
+.top-trigger-filter__item {
+  position: relative;
+}/*# sourceMappingURL=parent.css.map */

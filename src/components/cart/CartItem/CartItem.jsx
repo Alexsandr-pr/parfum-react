@@ -27,8 +27,8 @@ const CartItem = ({
     }
 
     useEffect(() => {
-        onChangeCurrentOnClick(current, id)
-    }, [current, id])
+        onChangeCurrentOnClick(current, id, valueMl)
+    }, [current, id, valueMl])
 
     return (
         <div key={id} className="tovar-in-cart ">

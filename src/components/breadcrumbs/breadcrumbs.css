@@ -6,6 +6,7 @@
 }
 .breadcrumb__list {
   display: flex;
+  align-items: center;
   gap: 30px;
 }
 .breadcrumb__item:not(:last-child) {
@@ -15,7 +16,6 @@
   content: "/";
   position: absolute;
   right: -15px;
-  top: 0;
   color: #7A7364;
   font-family: Montserrat;
   font-size: 14px;
@@ -26,6 +26,10 @@
 .breadcrumb__link {
   color: #BEAE97;
   font-size: 14px;
+}
+
+.breadcrumb__link-18 {
+  font-size: 18px !important;
 }
 
 .title-30 {

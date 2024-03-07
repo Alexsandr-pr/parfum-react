@@ -1,0 +1,18 @@
+.exit__body {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+@media (max-width: 991.98px) {
+  .exit__body {
+    flex-direction: column;
+  }
+}
+
+.exit__body .button-add-body {
+  width: 100%;
+}
+
+.exit__body .button-add-to-cart {
+  width: 100% !important;
+}/*# sourceMappingURL=exit.css.map */

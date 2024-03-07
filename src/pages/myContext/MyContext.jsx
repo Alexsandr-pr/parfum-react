@@ -41,16 +41,19 @@ export const MyContext = ({children}) => {
 
     const allQuantityCart = () => {
         let current = 0;
-        dataCart.forEach(({order, quantity}) => {
+        dataCart.forEach((item) => {
+            const {order, quantity} = item
             if(order) {
                 current += quantity
             }
-        })
+        });
         setQuantity(current)
     }
-
     useEffect(() => {
         plusAllPrice()
+    }, [dataCart])
+
+    useEffect(() => {
         allQuantityCart()
     }, [dataCart])
 
